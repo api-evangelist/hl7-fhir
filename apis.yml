@@ -1,0 +1,20 @@
+aid: hl7-fhir
+url: https://raw.githubusercontent.com/api-evangelist/hl7-fhir/refs/heads/main/apis.yml
+apis:
+- aid: hl7-fhir:hl7-fhir-api
+  name: HL7 FHIR R4 Healthcare API
+  tags:
+  - Healthcare
+  - FHIR
+  - HL7
+  - Interoperability
+  - Clinical
+  - XML
+  image: https://raw.githubusercontent.com/api-evangelist/hl7-fhir/refs/heads/main/image.png
+  humanURL: https://www.hl7.org/fhir/
+  baseURL: https://fhir-server.example.com/fhir/R4
+  properties:
+  - url: https://www.hl7.org/fhir/
+    type: Documentation
+  description: >-
+    HL7 FHIR (Fast Healthcare Interoperability Resources) is the standard API for healthcare data exchange. FHIR R4 REST APIs provide access to patient demographics, observations, conditions, medications, encounters, and care plans in both JSON and XML formats across EHR systems.
