@@ -1,0 +1,796 @@
+openapi: 3.1.0
+info:
+  title: HL7 FHIR R4 Healthcare API
+  description: >-
+    HL7 FHIR R4 (v4.0.1) RESTful API for healthcare data exchange. Provides access
+    to patient demographics, clinical observations, conditions, medications,
+    encounters, care plans, and diagnostic reports. Implements the FHIR REST
+    specification including CRUD operations, search parameters, history, and batch/
+    transaction bundles. SMART on FHIR OAuth 2.0 authorization required.
+  version: 4.0.1
+  contact:
+    name: HL7 International
+    url: https://www.hl7.org/fhir/
+  license:
+    name: Creative Commons CC0
+    url: https://creativecommons.org/publicdomain/zero/1.0/
+externalDocs:
+  description: HL7 FHIR R4 Specification
+  url: https://www.hl7.org/fhir/R4/
+
+servers:
+  - url: https://fhir-server.example.com/fhir/R4
+    description: FHIR R4 server base URL (replace with actual server URL)
+
+security:
+  - SMARTonFHIR: []
+
+tags:
+  - name: Patient
+    description: Patient demographic and identity resources
+  - name: Observation
+    description: Clinical measurements, lab results, vital signs
+  - name: Condition
+    description: Clinical conditions, diagnoses, and problems
+  - name: MedicationRequest
+    description: Medication prescriptions and orders
+  - name: Encounter
+    description: Patient visits and encounters
+  - name: Bundle
+    description: Batch and transaction operations
+
+paths:
+  /Patient:
+    get:
+      operationId: searchPatient
+      summary: Search patients
+      description: >-
+        Searches for Patient resources matching the specified search parameters.
+        Supports name, identifier (MRN), birthdate, gender, and address searches.
+        Returns a Bundle containing matching Patient resources.
+      tags: [Patient]
+      parameters:
+        - name: _id
+          in: query
+          schema:
+            type: string
+          description: Logical id of the patient
+        - name: identifier
+          in: query
+          schema:
+            type: string
+          description: Patient identifier (e.g., "http://hospital.example.org/patients|12345")
+        - name: family
+          in: query
+          schema:
+            type: string
+          description: A portion of the family name of the patient
+        - name: given
+          in: query
+          schema:
+            type: string
+          description: A portion of the given name of the patient
+        - name: birthdate
+          in: query
+          schema:
+            type: string
+          description: The patient's date of birth (e.g., "1990-01-15" or "ge1990")
+        - name: gender
+          in: query
+          schema:
+            type: string
+            enum: [male, female, other, unknown]
+        - name: _count
+          in: query
+          schema:
+            type: integer
+            default: 20
+          description: Number of results per page
+        - name: _sort
+          in: query
+          schema:
+            type: string
+          description: Sort criteria (e.g., "family,-birthdate")
+        - name: _include
+          in: query
+          schema:
+            type: string
+          description: Include related resources (e.g., "Patient:general-practitioner")
+      responses:
+        '200':
+          description: Bundle of matching Patient resources
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Bundle'
+        '400':
+          description: Invalid search parameters
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/OperationOutcome'
+
+    post:
+      operationId: createPatient
+      summary: Create a patient
+      description: Creates a new Patient resource. The server assigns the logical ID.
+      tags: [Patient]
+      requestBody:
+        required: true
+        content:
+          application/fhir+json:
+            schema:
+              $ref: '#/components/schemas/Patient'
+      responses:
+        '201':
+          description: Patient created
+          headers:
+            Location:
+              schema:
+                type: string
+              description: URL of created resource (e.g., Patient/123/_history/1)
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Patient'
+        '400':
+          description: Invalid resource
+
+  /Patient/{id}:
+    get:
+      operationId: readPatient
+      summary: Read a patient
+      description: Returns the current version of a Patient resource by its logical ID.
+      tags: [Patient]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Logical ID of the patient
+      responses:
+        '200':
+          description: Patient resource returned
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Patient'
+        '404':
+          description: Patient not found
+
+    put:
+      operationId: updatePatient
+      summary: Update a patient
+      description: Updates an existing Patient resource using a complete replacement (PUT semantics).
+      tags: [Patient]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/fhir+json:
+            schema:
+              $ref: '#/components/schemas/Patient'
+      responses:
+        '200':
+          description: Patient updated
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Patient'
+        '201':
+          description: Patient created (upsert)
+        '400':
+          description: Invalid resource
+
+  /Observation:
+    get:
+      operationId: searchObservation
+      summary: Search observations
+      description: >-
+        Searches for Observation resources (lab results, vital signs, surveys).
+        Common use cases include retrieving recent vital signs or lab values for a patient.
+      tags: [Observation]
+      parameters:
+        - name: patient
+          in: query
+          schema:
+            type: string
+          description: Patient reference (e.g., "Patient/123")
+        - name: category
+          in: query
+          schema:
+            type: string
+          description: Observation category (vital-signs, laboratory, social-history, etc.)
+        - name: code
+          in: query
+          schema:
+            type: string
+          description: LOINC code or system|code (e.g., "8302-2" for body height)
+        - name: date
+          in: query
+          schema:
+            type: string
+          description: Observation date filter (e.g., "ge2024-01-01")
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [registered, preliminary, final, amended, corrected, cancelled]
+        - name: _count
+          in: query
+          schema:
+            type: integer
+            default: 20
+        - name: _sort
+          in: query
+          schema:
+            type: string
+            default: -date
+      responses:
+        '200':
+          description: Bundle of matching Observation resources
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Bundle'
+
+  /Observation/{id}:
+    get:
+      operationId: readObservation
+      summary: Read an observation
+      description: Returns a specific Observation resource by its logical ID.
+      tags: [Observation]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Observation resource returned
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Observation'
+        '404':
+          description: Observation not found
+
+  /Condition:
+    get:
+      operationId: searchCondition
+      summary: Search conditions
+      description: Searches for Condition resources (diagnoses, problems, health concerns) for a patient.
+      tags: [Condition]
+      parameters:
+        - name: patient
+          in: query
+          schema:
+            type: string
+          description: Patient reference
+        - name: clinical-status
+          in: query
+          schema:
+            type: string
+            enum: [active, recurrence, relapse, inactive, remission, resolved]
+        - name: code
+          in: query
+          schema:
+            type: string
+          description: ICD-10 or SNOMED CT code
+        - name: category
+          in: query
+          schema:
+            type: string
+        - name: onset-date
+          in: query
+          schema:
+            type: string
+        - name: _count
+          in: query
+          schema:
+            type: integer
+            default: 20
+      responses:
+        '200':
+          description: Bundle of Condition resources returned
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Bundle'
+
+  /MedicationRequest:
+    get:
+      operationId: searchMedicationRequest
+      summary: Search medication requests
+      description: Searches for MedicationRequest resources (prescriptions and medication orders) for a patient.
+      tags: [MedicationRequest]
+      parameters:
+        - name: patient
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [active, on-hold, cancelled, completed, entered-in-error, stopped, draft, unknown]
+        - name: medication
+          in: query
+          schema:
+            type: string
+        - name: authoredon
+          in: query
+          schema:
+            type: string
+        - name: _count
+          in: query
+          schema:
+            type: integer
+            default: 20
+      responses:
+        '200':
+          description: Bundle of MedicationRequest resources returned
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Bundle'
+
+  /Encounter:
+    get:
+      operationId: searchEncounter
+      summary: Search encounters
+      description: Searches for Encounter resources (visits, hospitalizations, telehealth) for a patient.
+      tags: [Encounter]
+      parameters:
+        - name: patient
+          in: query
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [planned, arrived, triaged, in-progress, onleave, finished, cancelled]
+        - name: class
+          in: query
+          schema:
+            type: string
+          description: Encounter class code (AMB, IMP, EMER, etc.)
+        - name: date
+          in: query
+          schema:
+            type: string
+        - name: _count
+          in: query
+          schema:
+            type: integer
+            default: 20
+      responses:
+        '200':
+          description: Bundle of Encounter resources returned
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Bundle'
+
+  /:
+    post:
+      operationId: processBatch
+      summary: Process batch or transaction
+      description: >-
+        Processes a FHIR Bundle of type 'batch' or 'transaction'. Batch processes
+        each entry independently; transaction processes all entries atomically.
+      tags: [Bundle]
+      requestBody:
+        required: true
+        content:
+          application/fhir+json:
+            schema:
+              $ref: '#/components/schemas/Bundle'
+      responses:
+        '200':
+          description: Bundle response with results for each entry
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Bundle'
+
+  /metadata:
+    get:
+      operationId: getCapabilityStatement
+      summary: Get server capability statement
+      description: Returns the FHIR CapabilityStatement describing supported resources, operations, and search parameters for this server.
+      tags: [Bundle]
+      security: []
+      responses:
+        '200':
+          description: CapabilityStatement returned
+          content:
+            application/fhir+json:
+              schema:
+                type: object
+                properties:
+                  resourceType:
+                    type: string
+                    enum: [CapabilityStatement]
+
+components:
+  securitySchemes:
+    SMARTonFHIR:
+      type: oauth2
+      description: SMART on FHIR OAuth 2.0 authorization
+      flows:
+        authorizationCode:
+          authorizationUrl: https://auth.example.com/authorize
+          tokenUrl: https://auth.example.com/token
+          scopes:
+            patient/Patient.read: Read patient data
+            patient/Observation.read: Read observations
+            patient/Condition.read: Read conditions
+            patient/MedicationRequest.read: Read medication requests
+            patient/Encounter.read: Read encounters
+            launch/patient: Patient context launch
+            openid: OpenID Connect identity
+
+  schemas:
+    Bundle:
+      type: object
+      description: A container for a collection of FHIR resources
+      properties:
+        resourceType:
+          type: string
+          enum: [Bundle]
+        id:
+          type: string
+        type:
+          type: string
+          enum: [document, message, transaction, transaction-response, batch, batch-response, history, searchset, collection]
+        total:
+          type: integer
+          description: Total number of matches (for searchset bundles)
+        link:
+          type: array
+          items:
+            type: object
+            properties:
+              relation:
+                type: string
+                enum: [self, first, previous, next, last]
+              url:
+                type: string
+                format: uri
+        entry:
+          type: array
+          items:
+            type: object
+            properties:
+              fullUrl:
+                type: string
+                format: uri
+              resource:
+                type: object
+                description: FHIR resource (any type)
+              search:
+                type: object
+                properties:
+                  mode:
+                    type: string
+                    enum: [match, include, outcome]
+                  score:
+                    type: number
+              request:
+                type: object
+                properties:
+                  method:
+                    type: string
+                    enum: [GET, HEAD, POST, PUT, DELETE, PATCH]
+                  url:
+                    type: string
+              response:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  location:
+                    type: string
+      required: [resourceType, type]
+
+    Patient:
+      type: object
+      description: Demographics and administrative information about a patient
+      properties:
+        resourceType:
+          type: string
+          enum: [Patient]
+        id:
+          type: string
+        meta:
+          $ref: '#/components/schemas/Meta'
+        identifier:
+          type: array
+          items:
+            $ref: '#/components/schemas/Identifier'
+          description: Patient identifiers (MRN, SSN, etc.)
+        active:
+          type: boolean
+        name:
+          type: array
+          items:
+            $ref: '#/components/schemas/HumanName'
+        telecom:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactPoint'
+        gender:
+          type: string
+          enum: [male, female, other, unknown]
+        birthDate:
+          type: string
+          format: date
+        deceased:
+          type: object
+          properties:
+            deceasedBoolean:
+              type: boolean
+            deceasedDateTime:
+              type: string
+              format: date-time
+        address:
+          type: array
+          items:
+            $ref: '#/components/schemas/Address'
+        communication:
+          type: array
+          items:
+            type: object
+            properties:
+              language:
+                $ref: '#/components/schemas/CodeableConcept'
+              preferred:
+                type: boolean
+        generalPractitioner:
+          type: array
+          items:
+            $ref: '#/components/schemas/Reference'
+      required: [resourceType]
+
+    Observation:
+      type: object
+      description: Measurements and simple assertions about a patient or other subject
+      properties:
+        resourceType:
+          type: string
+          enum: [Observation]
+        id:
+          type: string
+        meta:
+          $ref: '#/components/schemas/Meta'
+        status:
+          type: string
+          enum: [registered, preliminary, final, amended, corrected, cancelled, entered-in-error, unknown]
+        category:
+          type: array
+          items:
+            $ref: '#/components/schemas/CodeableConcept'
+        code:
+          $ref: '#/components/schemas/CodeableConcept'
+        subject:
+          $ref: '#/components/schemas/Reference'
+        encounter:
+          $ref: '#/components/schemas/Reference'
+        effectiveDateTime:
+          type: string
+          format: date-time
+        issued:
+          type: string
+          format: date-time
+        valueQuantity:
+          $ref: '#/components/schemas/Quantity'
+        valueCodeableConcept:
+          $ref: '#/components/schemas/CodeableConcept'
+        valueString:
+          type: string
+        interpretation:
+          type: array
+          items:
+            $ref: '#/components/schemas/CodeableConcept'
+        note:
+          type: array
+          items:
+            type: object
+            properties:
+              text:
+                type: string
+        component:
+          type: array
+          items:
+            type: object
+            properties:
+              code:
+                $ref: '#/components/schemas/CodeableConcept'
+              valueQuantity:
+                $ref: '#/components/schemas/Quantity'
+      required: [resourceType, status, code]
+
+    Meta:
+      type: object
+      properties:
+        versionId:
+          type: string
+        lastUpdated:
+          type: string
+          format: date-time
+        profile:
+          type: array
+          items:
+            type: string
+            format: uri
+        tag:
+          type: array
+          items:
+            $ref: '#/components/schemas/Coding'
+
+    Identifier:
+      type: object
+      properties:
+        use:
+          type: string
+          enum: [usual, official, temp, secondary, old]
+        type:
+          $ref: '#/components/schemas/CodeableConcept'
+        system:
+          type: string
+          format: uri
+        value:
+          type: string
+
+    HumanName:
+      type: object
+      properties:
+        use:
+          type: string
+          enum: [usual, official, temp, nickname, anonymous, old, maiden]
+        text:
+          type: string
+        family:
+          type: string
+        given:
+          type: array
+          items:
+            type: string
+        prefix:
+          type: array
+          items:
+            type: string
+        suffix:
+          type: array
+          items:
+            type: string
+
+    ContactPoint:
+      type: object
+      properties:
+        system:
+          type: string
+          enum: [phone, fax, email, pager, url, sms, other]
+        value:
+          type: string
+        use:
+          type: string
+          enum: [home, work, temp, old, mobile]
+
+    Address:
+      type: object
+      properties:
+        use:
+          type: string
+          enum: [home, work, temp, old, billing]
+        type:
+          type: string
+          enum: [postal, physical, both]
+        text:
+          type: string
+        line:
+          type: array
+          items:
+            type: string
+        city:
+          type: string
+        district:
+          type: string
+        state:
+          type: string
+        postalCode:
+          type: string
+        country:
+          type: string
+
+    Reference:
+      type: object
+      properties:
+        reference:
+          type: string
+          description: Relative or absolute URL (e.g., "Patient/123")
+        type:
+          type: string
+          format: uri
+        identifier:
+          $ref: '#/components/schemas/Identifier'
+        display:
+          type: string
+
+    CodeableConcept:
+      type: object
+      properties:
+        coding:
+          type: array
+          items:
+            $ref: '#/components/schemas/Coding'
+        text:
+          type: string
+
+    Coding:
+      type: object
+      properties:
+        system:
+          type: string
+          format: uri
+          description: Identity of the terminology system (e.g., "http://loinc.org", "http://snomed.info/sct")
+        version:
+          type: string
+        code:
+          type: string
+        display:
+          type: string
+        userSelected:
+          type: boolean
+
+    Quantity:
+      type: object
+      properties:
+        value:
+          type: number
+        comparator:
+          type: string
+          enum: ['<', '<=', '>=', '>']
+        unit:
+          type: string
+        system:
+          type: string
+          format: uri
+        code:
+          type: string
+
+    OperationOutcome:
+      type: object
+      properties:
+        resourceType:
+          type: string
+          enum: [OperationOutcome]
+        issue:
+          type: array
+          items:
+            type: object
+            properties:
+              severity:
+                type: string
+                enum: [fatal, error, warning, information]
+              code:
+                type: string
+              details:
+                $ref: '#/components/schemas/CodeableConcept'
+              diagnostics:
+                type: string
+              expression:
+                type: array
+                items:
+                  type: string
+      required: [resourceType, issue]

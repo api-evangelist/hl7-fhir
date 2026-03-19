@@ -46,6 +46,8 @@ apis:
     type: Reference
   - url: http://hl7.org/fhir/R4/history.html
     type: Change Log
+  - url: openapi/hl7-fhir-r4-openapi.yml
+    type: OpenAPI
   description: >-
     HL7 FHIR R4 (v4.0.1) is a widely adopted normative FHIR standard for healthcare data exchange. FHIR R4 REST APIs are the most commonly implemented version across US healthcare systems, supporting patient data, clinical resources, medications, diagnostics, and financial resources.
 
@@ -97,6 +99,12 @@ common:
     type: Website
   - url: https://github.com/HL7
     type: GitHub Organization
+  - url: openapi/hl7-fhir-r4-openapi.yml
+    type: OpenAPI
+  - url: json-schema/hl7-fhir-patient-schema.json
+    type: JSONSchema
+  - url: json-ld/hl7-fhir-context.jsonld
+    type: JSONLDContext
 maintainer:
   name: Kin Lane
   email: kin@apievangelist.com

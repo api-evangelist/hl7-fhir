@@ -1,0 +1,281 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/hl7-fhir/json-schema/hl7-fhir-patient-schema.json",
+  "title": "HL7 FHIR R4 Patient",
+  "description": "JSON Schema for the HL7 FHIR R4 Patient resource. Represents a person receiving care, including demographics, identifiers, and contact information. Based on https://www.hl7.org/fhir/R4/patient.html",
+  "type": "object",
+  "properties": {
+    "resourceType": {
+      "type": "string",
+      "const": "Patient",
+      "description": "FHIR resource type discriminator"
+    },
+    "id": {
+      "type": "string",
+      "description": "Logical id of this artifact (server-assigned)"
+    },
+    "meta": { "$ref": "#/$defs/Meta" },
+    "text": { "$ref": "#/$defs/Narrative" },
+    "extension": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Extension" }
+    },
+    "identifier": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Identifier" },
+      "description": "Patient identifiers (MRN, SSN, driver's license, etc.)"
+    },
+    "active": {
+      "type": "boolean",
+      "description": "Whether this patient record is in active use"
+    },
+    "name": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/HumanName" },
+      "description": "A name associated with the patient"
+    },
+    "telecom": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/ContactPoint" },
+      "description": "Contact details (phone, email) for the patient"
+    },
+    "gender": {
+      "type": "string",
+      "enum": ["male", "female", "other", "unknown"],
+      "description": "Administrative gender"
+    },
+    "birthDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Patient date of birth"
+    },
+    "deceasedBoolean": {
+      "type": "boolean"
+    },
+    "deceasedDateTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "address": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Address" }
+    },
+    "maritalStatus": { "$ref": "#/$defs/CodeableConcept" },
+    "multipleBirthBoolean": {
+      "type": "boolean"
+    },
+    "multipleBirthInteger": {
+      "type": "integer"
+    },
+    "photo": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Attachment" }
+    },
+    "contact": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/PatientContact" },
+      "description": "Emergency contacts and next of kin"
+    },
+    "communication": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "language": { "$ref": "#/$defs/CodeableConcept" },
+          "preferred": { "type": "boolean" }
+        },
+        "required": ["language"]
+      }
+    },
+    "generalPractitioner": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Reference" },
+      "description": "Patient's nominated primary care provider"
+    },
+    "managingOrganization": {
+      "$ref": "#/$defs/Reference",
+      "description": "Organization that is the custodian of the patient record"
+    },
+    "link": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "other": { "$ref": "#/$defs/Reference" },
+          "type": {
+            "type": "string",
+            "enum": ["replaced-by", "replaces", "refer", "seealso"]
+          }
+        },
+        "required": ["other", "type"]
+      }
+    }
+  },
+  "required": ["resourceType"],
+  "$defs": {
+    "Meta": {
+      "type": "object",
+      "properties": {
+        "versionId": { "type": "string" },
+        "lastUpdated": { "type": "string", "format": "date-time" },
+        "source": { "type": "string", "format": "uri" },
+        "profile": {
+          "type": "array",
+          "items": { "type": "string", "format": "uri" }
+        }
+      }
+    },
+    "Narrative": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["generated", "extensions", "additional", "empty"]
+        },
+        "div": { "type": "string", "description": "XHTML narrative content" }
+      },
+      "required": ["status", "div"]
+    },
+    "Extension": {
+      "type": "object",
+      "properties": {
+        "url": { "type": "string", "format": "uri" },
+        "valueString": { "type": "string" },
+        "valueBoolean": { "type": "boolean" },
+        "valueCode": { "type": "string" },
+        "valueCodeableConcept": { "$ref": "#/$defs/CodeableConcept" }
+      },
+      "required": ["url"]
+    },
+    "Identifier": {
+      "type": "object",
+      "properties": {
+        "use": {
+          "type": "string",
+          "enum": ["usual", "official", "temp", "secondary", "old"]
+        },
+        "type": { "$ref": "#/$defs/CodeableConcept" },
+        "system": { "type": "string", "format": "uri" },
+        "value": { "type": "string" }
+      }
+    },
+    "HumanName": {
+      "type": "object",
+      "properties": {
+        "use": {
+          "type": "string",
+          "enum": ["usual", "official", "temp", "nickname", "anonymous", "old", "maiden"]
+        },
+        "text": { "type": "string", "description": "Full text of the name" },
+        "family": { "type": "string", "description": "Family name (surname)" },
+        "given": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Given names (forenames, including middle names)"
+        },
+        "prefix": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "suffix": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "ContactPoint": {
+      "type": "object",
+      "properties": {
+        "system": {
+          "type": "string",
+          "enum": ["phone", "fax", "email", "pager", "url", "sms", "other"]
+        },
+        "value": { "type": "string" },
+        "use": {
+          "type": "string",
+          "enum": ["home", "work", "temp", "old", "mobile"]
+        },
+        "rank": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "Address": {
+      "type": "object",
+      "properties": {
+        "use": {
+          "type": "string",
+          "enum": ["home", "work", "temp", "old", "billing"]
+        },
+        "type": {
+          "type": "string",
+          "enum": ["postal", "physical", "both"]
+        },
+        "text": { "type": "string" },
+        "line": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "city": { "type": "string" },
+        "district": { "type": "string" },
+        "state": { "type": "string" },
+        "postalCode": { "type": "string" },
+        "country": { "type": "string" }
+      }
+    },
+    "CodeableConcept": {
+      "type": "object",
+      "properties": {
+        "coding": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/Coding" }
+        },
+        "text": { "type": "string" }
+      }
+    },
+    "Coding": {
+      "type": "object",
+      "properties": {
+        "system": { "type": "string", "format": "uri" },
+        "version": { "type": "string" },
+        "code": { "type": "string" },
+        "display": { "type": "string" },
+        "userSelected": { "type": "boolean" }
+      }
+    },
+    "Reference": {
+      "type": "object",
+      "properties": {
+        "reference": { "type": "string" },
+        "type": { "type": "string", "format": "uri" },
+        "identifier": { "$ref": "#/$defs/Identifier" },
+        "display": { "type": "string" }
+      }
+    },
+    "Attachment": {
+      "type": "object",
+      "properties": {
+        "contentType": { "type": "string" },
+        "url": { "type": "string", "format": "uri" },
+        "title": { "type": "string" }
+      }
+    },
+    "PatientContact": {
+      "type": "object",
+      "properties": {
+        "relationship": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/CodeableConcept" }
+        },
+        "name": { "$ref": "#/$defs/HumanName" },
+        "telecom": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/ContactPoint" }
+        },
+        "address": { "$ref": "#/$defs/Address" },
+        "gender": {
+          "type": "string",
+          "enum": ["male", "female", "other", "unknown"]
+        }
+      }
+    }
+  }
+}

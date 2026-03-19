@@ -1,0 +1,112 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "fhir": "http://hl7.org/fhir/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "loinc": "http://loinc.org/",
+    "snomed": "http://snomed.info/sct/",
+    "hl7v3": "http://terminology.hl7.org/CodeSystem/v3-",
+
+    "Patient": {
+      "@id": "fhir:Patient",
+      "@type": "@id"
+    },
+    "Observation": {
+      "@id": "fhir:Observation",
+      "@type": "@id"
+    },
+    "Condition": {
+      "@id": "fhir:Condition",
+      "@type": "@id"
+    },
+    "MedicationRequest": {
+      "@id": "fhir:MedicationRequest",
+      "@type": "@id"
+    },
+    "Encounter": {
+      "@id": "fhir:Encounter",
+      "@type": "@id"
+    },
+    "Bundle": {
+      "@id": "fhir:Bundle",
+      "@type": "@id"
+    },
+    "Practitioner": {
+      "@id": "fhir:Practitioner",
+      "@type": "@id"
+    },
+    "Organization": {
+      "@id": "fhir:Organization",
+      "@type": "@id"
+    },
+
+    "resourceType": "fhir:resourceType",
+    "id": "fhir:Resource.id",
+    "meta": "fhir:Resource.meta",
+    "identifier": {
+      "@id": "fhir:Patient.identifier",
+      "@container": "@set"
+    },
+    "active": "fhir:Patient.active",
+    "name": {
+      "@id": "fhir:Patient.name",
+      "@container": "@set"
+    },
+    "telecom": {
+      "@id": "fhir:Patient.telecom",
+      "@container": "@set"
+    },
+    "gender": "fhir:Patient.gender",
+    "birthDate": {
+      "@id": "fhir:Patient.birthDate",
+      "@type": "xsd:date"
+    },
+    "address": {
+      "@id": "fhir:Patient.address",
+      "@container": "@set"
+    },
+    "generalPractitioner": {
+      "@id": "fhir:Patient.generalPractitioner",
+      "@type": "@id",
+      "@container": "@set"
+    },
+
+    "family": "fhir:HumanName.family",
+    "given": {
+      "@id": "fhir:HumanName.given",
+      "@container": "@list"
+    },
+    "prefix": {
+      "@id": "fhir:HumanName.prefix",
+      "@container": "@list"
+    },
+    "system": "fhir:Coding.system",
+    "code": "fhir:Coding.code",
+    "display": "fhir:Coding.display",
+    "value": "fhir:Identifier.value",
+    "status": "fhir:status",
+    "subject": {
+      "@id": "fhir:Observation.subject",
+      "@type": "@id"
+    },
+    "effectiveDateTime": {
+      "@id": "fhir:Observation.effectiveDateTime",
+      "@type": "xsd:dateTime"
+    },
+    "issued": {
+      "@id": "fhir:Observation.issued",
+      "@type": "xsd:dateTime"
+    },
+    "valueQuantity": "fhir:Observation.valueQuantity",
+    "coding": {
+      "@id": "fhir:CodeableConcept.coding",
+      "@container": "@set"
+    },
+    "text": "fhir:CodeableConcept.text",
+    "reference": {
+      "@id": "fhir:Reference.reference",
+      "@type": "@id"
+    }
+  }
+}
