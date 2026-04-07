@@ -26,19 +26,19 @@ security:
   - SMARTonFHIR: []
 
 tags:
-  - name: Patient
-    description: Patient demographic and identity resources
-  - name: Observation
-    description: Clinical measurements, lab results, vital signs
-  - name: Condition
-    description: Clinical conditions, diagnoses, and problems
-  - name: MedicationRequest
-    description: Medication prescriptions and orders
-  - name: Encounter
-    description: Patient visits and encounters
   - name: Bundle
     description: Batch and transaction operations
 
+  - name: Condition
+    description: Clinical conditions, diagnoses, and problems
+  - name: Encounter
+    description: Patient visits and encounters
+  - name: MedicationRequest
+    description: Medication prescriptions and orders
+  - name: Observation
+    description: Clinical measurements, lab results, vital signs
+  - name: Patient
+    description: Patient demographic and identity resources
 paths:
   /Patient:
     get:
