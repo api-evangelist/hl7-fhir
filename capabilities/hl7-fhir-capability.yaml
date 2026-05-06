@@ -1,0 +1,673 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: HL7 FHIR R4 Healthcare API
+  description: HL7 FHIR R4 (v4.0.1) RESTful API for healthcare data exchange. Provides access to patient demographics, clinical
+    observations, conditions, medications, encounters, care plans, and diagnostic reports. Implements the FHIR REST specification
+    including CRUD operations, search parameters, history, and batch/ transaction bundles. SMART on FHIR OAuth 2.0 authorization
+    required.
+  tags:
+  - Hl7
+  - Fhir
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: hl7-fhir
+    baseUri: https://fhir-server.example.com/fhir/R4
+    description: HL7 FHIR R4 Healthcare API HTTP API.
+    authentication:
+      type: bearer
+      token: '{{HL7_FHIR_TOKEN}}'
+    resources:
+    - name: patient
+      path: /Patient
+      operations:
+      - name: searchpatient
+        method: GET
+        description: Search patients
+        inputParameters:
+        - name: _id
+          in: query
+          type: string
+          description: Logical id of the patient
+        - name: identifier
+          in: query
+          type: string
+          description: Patient identifier (e.g., "http://hospital.example.org/patients|12345")
+        - name: family
+          in: query
+          type: string
+          description: A portion of the family name of the patient
+        - name: given
+          in: query
+          type: string
+          description: A portion of the given name of the patient
+        - name: birthdate
+          in: query
+          type: string
+          description: The patient's date of birth (e.g., "1990-01-15" or "ge1990")
+        - name: gender
+          in: query
+          type: string
+        - name: _count
+          in: query
+          type: integer
+          description: Number of results per page
+        - name: _sort
+          in: query
+          type: string
+          description: Sort criteria (e.g., "family,-birthdate")
+        - name: _include
+          in: query
+          type: string
+          description: Include related resources (e.g., "Patient:general-practitioner")
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createpatient
+        method: POST
+        description: Create a patient
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: patient-id
+      path: /Patient/{id}
+      operations:
+      - name: readpatient
+        method: GET
+        description: Read a patient
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: Logical ID of the patient
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatepatient
+        method: PUT
+        description: Update a patient
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: observation
+      path: /Observation
+      operations:
+      - name: searchobservation
+        method: GET
+        description: Search observations
+        inputParameters:
+        - name: patient
+          in: query
+          type: string
+          description: Patient reference (e.g., "Patient/123")
+        - name: category
+          in: query
+          type: string
+          description: Observation category (vital-signs, laboratory, social-history, etc.)
+        - name: code
+          in: query
+          type: string
+          description: LOINC code or system|code (e.g., "8302-2" for body height)
+        - name: date
+          in: query
+          type: string
+          description: Observation date filter (e.g., "ge2024-01-01")
+        - name: status
+          in: query
+          type: string
+        - name: _count
+          in: query
+          type: integer
+        - name: _sort
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: observation-id
+      path: /Observation/{id}
+      operations:
+      - name: readobservation
+        method: GET
+        description: Read an observation
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: condition
+      path: /Condition
+      operations:
+      - name: searchcondition
+        method: GET
+        description: Search conditions
+        inputParameters:
+        - name: patient
+          in: query
+          type: string
+          description: Patient reference
+        - name: clinical-status
+          in: query
+          type: string
+        - name: code
+          in: query
+          type: string
+          description: ICD-10 or SNOMED CT code
+        - name: category
+          in: query
+          type: string
+        - name: onset-date
+          in: query
+          type: string
+        - name: _count
+          in: query
+          type: integer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: medicationrequest
+      path: /MedicationRequest
+      operations:
+      - name: searchmedicationrequest
+        method: GET
+        description: Search medication requests
+        inputParameters:
+        - name: patient
+          in: query
+          type: string
+          required: true
+        - name: status
+          in: query
+          type: string
+        - name: medication
+          in: query
+          type: string
+        - name: authoredon
+          in: query
+          type: string
+        - name: _count
+          in: query
+          type: integer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: encounter
+      path: /Encounter
+      operations:
+      - name: searchencounter
+        method: GET
+        description: Search encounters
+        inputParameters:
+        - name: patient
+          in: query
+          type: string
+        - name: status
+          in: query
+          type: string
+        - name: class
+          in: query
+          type: string
+          description: Encounter class code (AMB, IMP, EMER, etc.)
+        - name: date
+          in: query
+          type: string
+        - name: _count
+          in: query
+          type: integer
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: resource
+      path: /
+      operations:
+      - name: processbatch
+        method: POST
+        description: Process batch or transaction
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: metadata
+      path: /metadata
+      operations:
+      - name: getcapabilitystatement
+        method: GET
+        description: Get server capability statement
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: hl7-fhir-rest
+    description: REST adapter for HL7 FHIR R4 Healthcare API.
+    resources:
+    - path: /Patient
+      name: searchpatient
+      operations:
+      - method: GET
+        name: searchpatient
+        description: Search patients
+        call: hl7-fhir.searchpatient
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /Patient
+      name: createpatient
+      operations:
+      - method: POST
+        name: createpatient
+        description: Create a patient
+        call: hl7-fhir.createpatient
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /Patient/{id}
+      name: readpatient
+      operations:
+      - method: GET
+        name: readpatient
+        description: Read a patient
+        call: hl7-fhir.readpatient
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /Patient/{id}
+      name: updatepatient
+      operations:
+      - method: PUT
+        name: updatepatient
+        description: Update a patient
+        call: hl7-fhir.updatepatient
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /Observation
+      name: searchobservation
+      operations:
+      - method: GET
+        name: searchobservation
+        description: Search observations
+        call: hl7-fhir.searchobservation
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /Observation/{id}
+      name: readobservation
+      operations:
+      - method: GET
+        name: readobservation
+        description: Read an observation
+        call: hl7-fhir.readobservation
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /Condition
+      name: searchcondition
+      operations:
+      - method: GET
+        name: searchcondition
+        description: Search conditions
+        call: hl7-fhir.searchcondition
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /MedicationRequest
+      name: searchmedicationrequest
+      operations:
+      - method: GET
+        name: searchmedicationrequest
+        description: Search medication requests
+        call: hl7-fhir.searchmedicationrequest
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /Encounter
+      name: searchencounter
+      operations:
+      - method: GET
+        name: searchencounter
+        description: Search encounters
+        call: hl7-fhir.searchencounter
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /
+      name: processbatch
+      operations:
+      - method: POST
+        name: processbatch
+        description: Process batch or transaction
+        call: hl7-fhir.processbatch
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /metadata
+      name: getcapabilitystatement
+      operations:
+      - method: GET
+        name: getcapabilitystatement
+        description: Get server capability statement
+        call: hl7-fhir.getcapabilitystatement
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: hl7-fhir-mcp
+    transport: http
+    description: MCP adapter for HL7 FHIR R4 Healthcare API for AI agent use.
+    tools:
+    - name: searchpatient
+      description: Search patients
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: hl7-fhir.searchpatient
+      with:
+        _id: tools._id
+        identifier: tools.identifier
+        family: tools.family
+        given: tools.given
+        birthdate: tools.birthdate
+        gender: tools.gender
+        _count: tools._count
+        _sort: tools._sort
+        _include: tools._include
+      inputParameters:
+      - name: _id
+        type: string
+        description: Logical id of the patient
+      - name: identifier
+        type: string
+        description: Patient identifier (e.g., "http://hospital.example.org/patients|12345")
+      - name: family
+        type: string
+        description: A portion of the family name of the patient
+      - name: given
+        type: string
+        description: A portion of the given name of the patient
+      - name: birthdate
+        type: string
+        description: The patient's date of birth (e.g., "1990-01-15" or "ge1990")
+      - name: gender
+        type: string
+        description: gender
+      - name: _count
+        type: integer
+        description: Number of results per page
+      - name: _sort
+        type: string
+        description: Sort criteria (e.g., "family,-birthdate")
+      - name: _include
+        type: string
+        description: Include related resources (e.g., "Patient:general-practitioner")
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createpatient
+      description: Create a patient
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: hl7-fhir.createpatient
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: readpatient
+      description: Read a patient
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: hl7-fhir.readpatient
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: string
+        description: Logical ID of the patient
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updatepatient
+      description: Update a patient
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: hl7-fhir.updatepatient
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: string
+        description: id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: searchobservation
+      description: Search observations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: hl7-fhir.searchobservation
+      with:
+        patient: tools.patient
+        category: tools.category
+        code: tools.code
+        date: tools.date
+        status: tools.status
+        _count: tools._count
+        _sort: tools._sort
+      inputParameters:
+      - name: patient
+        type: string
+        description: Patient reference (e.g., "Patient/123")
+      - name: category
+        type: string
+        description: Observation category (vital-signs, laboratory, social-history, etc.)
+      - name: code
+        type: string
+        description: LOINC code or system|code (e.g., "8302-2" for body height)
+      - name: date
+        type: string
+        description: Observation date filter (e.g., "ge2024-01-01")
+      - name: status
+        type: string
+        description: status
+      - name: _count
+        type: integer
+        description: _count
+      - name: _sort
+        type: string
+        description: _sort
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: readobservation
+      description: Read an observation
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: hl7-fhir.readobservation
+      with:
+        id: tools.id
+      inputParameters:
+      - name: id
+        type: string
+        description: id
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: searchcondition
+      description: Search conditions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: hl7-fhir.searchcondition
+      with:
+        patient: tools.patient
+        clinical-status: tools.clinical-status
+        code: tools.code
+        category: tools.category
+        onset-date: tools.onset-date
+        _count: tools._count
+      inputParameters:
+      - name: patient
+        type: string
+        description: Patient reference
+      - name: clinical-status
+        type: string
+        description: clinical-status
+      - name: code
+        type: string
+        description: ICD-10 or SNOMED CT code
+      - name: category
+        type: string
+        description: category
+      - name: onset-date
+        type: string
+        description: onset-date
+      - name: _count
+        type: integer
+        description: _count
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: searchmedicationrequest
+      description: Search medication requests
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: hl7-fhir.searchmedicationrequest
+      with:
+        patient: tools.patient
+        status: tools.status
+        medication: tools.medication
+        authoredon: tools.authoredon
+        _count: tools._count
+      inputParameters:
+      - name: patient
+        type: string
+        description: patient
+        required: true
+      - name: status
+        type: string
+        description: status
+      - name: medication
+        type: string
+        description: medication
+      - name: authoredon
+        type: string
+        description: authoredon
+      - name: _count
+        type: integer
+        description: _count
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: searchencounter
+      description: Search encounters
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: hl7-fhir.searchencounter
+      with:
+        patient: tools.patient
+        status: tools.status
+        class: tools.class
+        date: tools.date
+        _count: tools._count
+      inputParameters:
+      - name: patient
+        type: string
+        description: patient
+      - name: status
+        type: string
+        description: status
+      - name: class
+        type: string
+        description: Encounter class code (AMB, IMP, EMER, etc.)
+      - name: date
+        type: string
+        description: date
+      - name: _count
+        type: integer
+        description: _count
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: processbatch
+      description: Process batch or transaction
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: hl7-fhir.processbatch
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getcapabilitystatement
+      description: Get server capability statement
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: hl7-fhir.getcapabilitystatement
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    HL7_FHIR_TOKEN: HL7_FHIR_TOKEN
