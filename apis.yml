@@ -45,7 +45,7 @@ apis:
         url: https://www.hl7.org/fhir/http.html
       - type: Authentication
         url: https://www.hl7.org/fhir/security.html
-      - type: Change Log
+      - type: ChangeLog
         url: https://www.hl7.org/fhir/history.html
 
   - aid: hl7-fhir:hl7-fhir-r4-api
@@ -72,7 +72,7 @@ apis:
         url: https://www.hl7.org/fhir/R4/
       - type: Reference
         url: https://www.hl7.org/fhir/R4/http.html
-      - type: Change Log
+      - type: ChangeLog
         url: http://hl7.org/fhir/R4/history.html
       - type: OpenAPI
         url: openapi/hl7-fhir-r4-openapi.yml
@@ -108,13 +108,13 @@ common:
     url: https://www.hl7.org/fhir/http.html
   - type: Authentication
     url: https://www.hl7.org/fhir/security.html
-  - type: Change Log
+  - type: ChangeLog
     url: https://www.hl7.org/fhir/history.html
-  - type: Getting Started
+  - type: GettingStarted
     url: https://www.hl7.org/fhir/downloads.html
   - type: Website
     url: https://www.hl7.org/
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/HL7
   - type: OpenAPI
     url: openapi/hl7-fhir-r4-openapi.yml
