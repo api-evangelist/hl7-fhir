@@ -1,0 +1,244 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: HL7 FHIR R4 Healthcare API — Patient
+  description: 'HL7 FHIR R4 Healthcare API — Patient. 4 operations. Lead operation: Search patients. Self-contained Naftiko
+    capability covering one Hl7 Fhir business surface.'
+  tags:
+  - Hl7 Fhir
+  - Patient
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    HL7_FHIR_API_KEY: HL7_FHIR_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: r4-patient
+    baseUri: https://fhir-server.example.com/fhir/R4
+    description: HL7 FHIR R4 Healthcare API — Patient business capability. Self-contained, no shared references.
+    resources:
+    - name: Patient
+      path: /Patient
+      operations:
+      - name: searchpatient
+        method: GET
+        description: Search patients
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: _id
+          in: query
+          type: string
+          description: Logical id of the patient
+        - name: identifier
+          in: query
+          type: string
+          description: Patient identifier (e.g., "http://hospital.example.org/patients|12345")
+        - name: family
+          in: query
+          type: string
+          description: A portion of the family name of the patient
+        - name: given
+          in: query
+          type: string
+          description: A portion of the given name of the patient
+        - name: birthdate
+          in: query
+          type: string
+          description: The patient's date of birth (e.g., "1990-01-15" or "ge1990")
+        - name: gender
+          in: query
+          type: string
+        - name: _count
+          in: query
+          type: integer
+          description: Number of results per page
+        - name: _sort
+          in: query
+          type: string
+          description: Sort criteria (e.g., "family,-birthdate")
+        - name: _include
+          in: query
+          type: string
+          description: Include related resources (e.g., "Patient:general-practitioner")
+      - name: createpatient
+        method: POST
+        description: Create a patient
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: Patient-id
+      path: /Patient/{id}
+      operations:
+      - name: readpatient
+        method: GET
+        description: Read a patient
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Logical ID of the patient
+          required: true
+      - name: updatepatient
+        method: PUT
+        description: Update a patient
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.HL7_FHIR_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: r4-patient-rest
+    port: 8080
+    description: REST adapter for HL7 FHIR R4 Healthcare API — Patient. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/patient
+      name: patient
+      description: REST surface for Patient.
+      operations:
+      - method: GET
+        name: searchpatient
+        description: Search patients
+        call: r4-patient.searchpatient
+        with:
+          _id: rest._id
+          identifier: rest.identifier
+          family: rest.family
+          given: rest.given
+          birthdate: rest.birthdate
+          gender: rest.gender
+          _count: rest._count
+          _sort: rest._sort
+          _include: rest._include
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createpatient
+        description: Create a patient
+        call: r4-patient.createpatient
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/patient/{id}
+      name: patient-id
+      description: REST surface for Patient-id.
+      operations:
+      - method: GET
+        name: readpatient
+        description: Read a patient
+        call: r4-patient.readpatient
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatepatient
+        description: Update a patient
+        call: r4-patient.updatepatient
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: r4-patient-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for HL7 FHIR R4 Healthcare API — Patient. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: search-patients
+      description: Search patients
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: r4-patient.searchpatient
+      with:
+        _id: tools._id
+        identifier: tools.identifier
+        family: tools.family
+        given: tools.given
+        birthdate: tools.birthdate
+        gender: tools.gender
+        _count: tools._count
+        _sort: tools._sort
+        _include: tools._include
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-patient
+      description: Create a patient
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: r4-patient.createpatient
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: read-patient
+      description: Read a patient
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: r4-patient.readpatient
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-patient
+      description: Update a patient
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: r4-patient.updatepatient
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

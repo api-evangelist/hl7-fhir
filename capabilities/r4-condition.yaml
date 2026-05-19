@@ -1,0 +1,105 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: HL7 FHIR R4 Healthcare API — Condition
+  description: 'HL7 FHIR R4 Healthcare API — Condition. 1 operations. Lead operation: Search conditions. Self-contained Naftiko
+    capability covering one Hl7 Fhir business surface.'
+  tags:
+  - Hl7 Fhir
+  - Condition
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    HL7_FHIR_API_KEY: HL7_FHIR_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: r4-condition
+    baseUri: https://fhir-server.example.com/fhir/R4
+    description: HL7 FHIR R4 Healthcare API — Condition business capability. Self-contained, no shared references.
+    resources:
+    - name: Condition
+      path: /Condition
+      operations:
+      - name: searchcondition
+        method: GET
+        description: Search conditions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: patient
+          in: query
+          type: string
+          description: Patient reference
+        - name: clinical-status
+          in: query
+          type: string
+        - name: code
+          in: query
+          type: string
+          description: ICD-10 or SNOMED CT code
+        - name: category
+          in: query
+          type: string
+        - name: onset-date
+          in: query
+          type: string
+        - name: _count
+          in: query
+          type: integer
+    authentication:
+      type: bearer
+      token: '{{env.HL7_FHIR_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: r4-condition-rest
+    port: 8080
+    description: REST adapter for HL7 FHIR R4 Healthcare API — Condition. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/condition
+      name: condition
+      description: REST surface for Condition.
+      operations:
+      - method: GET
+        name: searchcondition
+        description: Search conditions
+        call: r4-condition.searchcondition
+        with:
+          patient: rest.patient
+          clinical-status: rest.clinical-status
+          code: rest.code
+          category: rest.category
+          onset-date: rest.onset-date
+          _count: rest._count
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: r4-condition-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for HL7 FHIR R4 Healthcare API — Condition. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: search-conditions
+      description: Search conditions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: r4-condition.searchcondition
+      with:
+        patient: tools.patient
+        clinical-status: tools.clinical-status
+        code: tools.code
+        category: tools.category
+        onset-date: tools.onset-date
+        _count: tools._count
+      outputParameters:
+      - type: object
+        mapping: $.

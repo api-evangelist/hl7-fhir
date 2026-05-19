@@ -1,0 +1,99 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: HL7 FHIR R4 Healthcare API — MedicationRequest
+  description: 'HL7 FHIR R4 Healthcare API — MedicationRequest. 1 operations. Lead operation: Search medication requests.
+    Self-contained Naftiko capability covering one Hl7 Fhir business surface.'
+  tags:
+  - Hl7 Fhir
+  - MedicationRequest
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    HL7_FHIR_API_KEY: HL7_FHIR_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: r4-medicationrequest
+    baseUri: https://fhir-server.example.com/fhir/R4
+    description: HL7 FHIR R4 Healthcare API — MedicationRequest business capability. Self-contained, no shared references.
+    resources:
+    - name: MedicationRequest
+      path: /MedicationRequest
+      operations:
+      - name: searchmedicationrequest
+        method: GET
+        description: Search medication requests
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: patient
+          in: query
+          type: string
+          required: true
+        - name: status
+          in: query
+          type: string
+        - name: medication
+          in: query
+          type: string
+        - name: authoredon
+          in: query
+          type: string
+        - name: _count
+          in: query
+          type: integer
+    authentication:
+      type: bearer
+      token: '{{env.HL7_FHIR_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: r4-medicationrequest-rest
+    port: 8080
+    description: REST adapter for HL7 FHIR R4 Healthcare API — MedicationRequest. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/medicationrequest
+      name: medicationrequest
+      description: REST surface for MedicationRequest.
+      operations:
+      - method: GET
+        name: searchmedicationrequest
+        description: Search medication requests
+        call: r4-medicationrequest.searchmedicationrequest
+        with:
+          patient: rest.patient
+          status: rest.status
+          medication: rest.medication
+          authoredon: rest.authoredon
+          _count: rest._count
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: r4-medicationrequest-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for HL7 FHIR R4 Healthcare API — MedicationRequest. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: search-medication-requests
+      description: Search medication requests
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: r4-medicationrequest.searchmedicationrequest
+      with:
+        patient: tools.patient
+        status: tools.status
+        medication: tools.medication
+        authoredon: tools.authoredon
+        _count: tools._count
+      outputParameters:
+      - type: object
+        mapping: $.

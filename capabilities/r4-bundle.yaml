@@ -1,0 +1,112 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: HL7 FHIR R4 Healthcare API — Bundle
+  description: 'HL7 FHIR R4 Healthcare API — Bundle. 2 operations. Lead operation: Process batch or transaction. Self-contained
+    Naftiko capability covering one Hl7 Fhir business surface.'
+  tags:
+  - Hl7 Fhir
+  - Bundle
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    HL7_FHIR_API_KEY: HL7_FHIR_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: r4-bundle
+    baseUri: https://fhir-server.example.com/fhir/R4
+    description: HL7 FHIR R4 Healthcare API — Bundle business capability. Self-contained, no shared references.
+    resources:
+    - name: root
+      path: /
+      operations:
+      - name: processbatch
+        method: POST
+        description: Process batch or transaction
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: metadata
+      path: /metadata
+      operations:
+      - name: getcapabilitystatement
+        method: GET
+        description: Get server capability statement
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.HL7_FHIR_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: r4-bundle-rest
+    port: 8080
+    description: REST adapter for HL7 FHIR R4 Healthcare API — Bundle. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1
+      name: root
+      description: REST surface for root.
+      operations:
+      - method: POST
+        name: processbatch
+        description: Process batch or transaction
+        call: r4-bundle.processbatch
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/metadata
+      name: metadata
+      description: REST surface for metadata.
+      operations:
+      - method: GET
+        name: getcapabilitystatement
+        description: Get server capability statement
+        call: r4-bundle.getcapabilitystatement
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: r4-bundle-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for HL7 FHIR R4 Healthcare API — Bundle. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: process-batch-transaction
+      description: Process batch or transaction
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: r4-bundle.processbatch
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-server-capability-statement
+      description: Get server capability statement
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: r4-bundle.getcapabilitystatement
+      outputParameters:
+      - type: object
+        mapping: $.
