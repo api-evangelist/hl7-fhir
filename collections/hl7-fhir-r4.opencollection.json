@@ -1,0 +1,410 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "HL7 FHIR R4 Healthcare API",
+    "version": "4.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://auth.example.com/authorize",
+      "accessTokenUrl": "https://auth.example.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Patient",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search patients",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://fhir-server.example.com/fhir/R4/Patient",
+            "params": [
+              {
+                "name": "_id",
+                "value": "",
+                "type": "query",
+                "description": "Logical id of the patient"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "query",
+                "description": "Patient identifier (e.g., \"http://hospital.example.org/patients|12345\")"
+              },
+              {
+                "name": "family",
+                "value": "",
+                "type": "query",
+                "description": "A portion of the family name of the patient"
+              },
+              {
+                "name": "given",
+                "value": "",
+                "type": "query",
+                "description": "A portion of the given name of the patient"
+              },
+              {
+                "name": "birthdate",
+                "value": "",
+                "type": "query",
+                "description": "The patient's date of birth (e.g., \"1990-01-15\" or \"ge1990\")"
+              },
+              {
+                "name": "gender",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "_count",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page"
+              },
+              {
+                "name": "_sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort criteria (e.g., \"family,-birthdate\")"
+              },
+              {
+                "name": "_include",
+                "value": "",
+                "type": "query",
+                "description": "Include related resources (e.g., \"Patient:general-practitioner\")"
+              }
+            ]
+          },
+          "docs": "Searches for Patient resources matching the specified search parameters. Supports name, identifier (MRN), birthdate, gender, and address searches. Returns a Bundle containing matching Patient resources."
+        },
+        {
+          "info": {
+            "name": "Create a patient",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://fhir-server.example.com/fhir/R4/Patient",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new Patient resource. The server assigns the logical ID."
+        },
+        {
+          "info": {
+            "name": "Read a patient",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://fhir-server.example.com/fhir/R4/Patient/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Logical ID of the patient"
+              }
+            ]
+          },
+          "docs": "Returns the current version of a Patient resource by its logical ID."
+        },
+        {
+          "info": {
+            "name": "Update a patient",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://fhir-server.example.com/fhir/R4/Patient/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing Patient resource using a complete replacement (PUT semantics)."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Observation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search observations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://fhir-server.example.com/fhir/R4/Observation",
+            "params": [
+              {
+                "name": "patient",
+                "value": "",
+                "type": "query",
+                "description": "Patient reference (e.g., \"Patient/123\")"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "Observation category (vital-signs, laboratory, social-history, etc.)"
+              },
+              {
+                "name": "code",
+                "value": "",
+                "type": "query",
+                "description": "LOINC code or system|code (e.g., \"8302-2\" for body height)"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "Observation date filter (e.g., \"ge2024-01-01\")"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "_count",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "_sort",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Searches for Observation resources (lab results, vital signs, surveys). Common use cases include retrieving recent vital signs or lab values for a patient."
+        },
+        {
+          "info": {
+            "name": "Read an observation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://fhir-server.example.com/fhir/R4/Observation/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns a specific Observation resource by its logical ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Condition",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search conditions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://fhir-server.example.com/fhir/R4/Condition",
+            "params": [
+              {
+                "name": "patient",
+                "value": "",
+                "type": "query",
+                "description": "Patient reference"
+              },
+              {
+                "name": "clinical-status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "code",
+                "value": "",
+                "type": "query",
+                "description": "ICD-10 or SNOMED CT code"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "onset-date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "_count",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Searches for Condition resources (diagnoses, problems, health concerns) for a patient."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "MedicationRequest",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search medication requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://fhir-server.example.com/fhir/R4/MedicationRequest",
+            "params": [
+              {
+                "name": "patient",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "medication",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "authoredon",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "_count",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Searches for MedicationRequest resources (prescriptions and medication orders) for a patient."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Encounter",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search encounters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://fhir-server.example.com/fhir/R4/Encounter",
+            "params": [
+              {
+                "name": "patient",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "class",
+                "value": "",
+                "type": "query",
+                "description": "Encounter class code (AMB, IMP, EMER, etc.)"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "_count",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Searches for Encounter resources (visits, hospitalizations, telehealth) for a patient."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Bundle",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Process batch or transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://fhir-server.example.com/fhir/R4/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Processes a FHIR Bundle of type 'batch' or 'transaction'. Batch processes each entry independently; transaction processes all entries atomically."
+        },
+        {
+          "info": {
+            "name": "Get server capability statement",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://fhir-server.example.com/fhir/R4/metadata"
+          },
+          "docs": "Returns the FHIR CapabilityStatement describing supported resources, operations, and search parameters for this server."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

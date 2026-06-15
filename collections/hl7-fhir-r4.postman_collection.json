@@ -1,0 +1,1738 @@
+{
+  "item": [
+    {
+      "id": "c44ab458-30e7-4716-86ed-f9a6bbae4b4b",
+      "name": "Bundle",
+      "description": {
+        "content": "Batch and transaction operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "486a5a5b-7482-47f4-bdf5-7257c88397ae",
+          "name": "Process batch or transaction",
+          "request": {
+            "name": "Process batch or transaction",
+            "description": {
+              "content": "Processes a FHIR Bundle of type 'batch' or 'transaction'. Batch processes each entry independently; transaction processes all entries atomically.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/fhir+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"resourceType\": \"<string>\",\n  \"type\": \"<string>\",\n  \"id\": \"<string>\",\n  \"total\": \"<integer>\",\n  \"link\": [\n    {\n      \"relation\": \"<string>\",\n      \"url\": \"<uri>\"\n    },\n    {\n      \"relation\": \"<string>\",\n      \"url\": \"<uri>\"\n    }\n  ],\n  \"entry\": [\n    {\n      \"fullUrl\": \"<uri>\",\n      \"resource\": \"<object>\",\n      \"search\": {\n        \"mode\": \"<string>\",\n        \"score\": \"<number>\"\n      },\n      \"request\": {\n        \"method\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"response\": {\n        \"status\": \"<string>\",\n        \"location\": \"<string>\"\n      }\n    },\n    {\n      \"fullUrl\": \"<uri>\",\n      \"resource\": \"<object>\",\n      \"search\": {\n        \"mode\": \"<string>\",\n        \"score\": \"<number>\"\n      },\n      \"request\": {\n        \"method\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"response\": {\n        \"status\": \"<string>\",\n        \"location\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "08e60505-8cb9-468e-8450-5e6907a660bb",
+              "name": "Bundle response with results for each entry",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceType\": \"<string>\",\n  \"type\": \"<string>\",\n  \"id\": \"<string>\",\n  \"total\": \"<integer>\",\n  \"link\": [\n    {\n      \"relation\": \"<string>\",\n      \"url\": \"<uri>\"\n    },\n    {\n      \"relation\": \"<string>\",\n      \"url\": \"<uri>\"\n    }\n  ],\n  \"entry\": [\n    {\n      \"fullUrl\": \"<uri>\",\n      \"resource\": \"<object>\",\n      \"search\": {\n        \"mode\": \"<string>\",\n        \"score\": \"<number>\"\n      },\n      \"request\": {\n        \"method\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"response\": {\n        \"status\": \"<string>\",\n        \"location\": \"<string>\"\n      }\n    },\n    {\n      \"fullUrl\": \"<uri>\",\n      \"resource\": \"<object>\",\n      \"search\": {\n        \"mode\": \"<string>\",\n        \"score\": \"<number>\"\n      },\n      \"request\": {\n        \"method\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"response\": {\n        \"status\": \"<string>\",\n        \"location\": \"<string>\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"Bundle\",\n  \"type\": \"batch\",\n  \"id\": \"string\",\n  \"total\": 255,\n  \"link\": [\n    {\n      \"relation\": \"last\",\n      \"url\": \"https://ariKeZiSMiKLpwnRQYqDB.gjKAhUTCZhMNav67le7ebxkDZ8Ol5LeJd6t+R\"\n    },\n    {\n      \"relation\": \"previous\",\n      \"url\": \"http://kdElsWlPTaBzy.jlIRRKhMmeRNCtKLCb93OcUNjs9RRdzWdEgI8eqc3mtdlj8W4NnZE8BYi-\"\n    }\n  ],\n  \"entry\": [\n    {\n      \"fullUrl\": \"https://FhAuZGvKrobnim.okdvKZkxuXezhWpGC5SFWuqAe7.SEmEbkM\",\n      \"resource\": {},\n      \"search\": {\n        \"mode\": \"include\",\n        \"score\": 8230.029755756299\n      },\n      \"request\": {\n        \"method\": \"GET\",\n        \"url\": \"string\"\n      },\n      \"response\": {\n        \"status\": \"string\",\n        \"location\": \"string\"\n      }\n    },\n    {\n      \"fullUrl\": \"https://pBPPheHxhPbwEAclpVxJtaZzoOSqhWa.scnWkWZLeygCbf13f2+v50EBRDr52RzVYZMUlZizHsjCfD7yVwDkh9KAmp50WvzudSztBo3.sE\",\n      \"resource\": {},\n      \"search\": {\n        \"mode\": \"match\",\n        \"score\": 1267.4597529482844\n      },\n      \"request\": {\n        \"method\": \"DELETE\",\n        \"url\": \"string\"\n      },\n      \"response\": {\n        \"status\": \"string\",\n        \"location\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "84740e08-b12a-4746-b655-e7f835860b90",
+          "name": "Get server capability statement",
+          "request": {
+            "name": "Get server capability statement",
+            "description": {
+              "content": "Returns the FHIR CapabilityStatement describing supported resources, operations, and search parameters for this server.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "metadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5a6bbf5a-b059-4fd9-bdb2-428a705ca150",
+              "name": "CapabilityStatement returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"CapabilityStatement\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "4d7e1c1a-a6c8-4b41-92fc-24aa2f9875b7",
+      "name": "Condition",
+      "description": {
+        "content": "Clinical conditions, diagnoses, and problems",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "35dbe423-699e-4800-8e07-7751348c0c5c",
+          "name": "Search conditions",
+          "request": {
+            "name": "Search conditions",
+            "description": {
+              "content": "Searches for Condition resources (diagnoses, problems, health concerns) for a patient.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Condition"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "patient",
+                  "value": "<string>",
+                  "description": "Patient reference"
+                },
+                {
+                  "disabled": false,
+                  "key": "clinical-status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "code",
+                  "value": "<string>",
+                  "description": "ICD-10 or SNOMED CT code"
+                },
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "onset-date",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "_count",
+                  "value": "20"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ac2d8562-1b47-4cd6-a771-c56b1992f007",
+              "name": "Bundle of Condition resources returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Condition"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patient",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "clinical-status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "onset-date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_count",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"Bundle\",\n  \"type\": \"batch\",\n  \"id\": \"string\",\n  \"total\": 255,\n  \"link\": [\n    {\n      \"relation\": \"last\",\n      \"url\": \"https://ariKeZiSMiKLpwnRQYqDB.gjKAhUTCZhMNav67le7ebxkDZ8Ol5LeJd6t+R\"\n    },\n    {\n      \"relation\": \"previous\",\n      \"url\": \"http://kdElsWlPTaBzy.jlIRRKhMmeRNCtKLCb93OcUNjs9RRdzWdEgI8eqc3mtdlj8W4NnZE8BYi-\"\n    }\n  ],\n  \"entry\": [\n    {\n      \"fullUrl\": \"https://FhAuZGvKrobnim.okdvKZkxuXezhWpGC5SFWuqAe7.SEmEbkM\",\n      \"resource\": {},\n      \"search\": {\n        \"mode\": \"include\",\n        \"score\": 8230.029755756299\n      },\n      \"request\": {\n        \"method\": \"GET\",\n        \"url\": \"string\"\n      },\n      \"response\": {\n        \"status\": \"string\",\n        \"location\": \"string\"\n      }\n    },\n    {\n      \"fullUrl\": \"https://pBPPheHxhPbwEAclpVxJtaZzoOSqhWa.scnWkWZLeygCbf13f2+v50EBRDr52RzVYZMUlZizHsjCfD7yVwDkh9KAmp50WvzudSztBo3.sE\",\n      \"resource\": {},\n      \"search\": {\n        \"mode\": \"match\",\n        \"score\": 1267.4597529482844\n      },\n      \"request\": {\n        \"method\": \"DELETE\",\n        \"url\": \"string\"\n      },\n      \"response\": {\n        \"status\": \"string\",\n        \"location\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "9e7289e0-64ac-4892-a2a5-28318f53fe2d",
+      "name": "Encounter",
+      "description": {
+        "content": "Patient visits and encounters",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "01802874-8ef2-4d01-b266-e1578792ab7b",
+          "name": "Search encounters",
+          "request": {
+            "name": "Search encounters",
+            "description": {
+              "content": "Searches for Encounter resources (visits, hospitalizations, telehealth) for a patient.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Encounter"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "patient",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "class",
+                  "value": "<string>",
+                  "description": "Encounter class code (AMB, IMP, EMER, etc.)"
+                },
+                {
+                  "disabled": false,
+                  "key": "date",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "_count",
+                  "value": "20"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "abed4bf1-ec2d-49b7-b2c2-ead08c27e5a9",
+              "name": "Bundle of Encounter resources returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Encounter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patient",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "class",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_count",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"Bundle\",\n  \"type\": \"batch\",\n  \"id\": \"string\",\n  \"total\": 255,\n  \"link\": [\n    {\n      \"relation\": \"last\",\n      \"url\": \"https://ariKeZiSMiKLpwnRQYqDB.gjKAhUTCZhMNav67le7ebxkDZ8Ol5LeJd6t+R\"\n    },\n    {\n      \"relation\": \"previous\",\n      \"url\": \"http://kdElsWlPTaBzy.jlIRRKhMmeRNCtKLCb93OcUNjs9RRdzWdEgI8eqc3mtdlj8W4NnZE8BYi-\"\n    }\n  ],\n  \"entry\": [\n    {\n      \"fullUrl\": \"https://FhAuZGvKrobnim.okdvKZkxuXezhWpGC5SFWuqAe7.SEmEbkM\",\n      \"resource\": {},\n      \"search\": {\n        \"mode\": \"include\",\n        \"score\": 8230.029755756299\n      },\n      \"request\": {\n        \"method\": \"GET\",\n        \"url\": \"string\"\n      },\n      \"response\": {\n        \"status\": \"string\",\n        \"location\": \"string\"\n      }\n    },\n    {\n      \"fullUrl\": \"https://pBPPheHxhPbwEAclpVxJtaZzoOSqhWa.scnWkWZLeygCbf13f2+v50EBRDr52RzVYZMUlZizHsjCfD7yVwDkh9KAmp50WvzudSztBo3.sE\",\n      \"resource\": {},\n      \"search\": {\n        \"mode\": \"match\",\n        \"score\": 1267.4597529482844\n      },\n      \"request\": {\n        \"method\": \"DELETE\",\n        \"url\": \"string\"\n      },\n      \"response\": {\n        \"status\": \"string\",\n        \"location\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "72786076-dd7e-40f2-b191-cbfe76adb249",
+      "name": "MedicationRequest",
+      "description": {
+        "content": "Medication prescriptions and orders",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2b7004ff-c7cd-4bee-b15b-884bbfdf1ac7",
+          "name": "Search medication requests",
+          "request": {
+            "name": "Search medication requests",
+            "description": {
+              "content": "Searches for MedicationRequest resources (prescriptions and medication orders) for a patient.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "MedicationRequest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "patient",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "medication",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "authoredon",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "_count",
+                  "value": "20"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9872d3de-1ba9-40fb-a22b-599365d3fb92",
+              "name": "Bundle of MedicationRequest resources returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "MedicationRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patient",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "medication",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "authoredon",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_count",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"Bundle\",\n  \"type\": \"batch\",\n  \"id\": \"string\",\n  \"total\": 255,\n  \"link\": [\n    {\n      \"relation\": \"last\",\n      \"url\": \"https://ariKeZiSMiKLpwnRQYqDB.gjKAhUTCZhMNav67le7ebxkDZ8Ol5LeJd6t+R\"\n    },\n    {\n      \"relation\": \"previous\",\n      \"url\": \"http://kdElsWlPTaBzy.jlIRRKhMmeRNCtKLCb93OcUNjs9RRdzWdEgI8eqc3mtdlj8W4NnZE8BYi-\"\n    }\n  ],\n  \"entry\": [\n    {\n      \"fullUrl\": \"https://FhAuZGvKrobnim.okdvKZkxuXezhWpGC5SFWuqAe7.SEmEbkM\",\n      \"resource\": {},\n      \"search\": {\n        \"mode\": \"include\",\n        \"score\": 8230.029755756299\n      },\n      \"request\": {\n        \"method\": \"GET\",\n        \"url\": \"string\"\n      },\n      \"response\": {\n        \"status\": \"string\",\n        \"location\": \"string\"\n      }\n    },\n    {\n      \"fullUrl\": \"https://pBPPheHxhPbwEAclpVxJtaZzoOSqhWa.scnWkWZLeygCbf13f2+v50EBRDr52RzVYZMUlZizHsjCfD7yVwDkh9KAmp50WvzudSztBo3.sE\",\n      \"resource\": {},\n      \"search\": {\n        \"mode\": \"match\",\n        \"score\": 1267.4597529482844\n      },\n      \"request\": {\n        \"method\": \"DELETE\",\n        \"url\": \"string\"\n      },\n      \"response\": {\n        \"status\": \"string\",\n        \"location\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "40e9ced7-de15-4bcd-a984-e20f104e5ec8",
+      "name": "Observation",
+      "description": {
+        "content": "Clinical measurements, lab results, vital signs",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a4e7f076-1967-4c14-88f8-3038f24ee425",
+          "name": "Search observations",
+          "request": {
+            "name": "Search observations",
+            "description": {
+              "content": "Searches for Observation resources (lab results, vital signs, surveys). Common use cases include retrieving recent vital signs or lab values for a patient.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Observation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "patient",
+                  "value": "<string>",
+                  "description": "Patient reference (e.g., \"Patient/123\")"
+                },
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>",
+                  "description": "Observation category (vital-signs, laboratory, social-history, etc.)"
+                },
+                {
+                  "disabled": false,
+                  "key": "code",
+                  "value": "<string>",
+                  "description": "LOINC code or system|code (e.g., \"8302-2\" for body height)"
+                },
+                {
+                  "disabled": false,
+                  "key": "date",
+                  "value": "<string>",
+                  "description": "Observation date filter (e.g., \"ge2024-01-01\")"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "_count",
+                  "value": "20"
+                },
+                {
+                  "disabled": false,
+                  "key": "_sort",
+                  "value": "-date"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "69f5bdef-c048-4987-bedf-06e50c0977a6",
+              "name": "Bundle of matching Observation resources",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Observation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patient",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_count",
+                      "value": "20"
+                    },
+                    {
+                      "key": "_sort",
+                      "value": "-date"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"Bundle\",\n  \"type\": \"batch\",\n  \"id\": \"string\",\n  \"total\": 255,\n  \"link\": [\n    {\n      \"relation\": \"last\",\n      \"url\": \"https://ariKeZiSMiKLpwnRQYqDB.gjKAhUTCZhMNav67le7ebxkDZ8Ol5LeJd6t+R\"\n    },\n    {\n      \"relation\": \"previous\",\n      \"url\": \"http://kdElsWlPTaBzy.jlIRRKhMmeRNCtKLCb93OcUNjs9RRdzWdEgI8eqc3mtdlj8W4NnZE8BYi-\"\n    }\n  ],\n  \"entry\": [\n    {\n      \"fullUrl\": \"https://FhAuZGvKrobnim.okdvKZkxuXezhWpGC5SFWuqAe7.SEmEbkM\",\n      \"resource\": {},\n      \"search\": {\n        \"mode\": \"include\",\n        \"score\": 8230.029755756299\n      },\n      \"request\": {\n        \"method\": \"GET\",\n        \"url\": \"string\"\n      },\n      \"response\": {\n        \"status\": \"string\",\n        \"location\": \"string\"\n      }\n    },\n    {\n      \"fullUrl\": \"https://pBPPheHxhPbwEAclpVxJtaZzoOSqhWa.scnWkWZLeygCbf13f2+v50EBRDr52RzVYZMUlZizHsjCfD7yVwDkh9KAmp50WvzudSztBo3.sE\",\n      \"resource\": {},\n      \"search\": {\n        \"mode\": \"match\",\n        \"score\": 1267.4597529482844\n      },\n      \"request\": {\n        \"method\": \"DELETE\",\n        \"url\": \"string\"\n      },\n      \"response\": {\n        \"status\": \"string\",\n        \"location\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "486038e0-cba6-4848-a46e-2c7244d16a26",
+          "name": "Read an observation",
+          "request": {
+            "name": "Read an observation",
+            "description": {
+              "content": "Returns a specific Observation resource by its logical ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Observation",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ce4527a8-7a61-402b-a30b-24a0319042a4",
+              "name": "Observation resource returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Observation",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"Observation\",\n  \"status\": \"cancelled\",\n  \"code\": {\n    \"coding\": [\n      {\n        \"system\": \"https://zdnqFgdoUGTzjjewWHpOCI.yfalRxipLBkOa5uR6CAfZ7INnrnQikj62nRzCbaWJVnWT9up.lxjz--rsOGIjwWcR3DCBHbE9y9mAftS\",\n        \"version\": \"string\",\n        \"code\": \"string\",\n        \"display\": \"string\",\n        \"userSelected\": false\n      },\n      {\n        \"system\": \"https://zAOEmRQ.jaTgZlKXaLVHJYWa1VA8ag6f83ifyTSLExb\",\n        \"version\": \"string\",\n        \"code\": \"string\",\n        \"display\": \"string\",\n        \"userSelected\": false\n      }\n    ],\n    \"text\": \"string\"\n  },\n  \"id\": \"string\",\n  \"meta\": {\n    \"versionId\": \"string\",\n    \"lastUpdated\": \"1991-06-04T23:27:35.399Z\",\n    \"profile\": [\n      \"http://AuIQjsAlOOeatlWTZikQZM.izfhOX8Q6E4qXLCbOF7+3oNYk7E3nsL\",\n      \"https://bKImzLMKWx.hmeuPTuUhD+sczmdOj4-h\"\n    ],\n    \"tag\": [\n      {\n        \"system\": \"https://EFLRXXfCJpLtpQSykizOoHpGZgUXj.lgyfoI5DXD-SvHi4cRX4un0ZBFHTd-xxXFlxP0Kpu8yOp-WoWlrxT1oF6yZDC\",\n        \"version\": \"string\",\n        \"code\": \"string\",\n        \"display\": \"string\",\n        \"userSelected\": false\n      },\n      {\n        \"system\": \"https://upf.nsoUHE.92lR-B-b5XPvtHR6+BTN8DqFml7XtGMn,uVc+UEAgNHMiZNA-1l\",\n        \"version\": \"string\",\n        \"code\": \"string\",\n        \"display\": \"string\",\n        \"userSelected\": false\n      }\n    ]\n  },\n  \"category\": [\n    {\n      \"coding\": [\n        {\n          \"system\": \"http://TychsvJQJOqUKT.kxpyExFNJRH9tlPrh6-2HHO8Z5nMw1c1rIU\",\n          \"version\": \"string\",\n          \"code\": \"string\",\n          \"display\": \"string\",\n          \"userSelected\": false\n        },\n        {\n          \"system\": \"http://rKKCZnSDAgfqgC.jiernQ9ZGBBFcbEMd99aKE2xK96ziAHL3a0.tK5SwoSBj-IUKTqbjp8QbbcnF6.ntwUkXvRE8fXk\",\n          \"version\": \"string\",\n          \"code\": \"string\",\n          \"display\": \"string\",\n          \"userSelected\": true\n        }\n      ],\n      \"text\": \"string\"\n    },\n    {\n      \"coding\": [\n        {\n          \"system\": \"https://UiNYwInBf.thuxNZlnMv,tqj1KXgB8iPa2SMAjMbq8W5whbYsP06tIdIded8Y\",\n          \"version\": \"string\",\n          \"code\": \"string\",\n          \"display\": \"string\",\n          \"userSelected\": true\n        },\n        {\n          \"system\": \"https://DfcdplwFwbhXXuCr.kdTOwPF5JiiEBm3VqJaEKwkjSlaZ3R3d0.Tt8nI.yQAP8obB1\",\n          \"version\": \"string\",\n          \"code\": \"string\",\n          \"display\": \"string\",\n          \"userSelected\": false\n        }\n      ],\n      \"text\": \"string\"\n    }\n  ],\n  \"subject\": {\n    \"reference\": \"string\",\n    \"type\": \"https://GWBDbxMYJ.fosyrXL-yPQJuK+yE.OYiuirnJp8dORKpXtE6xsb\",\n    \"identifier\": {\n      \"use\": \"old\",\n      \"type\": {\n        \"coding\": [\n          {\n            \"system\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"code\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"display\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"userSelected\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"system\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"code\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"display\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"userSelected\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"system\": \"https://pcRfdzLiXUpmKFaCKjtl.jows0WMPL3QZS7bNdtyXXUQZbV33ga\",\n      \"value\": \"string\"\n    },\n    \"display\": \"string\"\n  },\n  \"encounter\": {\n    \"reference\": \"string\",\n    \"type\": \"http://uIaKaWyymhVDwbqvhRBaR.vwhsB7SwPg8HeKvDOHYhlh32zqtMNE0E,PgEdG-rX-VKMFI+3FO,G0TtAbbTRTxmEd\",\n    \"identifier\": {\n      \"use\": \"old\",\n      \"type\": {\n        \"coding\": [\n          {\n            \"system\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"code\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"display\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"userSelected\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"system\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"code\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"display\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"userSelected\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"system\": \"http://FQu.iylj,3aCtWrFSaiMi+64fVCpuf7tqypZJg.A+g4ABjm4WlaIA6p6lf29BbJFjt\",\n      \"value\": \"string\"\n    },\n    \"display\": \"string\"\n  },\n  \"effectiveDateTime\": \"1954-12-12T10:01:49.346Z\",\n  \"issued\": \"1948-11-27T12:31:07.747Z\",\n  \"valueQuantity\": {\n    \"value\": 938.0286112023739,\n    \"comparator\": \">=\",\n    \"unit\": \"string\",\n    \"system\": \"http://oUWClxF.zgljTfuNjIvnwZ0ymN91Jroysfj-XE5E4oXD-LGK\",\n    \"code\": \"string\"\n  },\n  \"valueCodeableConcept\": {\n    \"coding\": [\n      {\n        \"system\": \"https://CsPgAhKqvliqKYYrpNPUCGZHZ.dzHfbJeDgvWNz2y2DscrLaGI3JPV+ZXYmYsW19wKViZ1pBQk4zT2SIrWwmKCsVV\",\n        \"version\": \"string\",\n        \"code\": \"string\",\n        \"display\": \"string\",\n        \"userSelected\": false\n      },\n      {\n        \"system\": \"https://CnFvhhgdKfuDpfNHzKBkFKsLGMKVxts.pvu3l1JeAf6BT+ZEfjeTEuqr3V1T0QTPeaVGs7j\",\n        \"version\": \"string\",\n        \"code\": \"string\",\n        \"display\": \"string\",\n        \"userSelected\": false\n      }\n    ],\n    \"text\": \"string\"\n  },\n  \"valueString\": \"string\",\n  \"interpretation\": [\n    {\n      \"coding\": [\n        {\n          \"system\": \"http://YWvVZHexLVw.lhnzcZyFyO0mtm-uGQt1kgD-oFMJsauVVnnFwSG-vtMROPU4uo\",\n          \"version\": \"string\",\n          \"code\": \"string\",\n          \"display\": \"string\",\n          \"userSelected\": false\n        },\n        {\n          \"system\": \"https://c.sicdT9bGADZ1IemA,\",\n          \"version\": \"string\",\n          \"code\": \"string\",\n          \"display\": \"string\",\n          \"userSelected\": true\n        }\n      ],\n      \"text\": \"string\"\n    },\n    {\n      \"coding\": [\n        {\n          \"system\": \"https://EWKsrePJFjEmEFmSNAKnI.pfwqGaQdTYrelx9orMN2mAPq6344Svx8isqamPhLOrsRjxbZF.Rcqnw\",\n          \"version\": \"string\",\n          \"code\": \"string\",\n          \"display\": \"string\",\n          \"userSelected\": false\n        },\n        {\n          \"system\": \"http://URvSROGuGZjdCfZyDbKMOESFKBJFjRNOv.nbpJUO\",\n          \"version\": \"string\",\n          \"code\": \"string\",\n          \"display\": \"string\",\n          \"userSelected\": false\n        }\n      ],\n      \"text\": \"string\"\n    }\n  ],\n  \"note\": [\n    {\n      \"text\": \"string\"\n    },\n    {\n      \"text\": \"string\"\n    }\n  ],\n  \"component\": [\n    {\n      \"code\": {\n        \"coding\": [\n          {\n            \"system\": \"http://qKZsdEhKYJSDqZXZljpnL.wrtbByEWomTx0Ov\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          },\n          {\n            \"system\": \"https://MyTqurwyheIuPNEhRkVqhuDYTjoYGlls.edRw058RyuV\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"valueQuantity\": {\n        \"value\": 5755.037378879933,\n        \"comparator\": \">\",\n        \"unit\": \"string\",\n        \"system\": \"http://cOoGugsCpLTtuALhFIGzZFkOcTzSjFzeg.tizHiY1XLB\",\n        \"code\": \"string\"\n      }\n    },\n    {\n      \"code\": {\n        \"coding\": [\n          {\n            \"system\": \"http://oCzpCTzJLDiVUOPz.eummOF.8Ucrw\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          },\n          {\n            \"system\": \"https://HbLlWozm.eiWJIKwvYZnywwq85CiFAnLN,rJnWVbg.M\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"valueQuantity\": {\n        \"value\": 3093.9908197819045,\n        \"comparator\": \"<=\",\n        \"unit\": \"string\",\n        \"system\": \"https://hSHinezCGmXUMiVXAREfHAZKYtiYKdr.byH1OLngorhG77MXnm56Zd4mGPP1G\",\n        \"code\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3760b5fa-b01d-4de7-a710-a058c33d1dc4",
+              "name": "Observation not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Observation",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "bf87636a-f815-4fb7-86d5-827e863ef4ff",
+      "name": "Patient",
+      "description": {
+        "content": "Patient demographic and identity resources",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2e134ccc-ab1a-4e23-8fbb-ab185118d8d6",
+          "name": "Search patients",
+          "request": {
+            "name": "Search patients",
+            "description": {
+              "content": "Searches for Patient resources matching the specified search parameters. Supports name, identifier (MRN), birthdate, gender, and address searches. Returns a Bundle containing matching Patient resources.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Patient"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "_id",
+                  "value": "<string>",
+                  "description": "Logical id of the patient"
+                },
+                {
+                  "disabled": false,
+                  "key": "identifier",
+                  "value": "<string>",
+                  "description": "Patient identifier (e.g., \"http://hospital.example.org/patients|12345\")"
+                },
+                {
+                  "disabled": false,
+                  "key": "family",
+                  "value": "<string>",
+                  "description": "A portion of the family name of the patient"
+                },
+                {
+                  "disabled": false,
+                  "key": "given",
+                  "value": "<string>",
+                  "description": "A portion of the given name of the patient"
+                },
+                {
+                  "disabled": false,
+                  "key": "birthdate",
+                  "value": "<string>",
+                  "description": "The patient's date of birth (e.g., \"1990-01-15\" or \"ge1990\")"
+                },
+                {
+                  "disabled": false,
+                  "key": "gender",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "_count",
+                  "value": "20",
+                  "description": "Number of results per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "_sort",
+                  "value": "<string>",
+                  "description": "Sort criteria (e.g., \"family,-birthdate\")"
+                },
+                {
+                  "disabled": false,
+                  "key": "_include",
+                  "value": "<string>",
+                  "description": "Include related resources (e.g., \"Patient:general-practitioner\")"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "18aee7b4-fd02-4506-8fa0-548e9f5e4d1c",
+              "name": "Bundle of matching Patient resources",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Patient"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "family",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "given",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "birthdate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "gender",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_count",
+                      "value": "20"
+                    },
+                    {
+                      "key": "_sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"Bundle\",\n  \"type\": \"batch\",\n  \"id\": \"string\",\n  \"total\": 255,\n  \"link\": [\n    {\n      \"relation\": \"last\",\n      \"url\": \"https://ariKeZiSMiKLpwnRQYqDB.gjKAhUTCZhMNav67le7ebxkDZ8Ol5LeJd6t+R\"\n    },\n    {\n      \"relation\": \"previous\",\n      \"url\": \"http://kdElsWlPTaBzy.jlIRRKhMmeRNCtKLCb93OcUNjs9RRdzWdEgI8eqc3mtdlj8W4NnZE8BYi-\"\n    }\n  ],\n  \"entry\": [\n    {\n      \"fullUrl\": \"https://FhAuZGvKrobnim.okdvKZkxuXezhWpGC5SFWuqAe7.SEmEbkM\",\n      \"resource\": {},\n      \"search\": {\n        \"mode\": \"include\",\n        \"score\": 8230.029755756299\n      },\n      \"request\": {\n        \"method\": \"GET\",\n        \"url\": \"string\"\n      },\n      \"response\": {\n        \"status\": \"string\",\n        \"location\": \"string\"\n      }\n    },\n    {\n      \"fullUrl\": \"https://pBPPheHxhPbwEAclpVxJtaZzoOSqhWa.scnWkWZLeygCbf13f2+v50EBRDr52RzVYZMUlZizHsjCfD7yVwDkh9KAmp50WvzudSztBo3.sE\",\n      \"resource\": {},\n      \"search\": {\n        \"mode\": \"match\",\n        \"score\": 1267.4597529482844\n      },\n      \"request\": {\n        \"method\": \"DELETE\",\n        \"url\": \"string\"\n      },\n      \"response\": {\n        \"status\": \"string\",\n        \"location\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8745e26d-5974-4cf9-b555-094e9b10ce81",
+              "name": "Invalid search parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Patient"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "family",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "given",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "birthdate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "gender",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_count",
+                      "value": "20"
+                    },
+                    {
+                      "key": "_sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_include",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"OperationOutcome\",\n  \"issue\": [\n    {\n      \"severity\": \"information\",\n      \"code\": \"string\",\n      \"details\": {\n        \"coding\": [\n          {\n            \"system\": \"https://DEviu.qumsLojeuTKD0Y8fA,SzjwuDdJCoFf6KBOJdT\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          },\n          {\n            \"system\": \"https://vLYgAWBqyxuHOQCRpJMpjb.nulmnKiRjwqdANBoB0LmUgb\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"diagnostics\": \"string\",\n      \"expression\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"severity\": \"warning\",\n      \"code\": \"string\",\n      \"details\": {\n        \"coding\": [\n          {\n            \"system\": \"https://MdcbrlCxcaVLmrqFIUGOpNgAT.lgpkIvkPhlO99ldM3u,RaBTExbaY,aPJNYarhLVPVJ6yb5UI,4q1cEGRc-qT\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          },\n          {\n            \"system\": \"http://YGUaxGfhboJgKfleTtisTlUCvWCA.unoyMZHFks1s\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"diagnostics\": \"string\",\n      \"expression\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "302c4ccc-e020-4f6d-a837-65d0b33f8f0e",
+          "name": "Create a patient",
+          "request": {
+            "name": "Create a patient",
+            "description": {
+              "content": "Creates a new Patient resource. The server assigns the logical ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Patient"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/fhir+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"resourceType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"meta\": {\n    \"versionId\": \"<string>\",\n    \"lastUpdated\": \"<dateTime>\",\n    \"profile\": [\n      \"<uri>\",\n      \"<uri>\"\n    ],\n    \"tag\": [\n      {\n        \"system\": \"<uri>\",\n        \"version\": \"<string>\",\n        \"code\": \"<string>\",\n        \"display\": \"<string>\",\n        \"userSelected\": \"<boolean>\"\n      },\n      {\n        \"system\": \"<uri>\",\n        \"version\": \"<string>\",\n        \"code\": \"<string>\",\n        \"display\": \"<string>\",\n        \"userSelected\": \"<boolean>\"\n      }\n    ]\n  },\n  \"identifier\": [\n    {\n      \"use\": \"<string>\",\n      \"type\": {\n        \"coding\": [\n          {\n            \"system\": \"<uri>\",\n            \"version\": \"<string>\",\n            \"code\": \"<string>\",\n            \"display\": \"<string>\",\n            \"userSelected\": \"<boolean>\"\n          },\n          {\n            \"system\": \"<uri>\",\n            \"version\": \"<string>\",\n            \"code\": \"<string>\",\n            \"display\": \"<string>\",\n            \"userSelected\": \"<boolean>\"\n          }\n        ],\n        \"text\": \"<string>\"\n      },\n      \"system\": \"<uri>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"use\": \"<string>\",\n      \"type\": {\n        \"coding\": [\n          {\n            \"system\": \"<uri>\",\n            \"version\": \"<string>\",\n            \"code\": \"<string>\",\n            \"display\": \"<string>\",\n            \"userSelected\": \"<boolean>\"\n          },\n          {\n            \"system\": \"<uri>\",\n            \"version\": \"<string>\",\n            \"code\": \"<string>\",\n            \"display\": \"<string>\",\n            \"userSelected\": \"<boolean>\"\n          }\n        ],\n        \"text\": \"<string>\"\n      },\n      \"system\": \"<uri>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"active\": \"<boolean>\",\n  \"name\": [\n    {\n      \"use\": \"<string>\",\n      \"text\": \"<string>\",\n      \"family\": \"<string>\",\n      \"given\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"prefix\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"suffix\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"use\": \"<string>\",\n      \"text\": \"<string>\",\n      \"family\": \"<string>\",\n      \"given\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"prefix\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"suffix\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"telecom\": [\n    {\n      \"system\": \"<string>\",\n      \"value\": \"<string>\",\n      \"use\": \"<string>\"\n    },\n    {\n      \"system\": \"<string>\",\n      \"value\": \"<string>\",\n      \"use\": \"<string>\"\n    }\n  ],\n  \"gender\": \"<string>\",\n  \"birthDate\": \"<date>\",\n  \"deceased\": {\n    \"deceasedBoolean\": \"<boolean>\",\n    \"deceasedDateTime\": \"<dateTime>\"\n  },\n  \"address\": [\n    {\n      \"use\": \"<string>\",\n      \"type\": \"<string>\",\n      \"text\": \"<string>\",\n      \"line\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"city\": \"<string>\",\n      \"district\": \"<string>\",\n      \"state\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    {\n      \"use\": \"<string>\",\n      \"type\": \"<string>\",\n      \"text\": \"<string>\",\n      \"line\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"city\": \"<string>\",\n      \"district\": \"<string>\",\n      \"state\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"country\": \"<string>\"\n    }\n  ],\n  \"communication\": [\n    {\n      \"language\": {\n        \"coding\": [\n          {\n            \"system\": \"<uri>\",\n            \"version\": \"<string>\",\n            \"code\": \"<string>\",\n            \"display\": \"<string>\",\n            \"userSelected\": \"<boolean>\"\n          },\n          {\n            \"system\": \"<uri>\",\n            \"version\": \"<string>\",\n            \"code\": \"<string>\",\n            \"display\": \"<string>\",\n            \"userSelected\": \"<boolean>\"\n          }\n        ],\n        \"text\": \"<string>\"\n      },\n      \"preferred\": \"<boolean>\"\n    },\n    {\n      \"language\": {\n        \"coding\": [\n          {\n            \"system\": \"<uri>\",\n            \"version\": \"<string>\",\n            \"code\": \"<string>\",\n            \"display\": \"<string>\",\n            \"userSelected\": \"<boolean>\"\n          },\n          {\n            \"system\": \"<uri>\",\n            \"version\": \"<string>\",\n            \"code\": \"<string>\",\n            \"display\": \"<string>\",\n            \"userSelected\": \"<boolean>\"\n          }\n        ],\n        \"text\": \"<string>\"\n      },\n      \"preferred\": \"<boolean>\"\n    }\n  ],\n  \"generalPractitioner\": [\n    {\n      \"reference\": \"<string>\",\n      \"type\": \"<uri>\",\n      \"identifier\": {\n        \"use\": \"<string>\",\n        \"type\": {\n          \"coding\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"text\": \"<string>\"\n        },\n        \"system\": \"<uri>\",\n        \"value\": \"<string>\"\n      },\n      \"display\": \"<string>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"type\": \"<uri>\",\n      \"identifier\": {\n        \"use\": \"<string>\",\n        \"type\": {\n          \"coding\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"text\": \"<string>\"\n        },\n        \"system\": \"<uri>\",\n        \"value\": \"<string>\"\n      },\n      \"display\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0c3a23ff-a2de-4a06-b5d7-42e7af3c1722",
+              "name": "Patient created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Patient"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"meta\": {\n    \"versionId\": \"string\",\n    \"lastUpdated\": \"1992-12-28T19:55:58.425Z\",\n    \"profile\": [\n      \"https://scVKjeQoRyQPBaIqlPz.scpYt+LKyTvs8cb4BKjdEsHZg\",\n      \"http://wEcfzLD.gphsJVCI6Z+JGzoY5Sa9sirCEQoDuo8dhQ\"\n    ],\n    \"tag\": [\n      {\n        \"system\": \"https://VhqOUGrrTMwiynltORLKb.gwM9dZjkhQdY4jr+Rl.IpsYOXES5wWhlIX4\",\n        \"version\": \"string\",\n        \"code\": \"string\",\n        \"display\": \"string\",\n        \"userSelected\": true\n      },\n      {\n        \"system\": \"https://FoByyUEfljABANqCrMRkpWeqrsDm.pbeIz8SyBqIHvbs2Z2D0MGAQ.Whsd,mJfpv+Tbm6K+\",\n        \"version\": \"string\",\n        \"code\": \"string\",\n        \"display\": \"string\",\n        \"userSelected\": true\n      }\n    ]\n  },\n  \"identifier\": [\n    {\n      \"use\": \"usual\",\n      \"type\": {\n        \"coding\": [\n          {\n            \"system\": \"https://YNtKwmoCftUwGrrdbYF.lfuZwky3YYnMI1364P7j5lIqdnSVY0qMGvGujtIyPG-j41xCNSKOaF\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          },\n          {\n            \"system\": \"https://rPIxqYFmrWToLDnePedXjInLHuzSt.hsgbXqrCoFyJyUGMcPOatLgm+z8BquXJpR1w.O3fho9OS6\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": false\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"system\": \"http://HBJxWEh.dwvdwO+HFNNnhskATH65Ki5HFfwp3oCXDDXj8MjdOwzKes1X+nrC8zDWKUcAYiRZ3OdVmT5bFXY\",\n      \"value\": \"string\"\n    },\n    {\n      \"use\": \"old\",\n      \"type\": {\n        \"coding\": [\n          {\n            \"system\": \"https://YiMbhrCylEGMYIfZNmKlaPA.fyuaw5mKsFViABkoVfLi-jfZGTTNEsvdr8g1LJTl3uiH8ufmh0ix8vu2MvGpx1mST+IF\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          },\n          {\n            \"system\": \"https://ePXGlkJtKXnpVUgVJaNvecVZdH.lujXF9A99TC+DHzQ2rTopWbKaTJ2cERt9GRWHPWokN,el-FaAT+uf5-d1yX\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": false\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"system\": \"http://JZaaqcdiTgZIkREbEkGtBPvBGjbnWWhkw.xnYyd915yL,wXhoUYx3VCay\",\n      \"value\": \"string\"\n    }\n  ],\n  \"active\": \"<boolean>\",\n  \"name\": [\n    {\n      \"use\": \"nickname\",\n      \"text\": \"string\",\n      \"family\": \"string\",\n      \"given\": [\n        \"string\",\n        \"string\"\n      ],\n      \"prefix\": [\n        \"string\",\n        \"string\"\n      ],\n      \"suffix\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"use\": \"usual\",\n      \"text\": \"string\",\n      \"family\": \"string\",\n      \"given\": [\n        \"string\",\n        \"string\"\n      ],\n      \"prefix\": [\n        \"string\",\n        \"string\"\n      ],\n      \"suffix\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"telecom\": [\n    {\n      \"system\": \"pager\",\n      \"value\": \"string\",\n      \"use\": \"work\"\n    },\n    {\n      \"system\": \"other\",\n      \"value\": \"string\",\n      \"use\": \"old\"\n    }\n  ],\n  \"gender\": \"<string>\",\n  \"birthDate\": \"<date>\",\n  \"deceased\": {\n    \"deceasedBoolean\": \"<boolean>\",\n    \"deceasedDateTime\": \"<dateTime>\"\n  },\n  \"address\": [\n    {\n      \"use\": \"billing\",\n      \"type\": \"physical\",\n      \"text\": \"string\",\n      \"line\": [\n        \"string\",\n        \"string\"\n      ],\n      \"city\": \"string\",\n      \"district\": \"string\",\n      \"state\": \"string\",\n      \"postalCode\": \"string\",\n      \"country\": \"string\"\n    },\n    {\n      \"use\": \"billing\",\n      \"type\": \"physical\",\n      \"text\": \"string\",\n      \"line\": [\n        \"string\",\n        \"string\"\n      ],\n      \"city\": \"string\",\n      \"district\": \"string\",\n      \"state\": \"string\",\n      \"postalCode\": \"string\",\n      \"country\": \"string\"\n    }\n  ],\n  \"communication\": [\n    {\n      \"language\": {\n        \"coding\": [\n          {\n            \"system\": \"http://USWrLvFXwBeERfQTVLrtTlGDQPwdnfvpZ.xwr3cVd3yQ0hzUuwl8WFr0KAOeEH\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          },\n          {\n            \"system\": \"https://wWg.wguzwyJsqP8VjzvjyXE1DDM1SyXNHlOSCdltUjuWFy-DVkCxfjC4QVjOr7zB\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": false\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"preferred\": \"<boolean>\"\n    },\n    {\n      \"language\": {\n        \"coding\": [\n          {\n            \"system\": \"https://femz.wmlCdvB+EzAyNT4wHPfZ4a.LhsbXQ-.oMdk5YdBdYR5yjUKi3I-aj\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          },\n          {\n            \"system\": \"https://cvJDdtpSq.icleE1bqCuZbbOIIihFBr5uF\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"preferred\": \"<boolean>\"\n    }\n  ],\n  \"generalPractitioner\": [\n    {\n      \"reference\": \"string\",\n      \"type\": \"https://BkDtkAogkbDnxsIBMgrtqZqCgsyTP.qqmvP4GD4kuR1Rye1EOdqwwyJjQNlaisSrDvn7iqYm+uaGMM2Dvtex9Ekk-KbBET+1p0QL\",\n      \"identifier\": {\n        \"use\": \"official\",\n        \"type\": {\n          \"coding\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"text\": \"string\"\n        },\n        \"system\": \"https://IJjdQZxLHYMZXPZtRhqHZRii.iqyzUoO+q8nJID6GO3x9RwUXK7ci2vc\",\n        \"value\": \"string\"\n      },\n      \"display\": \"string\"\n    },\n    {\n      \"reference\": \"string\",\n      \"type\": \"https://yNEpkDwtNaQCrpVyDKrZhVxG.vdNJzhie8iTilwLLRMPLet7ET2lG,S,dKWQA7.XIuq\",\n      \"identifier\": {\n        \"use\": \"secondary\",\n        \"type\": {\n          \"coding\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"text\": \"string\"\n        },\n        \"system\": \"https://RFaoNRJgsScGKgcAqZZu.hmklH1bkW.E\",\n        \"value\": \"string\"\n      },\n      \"display\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "URL of created resource (e.g., Patient/123/_history/1)",
+                  "key": "Location",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"Patient\",\n  \"id\": \"string\",\n  \"meta\": {\n    \"versionId\": \"string\",\n    \"lastUpdated\": \"1974-12-05T18:33:12.317Z\",\n    \"profile\": [\n      \"http://KAWpMPTu.dviyb-AMG1wWbF-LYvqEdxo6Jf\",\n      \"http://U.lflFQJXUPC9iZh\"\n    ],\n    \"tag\": [\n      {\n        \"system\": \"https://LhVSzhrfkCYByFXrjJpiMwGnJuhi.syll6DGZnc.jnTyycQMflkH\",\n        \"version\": \"string\",\n        \"code\": \"string\",\n        \"display\": \"string\",\n        \"userSelected\": true\n      },\n      {\n        \"system\": \"https://JtxKBxi.hpgp--JKLO4,JLnR9sm48wXT,pIH0CexLZv76QjIdhYSgztBdj4bN,3tstFU27\",\n        \"version\": \"string\",\n        \"code\": \"string\",\n        \"display\": \"string\",\n        \"userSelected\": false\n      }\n    ]\n  },\n  \"identifier\": [\n    {\n      \"use\": \"old\",\n      \"type\": {\n        \"coding\": [\n          {\n            \"system\": \"https://ZZkLWlfxfsStDRWppUakombJENXKBARw.bweMXM,VCteZ,wBH.K5,VDNrWA8Z.,Cf82.UvB\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          },\n          {\n            \"system\": \"http://HEoKLPdXeERQHFHvWIuyJjqkEmJHQrpEW.xacqBAzXus3JZZfInAfcWBAtBXLBE-KFY\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"system\": \"http://XihLfzJytiCQYUJtGK.cyelFjiF2eaCEasmGoCYqVrqKQfpsOEUj4jbL.XOIPHoZPb\",\n      \"value\": \"string\"\n    },\n    {\n      \"use\": \"temp\",\n      \"type\": {\n        \"coding\": [\n          {\n            \"system\": \"https://gkzWCyIOrqYRtyprxdDuhpQgGDpubFE.vrJa3b.ti\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": false\n          },\n          {\n            \"system\": \"https://cugmAXIZux.cvcpcVcVKB0fp\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": false\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"system\": \"https://cllKXyHhXeQjgwncA.jknpQui--bYqke4hC,2YR-YHLSw7,JRSHvb\",\n      \"value\": \"string\"\n    }\n  ],\n  \"active\": true,\n  \"name\": [\n    {\n      \"use\": \"usual\",\n      \"text\": \"string\",\n      \"family\": \"string\",\n      \"given\": [\n        \"string\",\n        \"string\"\n      ],\n      \"prefix\": [\n        \"string\",\n        \"string\"\n      ],\n      \"suffix\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"use\": \"temp\",\n      \"text\": \"string\",\n      \"family\": \"string\",\n      \"given\": [\n        \"string\",\n        \"string\"\n      ],\n      \"prefix\": [\n        \"string\",\n        \"string\"\n      ],\n      \"suffix\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"telecom\": [\n    {\n      \"system\": \"email\",\n      \"value\": \"string\",\n      \"use\": \"mobile\"\n    },\n    {\n      \"system\": \"pager\",\n      \"value\": \"string\",\n      \"use\": \"mobile\"\n    }\n  ],\n  \"gender\": \"other\",\n  \"birthDate\": \"1963-04-02\",\n  \"deceased\": {\n    \"deceasedBoolean\": true,\n    \"deceasedDateTime\": \"1979-07-03T21:05:37.542Z\"\n  },\n  \"address\": [\n    {\n      \"use\": \"home\",\n      \"type\": \"postal\",\n      \"text\": \"string\",\n      \"line\": [\n        \"string\",\n        \"string\"\n      ],\n      \"city\": \"string\",\n      \"district\": \"string\",\n      \"state\": \"string\",\n      \"postalCode\": \"string\",\n      \"country\": \"string\"\n    },\n    {\n      \"use\": \"work\",\n      \"type\": \"physical\",\n      \"text\": \"string\",\n      \"line\": [\n        \"string\",\n        \"string\"\n      ],\n      \"city\": \"string\",\n      \"district\": \"string\",\n      \"state\": \"string\",\n      \"postalCode\": \"string\",\n      \"country\": \"string\"\n    }\n  ],\n  \"communication\": [\n    {\n      \"language\": {\n        \"coding\": [\n          {\n            \"system\": \"https://pUEZEJsBdNvLKWoDLcSHEXt.xkxpGYwnxA5Cp5c,LEujozp9z1y\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": false\n          },\n          {\n            \"system\": \"https://DKCQzNUmspAb.uoQZTdSfY+AHwJ15YpUBEDI,0T\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"preferred\": false\n    },\n    {\n      \"language\": {\n        \"coding\": [\n          {\n            \"system\": \"http://hArvuoGvBOnaoayHiwYJ.wpuICkLJu5bEVnQj7ajjRucFz+lrzhH0CKW.xSJHidQyKjI3L4REXpetSMGNmg3aghY\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": false\n          },\n          {\n            \"system\": \"https://dikRkPDaClaQdFCSiwn.qmopXilz0,ZIPTUhx+P8tK4uozhCPgVpoGI\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": false\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"preferred\": true\n    }\n  ],\n  \"generalPractitioner\": [\n    {\n      \"reference\": \"string\",\n      \"type\": \"http://lbNTlg.xlsoNTVjGXXKb0v\",\n      \"identifier\": {\n        \"use\": \"usual\",\n        \"type\": {\n          \"coding\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"text\": \"string\"\n        },\n        \"system\": \"https://bBZPZcaOPSaYRj.apKErIl0K3C,GTbxWKKGZBzd.M92SGc.cRcNyf2Ury71ORIKQtNC\",\n        \"value\": \"string\"\n      },\n      \"display\": \"string\"\n    },\n    {\n      \"reference\": \"string\",\n      \"type\": \"http://PzHlxAYBCmKvMJpZojeTHKosbVN.iukkoCRJvnO6j895OVfDxTDFkdqP\",\n      \"identifier\": {\n        \"use\": \"official\",\n        \"type\": {\n          \"coding\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"text\": \"string\"\n        },\n        \"system\": \"https://PpTabRWEPKsn.tnJgyCbv7TxlOEMvTb-Bo8BPYmCnp6OqftRhhGNuUhlMfo6I.WI1KMjsUt0v,Ud.d\",\n        \"value\": \"string\"\n      },\n      \"display\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "81e95de5-5384-411e-ab1c-82f51d8f5941",
+              "name": "Invalid resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Patient"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"meta\": {\n    \"versionId\": \"string\",\n    \"lastUpdated\": \"1992-12-28T19:55:58.425Z\",\n    \"profile\": [\n      \"https://scVKjeQoRyQPBaIqlPz.scpYt+LKyTvs8cb4BKjdEsHZg\",\n      \"http://wEcfzLD.gphsJVCI6Z+JGzoY5Sa9sirCEQoDuo8dhQ\"\n    ],\n    \"tag\": [\n      {\n        \"system\": \"https://VhqOUGrrTMwiynltORLKb.gwM9dZjkhQdY4jr+Rl.IpsYOXES5wWhlIX4\",\n        \"version\": \"string\",\n        \"code\": \"string\",\n        \"display\": \"string\",\n        \"userSelected\": true\n      },\n      {\n        \"system\": \"https://FoByyUEfljABANqCrMRkpWeqrsDm.pbeIz8SyBqIHvbs2Z2D0MGAQ.Whsd,mJfpv+Tbm6K+\",\n        \"version\": \"string\",\n        \"code\": \"string\",\n        \"display\": \"string\",\n        \"userSelected\": true\n      }\n    ]\n  },\n  \"identifier\": [\n    {\n      \"use\": \"usual\",\n      \"type\": {\n        \"coding\": [\n          {\n            \"system\": \"https://YNtKwmoCftUwGrrdbYF.lfuZwky3YYnMI1364P7j5lIqdnSVY0qMGvGujtIyPG-j41xCNSKOaF\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          },\n          {\n            \"system\": \"https://rPIxqYFmrWToLDnePedXjInLHuzSt.hsgbXqrCoFyJyUGMcPOatLgm+z8BquXJpR1w.O3fho9OS6\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": false\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"system\": \"http://HBJxWEh.dwvdwO+HFNNnhskATH65Ki5HFfwp3oCXDDXj8MjdOwzKes1X+nrC8zDWKUcAYiRZ3OdVmT5bFXY\",\n      \"value\": \"string\"\n    },\n    {\n      \"use\": \"old\",\n      \"type\": {\n        \"coding\": [\n          {\n            \"system\": \"https://YiMbhrCylEGMYIfZNmKlaPA.fyuaw5mKsFViABkoVfLi-jfZGTTNEsvdr8g1LJTl3uiH8ufmh0ix8vu2MvGpx1mST+IF\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          },\n          {\n            \"system\": \"https://ePXGlkJtKXnpVUgVJaNvecVZdH.lujXF9A99TC+DHzQ2rTopWbKaTJ2cERt9GRWHPWokN,el-FaAT+uf5-d1yX\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": false\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"system\": \"http://JZaaqcdiTgZIkREbEkGtBPvBGjbnWWhkw.xnYyd915yL,wXhoUYx3VCay\",\n      \"value\": \"string\"\n    }\n  ],\n  \"active\": \"<boolean>\",\n  \"name\": [\n    {\n      \"use\": \"nickname\",\n      \"text\": \"string\",\n      \"family\": \"string\",\n      \"given\": [\n        \"string\",\n        \"string\"\n      ],\n      \"prefix\": [\n        \"string\",\n        \"string\"\n      ],\n      \"suffix\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"use\": \"usual\",\n      \"text\": \"string\",\n      \"family\": \"string\",\n      \"given\": [\n        \"string\",\n        \"string\"\n      ],\n      \"prefix\": [\n        \"string\",\n        \"string\"\n      ],\n      \"suffix\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"telecom\": [\n    {\n      \"system\": \"pager\",\n      \"value\": \"string\",\n      \"use\": \"work\"\n    },\n    {\n      \"system\": \"other\",\n      \"value\": \"string\",\n      \"use\": \"old\"\n    }\n  ],\n  \"gender\": \"<string>\",\n  \"birthDate\": \"<date>\",\n  \"deceased\": {\n    \"deceasedBoolean\": \"<boolean>\",\n    \"deceasedDateTime\": \"<dateTime>\"\n  },\n  \"address\": [\n    {\n      \"use\": \"billing\",\n      \"type\": \"physical\",\n      \"text\": \"string\",\n      \"line\": [\n        \"string\",\n        \"string\"\n      ],\n      \"city\": \"string\",\n      \"district\": \"string\",\n      \"state\": \"string\",\n      \"postalCode\": \"string\",\n      \"country\": \"string\"\n    },\n    {\n      \"use\": \"billing\",\n      \"type\": \"physical\",\n      \"text\": \"string\",\n      \"line\": [\n        \"string\",\n        \"string\"\n      ],\n      \"city\": \"string\",\n      \"district\": \"string\",\n      \"state\": \"string\",\n      \"postalCode\": \"string\",\n      \"country\": \"string\"\n    }\n  ],\n  \"communication\": [\n    {\n      \"language\": {\n        \"coding\": [\n          {\n            \"system\": \"http://USWrLvFXwBeERfQTVLrtTlGDQPwdnfvpZ.xwr3cVd3yQ0hzUuwl8WFr0KAOeEH\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          },\n          {\n            \"system\": \"https://wWg.wguzwyJsqP8VjzvjyXE1DDM1SyXNHlOSCdltUjuWFy-DVkCxfjC4QVjOr7zB\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": false\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"preferred\": \"<boolean>\"\n    },\n    {\n      \"language\": {\n        \"coding\": [\n          {\n            \"system\": \"https://femz.wmlCdvB+EzAyNT4wHPfZ4a.LhsbXQ-.oMdk5YdBdYR5yjUKi3I-aj\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          },\n          {\n            \"system\": \"https://cvJDdtpSq.icleE1bqCuZbbOIIihFBr5uF\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"preferred\": \"<boolean>\"\n    }\n  ],\n  \"generalPractitioner\": [\n    {\n      \"reference\": \"string\",\n      \"type\": \"https://BkDtkAogkbDnxsIBMgrtqZqCgsyTP.qqmvP4GD4kuR1Rye1EOdqwwyJjQNlaisSrDvn7iqYm+uaGMM2Dvtex9Ekk-KbBET+1p0QL\",\n      \"identifier\": {\n        \"use\": \"official\",\n        \"type\": {\n          \"coding\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"text\": \"string\"\n        },\n        \"system\": \"https://IJjdQZxLHYMZXPZtRhqHZRii.iqyzUoO+q8nJID6GO3x9RwUXK7ci2vc\",\n        \"value\": \"string\"\n      },\n      \"display\": \"string\"\n    },\n    {\n      \"reference\": \"string\",\n      \"type\": \"https://yNEpkDwtNaQCrpVyDKrZhVxG.vdNJzhie8iTilwLLRMPLet7ET2lG,S,dKWQA7.XIuq\",\n      \"identifier\": {\n        \"use\": \"secondary\",\n        \"type\": {\n          \"coding\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"text\": \"string\"\n        },\n        \"system\": \"https://RFaoNRJgsScGKgcAqZZu.hmklH1bkW.E\",\n        \"value\": \"string\"\n      },\n      \"display\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bf5a345f-4116-489b-8d27-8fd827ac82b9",
+          "name": "Read a patient",
+          "request": {
+            "name": "Read a patient",
+            "description": {
+              "content": "Returns the current version of a Patient resource by its logical ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Patient",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Logical ID of the patient"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3a8f2fed-055f-4e36-ba5b-894e6e489c09",
+              "name": "Patient resource returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Patient",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Logical ID of the patient"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"Patient\",\n  \"id\": \"string\",\n  \"meta\": {\n    \"versionId\": \"string\",\n    \"lastUpdated\": \"1974-12-05T18:33:12.317Z\",\n    \"profile\": [\n      \"http://KAWpMPTu.dviyb-AMG1wWbF-LYvqEdxo6Jf\",\n      \"http://U.lflFQJXUPC9iZh\"\n    ],\n    \"tag\": [\n      {\n        \"system\": \"https://LhVSzhrfkCYByFXrjJpiMwGnJuhi.syll6DGZnc.jnTyycQMflkH\",\n        \"version\": \"string\",\n        \"code\": \"string\",\n        \"display\": \"string\",\n        \"userSelected\": true\n      },\n      {\n        \"system\": \"https://JtxKBxi.hpgp--JKLO4,JLnR9sm48wXT,pIH0CexLZv76QjIdhYSgztBdj4bN,3tstFU27\",\n        \"version\": \"string\",\n        \"code\": \"string\",\n        \"display\": \"string\",\n        \"userSelected\": false\n      }\n    ]\n  },\n  \"identifier\": [\n    {\n      \"use\": \"old\",\n      \"type\": {\n        \"coding\": [\n          {\n            \"system\": \"https://ZZkLWlfxfsStDRWppUakombJENXKBARw.bweMXM,VCteZ,wBH.K5,VDNrWA8Z.,Cf82.UvB\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          },\n          {\n            \"system\": \"http://HEoKLPdXeERQHFHvWIuyJjqkEmJHQrpEW.xacqBAzXus3JZZfInAfcWBAtBXLBE-KFY\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"system\": \"http://XihLfzJytiCQYUJtGK.cyelFjiF2eaCEasmGoCYqVrqKQfpsOEUj4jbL.XOIPHoZPb\",\n      \"value\": \"string\"\n    },\n    {\n      \"use\": \"temp\",\n      \"type\": {\n        \"coding\": [\n          {\n            \"system\": \"https://gkzWCyIOrqYRtyprxdDuhpQgGDpubFE.vrJa3b.ti\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": false\n          },\n          {\n            \"system\": \"https://cugmAXIZux.cvcpcVcVKB0fp\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": false\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"system\": \"https://cllKXyHhXeQjgwncA.jknpQui--bYqke4hC,2YR-YHLSw7,JRSHvb\",\n      \"value\": \"string\"\n    }\n  ],\n  \"active\": true,\n  \"name\": [\n    {\n      \"use\": \"usual\",\n      \"text\": \"string\",\n      \"family\": \"string\",\n      \"given\": [\n        \"string\",\n        \"string\"\n      ],\n      \"prefix\": [\n        \"string\",\n        \"string\"\n      ],\n      \"suffix\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"use\": \"temp\",\n      \"text\": \"string\",\n      \"family\": \"string\",\n      \"given\": [\n        \"string\",\n        \"string\"\n      ],\n      \"prefix\": [\n        \"string\",\n        \"string\"\n      ],\n      \"suffix\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"telecom\": [\n    {\n      \"system\": \"email\",\n      \"value\": \"string\",\n      \"use\": \"mobile\"\n    },\n    {\n      \"system\": \"pager\",\n      \"value\": \"string\",\n      \"use\": \"mobile\"\n    }\n  ],\n  \"gender\": \"other\",\n  \"birthDate\": \"1963-04-02\",\n  \"deceased\": {\n    \"deceasedBoolean\": true,\n    \"deceasedDateTime\": \"1979-07-03T21:05:37.542Z\"\n  },\n  \"address\": [\n    {\n      \"use\": \"home\",\n      \"type\": \"postal\",\n      \"text\": \"string\",\n      \"line\": [\n        \"string\",\n        \"string\"\n      ],\n      \"city\": \"string\",\n      \"district\": \"string\",\n      \"state\": \"string\",\n      \"postalCode\": \"string\",\n      \"country\": \"string\"\n    },\n    {\n      \"use\": \"work\",\n      \"type\": \"physical\",\n      \"text\": \"string\",\n      \"line\": [\n        \"string\",\n        \"string\"\n      ],\n      \"city\": \"string\",\n      \"district\": \"string\",\n      \"state\": \"string\",\n      \"postalCode\": \"string\",\n      \"country\": \"string\"\n    }\n  ],\n  \"communication\": [\n    {\n      \"language\": {\n        \"coding\": [\n          {\n            \"system\": \"https://pUEZEJsBdNvLKWoDLcSHEXt.xkxpGYwnxA5Cp5c,LEujozp9z1y\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": false\n          },\n          {\n            \"system\": \"https://DKCQzNUmspAb.uoQZTdSfY+AHwJ15YpUBEDI,0T\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"preferred\": false\n    },\n    {\n      \"language\": {\n        \"coding\": [\n          {\n            \"system\": \"http://hArvuoGvBOnaoayHiwYJ.wpuICkLJu5bEVnQj7ajjRucFz+lrzhH0CKW.xSJHidQyKjI3L4REXpetSMGNmg3aghY\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": false\n          },\n          {\n            \"system\": \"https://dikRkPDaClaQdFCSiwn.qmopXilz0,ZIPTUhx+P8tK4uozhCPgVpoGI\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": false\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"preferred\": true\n    }\n  ],\n  \"generalPractitioner\": [\n    {\n      \"reference\": \"string\",\n      \"type\": \"http://lbNTlg.xlsoNTVjGXXKb0v\",\n      \"identifier\": {\n        \"use\": \"usual\",\n        \"type\": {\n          \"coding\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"text\": \"string\"\n        },\n        \"system\": \"https://bBZPZcaOPSaYRj.apKErIl0K3C,GTbxWKKGZBzd.M92SGc.cRcNyf2Ury71ORIKQtNC\",\n        \"value\": \"string\"\n      },\n      \"display\": \"string\"\n    },\n    {\n      \"reference\": \"string\",\n      \"type\": \"http://PzHlxAYBCmKvMJpZojeTHKosbVN.iukkoCRJvnO6j895OVfDxTDFkdqP\",\n      \"identifier\": {\n        \"use\": \"official\",\n        \"type\": {\n          \"coding\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"text\": \"string\"\n        },\n        \"system\": \"https://PpTabRWEPKsn.tnJgyCbv7TxlOEMvTb-Bo8BPYmCnp6OqftRhhGNuUhlMfo6I.WI1KMjsUt0v,Ud.d\",\n        \"value\": \"string\"\n      },\n      \"display\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "665c9fb9-3075-4460-8797-a4846e0f319b",
+              "name": "Patient not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Patient",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Logical ID of the patient"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "93f77b36-979f-4abf-a698-1699ec6e934f",
+          "name": "Update a patient",
+          "request": {
+            "name": "Update a patient",
+            "description": {
+              "content": "Updates an existing Patient resource using a complete replacement (PUT semantics).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Patient",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/fhir+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"resourceType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"meta\": {\n    \"versionId\": \"<string>\",\n    \"lastUpdated\": \"<dateTime>\",\n    \"profile\": [\n      \"<uri>\",\n      \"<uri>\"\n    ],\n    \"tag\": [\n      {\n        \"system\": \"<uri>\",\n        \"version\": \"<string>\",\n        \"code\": \"<string>\",\n        \"display\": \"<string>\",\n        \"userSelected\": \"<boolean>\"\n      },\n      {\n        \"system\": \"<uri>\",\n        \"version\": \"<string>\",\n        \"code\": \"<string>\",\n        \"display\": \"<string>\",\n        \"userSelected\": \"<boolean>\"\n      }\n    ]\n  },\n  \"identifier\": [\n    {\n      \"use\": \"<string>\",\n      \"type\": {\n        \"coding\": [\n          {\n            \"system\": \"<uri>\",\n            \"version\": \"<string>\",\n            \"code\": \"<string>\",\n            \"display\": \"<string>\",\n            \"userSelected\": \"<boolean>\"\n          },\n          {\n            \"system\": \"<uri>\",\n            \"version\": \"<string>\",\n            \"code\": \"<string>\",\n            \"display\": \"<string>\",\n            \"userSelected\": \"<boolean>\"\n          }\n        ],\n        \"text\": \"<string>\"\n      },\n      \"system\": \"<uri>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"use\": \"<string>\",\n      \"type\": {\n        \"coding\": [\n          {\n            \"system\": \"<uri>\",\n            \"version\": \"<string>\",\n            \"code\": \"<string>\",\n            \"display\": \"<string>\",\n            \"userSelected\": \"<boolean>\"\n          },\n          {\n            \"system\": \"<uri>\",\n            \"version\": \"<string>\",\n            \"code\": \"<string>\",\n            \"display\": \"<string>\",\n            \"userSelected\": \"<boolean>\"\n          }\n        ],\n        \"text\": \"<string>\"\n      },\n      \"system\": \"<uri>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"active\": \"<boolean>\",\n  \"name\": [\n    {\n      \"use\": \"<string>\",\n      \"text\": \"<string>\",\n      \"family\": \"<string>\",\n      \"given\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"prefix\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"suffix\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"use\": \"<string>\",\n      \"text\": \"<string>\",\n      \"family\": \"<string>\",\n      \"given\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"prefix\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"suffix\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"telecom\": [\n    {\n      \"system\": \"<string>\",\n      \"value\": \"<string>\",\n      \"use\": \"<string>\"\n    },\n    {\n      \"system\": \"<string>\",\n      \"value\": \"<string>\",\n      \"use\": \"<string>\"\n    }\n  ],\n  \"gender\": \"<string>\",\n  \"birthDate\": \"<date>\",\n  \"deceased\": {\n    \"deceasedBoolean\": \"<boolean>\",\n    \"deceasedDateTime\": \"<dateTime>\"\n  },\n  \"address\": [\n    {\n      \"use\": \"<string>\",\n      \"type\": \"<string>\",\n      \"text\": \"<string>\",\n      \"line\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"city\": \"<string>\",\n      \"district\": \"<string>\",\n      \"state\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    {\n      \"use\": \"<string>\",\n      \"type\": \"<string>\",\n      \"text\": \"<string>\",\n      \"line\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"city\": \"<string>\",\n      \"district\": \"<string>\",\n      \"state\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"country\": \"<string>\"\n    }\n  ],\n  \"communication\": [\n    {\n      \"language\": {\n        \"coding\": [\n          {\n            \"system\": \"<uri>\",\n            \"version\": \"<string>\",\n            \"code\": \"<string>\",\n            \"display\": \"<string>\",\n            \"userSelected\": \"<boolean>\"\n          },\n          {\n            \"system\": \"<uri>\",\n            \"version\": \"<string>\",\n            \"code\": \"<string>\",\n            \"display\": \"<string>\",\n            \"userSelected\": \"<boolean>\"\n          }\n        ],\n        \"text\": \"<string>\"\n      },\n      \"preferred\": \"<boolean>\"\n    },\n    {\n      \"language\": {\n        \"coding\": [\n          {\n            \"system\": \"<uri>\",\n            \"version\": \"<string>\",\n            \"code\": \"<string>\",\n            \"display\": \"<string>\",\n            \"userSelected\": \"<boolean>\"\n          },\n          {\n            \"system\": \"<uri>\",\n            \"version\": \"<string>\",\n            \"code\": \"<string>\",\n            \"display\": \"<string>\",\n            \"userSelected\": \"<boolean>\"\n          }\n        ],\n        \"text\": \"<string>\"\n      },\n      \"preferred\": \"<boolean>\"\n    }\n  ],\n  \"generalPractitioner\": [\n    {\n      \"reference\": \"<string>\",\n      \"type\": \"<uri>\",\n      \"identifier\": {\n        \"use\": \"<string>\",\n        \"type\": {\n          \"coding\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"text\": \"<string>\"\n        },\n        \"system\": \"<uri>\",\n        \"value\": \"<string>\"\n      },\n      \"display\": \"<string>\"\n    },\n    {\n      \"reference\": \"<string>\",\n      \"type\": \"<uri>\",\n      \"identifier\": {\n        \"use\": \"<string>\",\n        \"type\": {\n          \"coding\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"text\": \"<string>\"\n        },\n        \"system\": \"<uri>\",\n        \"value\": \"<string>\"\n      },\n      \"display\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3add4e15-a0ea-42f4-bd8b-2636c1e72266",
+              "name": "Patient updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Patient",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"meta\": {\n    \"versionId\": \"string\",\n    \"lastUpdated\": \"1992-12-28T19:55:58.425Z\",\n    \"profile\": [\n      \"https://scVKjeQoRyQPBaIqlPz.scpYt+LKyTvs8cb4BKjdEsHZg\",\n      \"http://wEcfzLD.gphsJVCI6Z+JGzoY5Sa9sirCEQoDuo8dhQ\"\n    ],\n    \"tag\": [\n      {\n        \"system\": \"https://VhqOUGrrTMwiynltORLKb.gwM9dZjkhQdY4jr+Rl.IpsYOXES5wWhlIX4\",\n        \"version\": \"string\",\n        \"code\": \"string\",\n        \"display\": \"string\",\n        \"userSelected\": true\n      },\n      {\n        \"system\": \"https://FoByyUEfljABANqCrMRkpWeqrsDm.pbeIz8SyBqIHvbs2Z2D0MGAQ.Whsd,mJfpv+Tbm6K+\",\n        \"version\": \"string\",\n        \"code\": \"string\",\n        \"display\": \"string\",\n        \"userSelected\": true\n      }\n    ]\n  },\n  \"identifier\": [\n    {\n      \"use\": \"usual\",\n      \"type\": {\n        \"coding\": [\n          {\n            \"system\": \"https://YNtKwmoCftUwGrrdbYF.lfuZwky3YYnMI1364P7j5lIqdnSVY0qMGvGujtIyPG-j41xCNSKOaF\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          },\n          {\n            \"system\": \"https://rPIxqYFmrWToLDnePedXjInLHuzSt.hsgbXqrCoFyJyUGMcPOatLgm+z8BquXJpR1w.O3fho9OS6\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": false\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"system\": \"http://HBJxWEh.dwvdwO+HFNNnhskATH65Ki5HFfwp3oCXDDXj8MjdOwzKes1X+nrC8zDWKUcAYiRZ3OdVmT5bFXY\",\n      \"value\": \"string\"\n    },\n    {\n      \"use\": \"old\",\n      \"type\": {\n        \"coding\": [\n          {\n            \"system\": \"https://YiMbhrCylEGMYIfZNmKlaPA.fyuaw5mKsFViABkoVfLi-jfZGTTNEsvdr8g1LJTl3uiH8ufmh0ix8vu2MvGpx1mST+IF\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          },\n          {\n            \"system\": \"https://ePXGlkJtKXnpVUgVJaNvecVZdH.lujXF9A99TC+DHzQ2rTopWbKaTJ2cERt9GRWHPWokN,el-FaAT+uf5-d1yX\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": false\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"system\": \"http://JZaaqcdiTgZIkREbEkGtBPvBGjbnWWhkw.xnYyd915yL,wXhoUYx3VCay\",\n      \"value\": \"string\"\n    }\n  ],\n  \"active\": \"<boolean>\",\n  \"name\": [\n    {\n      \"use\": \"nickname\",\n      \"text\": \"string\",\n      \"family\": \"string\",\n      \"given\": [\n        \"string\",\n        \"string\"\n      ],\n      \"prefix\": [\n        \"string\",\n        \"string\"\n      ],\n      \"suffix\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"use\": \"usual\",\n      \"text\": \"string\",\n      \"family\": \"string\",\n      \"given\": [\n        \"string\",\n        \"string\"\n      ],\n      \"prefix\": [\n        \"string\",\n        \"string\"\n      ],\n      \"suffix\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"telecom\": [\n    {\n      \"system\": \"pager\",\n      \"value\": \"string\",\n      \"use\": \"work\"\n    },\n    {\n      \"system\": \"other\",\n      \"value\": \"string\",\n      \"use\": \"old\"\n    }\n  ],\n  \"gender\": \"<string>\",\n  \"birthDate\": \"<date>\",\n  \"deceased\": {\n    \"deceasedBoolean\": \"<boolean>\",\n    \"deceasedDateTime\": \"<dateTime>\"\n  },\n  \"address\": [\n    {\n      \"use\": \"billing\",\n      \"type\": \"physical\",\n      \"text\": \"string\",\n      \"line\": [\n        \"string\",\n        \"string\"\n      ],\n      \"city\": \"string\",\n      \"district\": \"string\",\n      \"state\": \"string\",\n      \"postalCode\": \"string\",\n      \"country\": \"string\"\n    },\n    {\n      \"use\": \"billing\",\n      \"type\": \"physical\",\n      \"text\": \"string\",\n      \"line\": [\n        \"string\",\n        \"string\"\n      ],\n      \"city\": \"string\",\n      \"district\": \"string\",\n      \"state\": \"string\",\n      \"postalCode\": \"string\",\n      \"country\": \"string\"\n    }\n  ],\n  \"communication\": [\n    {\n      \"language\": {\n        \"coding\": [\n          {\n            \"system\": \"http://USWrLvFXwBeERfQTVLrtTlGDQPwdnfvpZ.xwr3cVd3yQ0hzUuwl8WFr0KAOeEH\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          },\n          {\n            \"system\": \"https://wWg.wguzwyJsqP8VjzvjyXE1DDM1SyXNHlOSCdltUjuWFy-DVkCxfjC4QVjOr7zB\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": false\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"preferred\": \"<boolean>\"\n    },\n    {\n      \"language\": {\n        \"coding\": [\n          {\n            \"system\": \"https://femz.wmlCdvB+EzAyNT4wHPfZ4a.LhsbXQ-.oMdk5YdBdYR5yjUKi3I-aj\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          },\n          {\n            \"system\": \"https://cvJDdtpSq.icleE1bqCuZbbOIIihFBr5uF\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"preferred\": \"<boolean>\"\n    }\n  ],\n  \"generalPractitioner\": [\n    {\n      \"reference\": \"string\",\n      \"type\": \"https://BkDtkAogkbDnxsIBMgrtqZqCgsyTP.qqmvP4GD4kuR1Rye1EOdqwwyJjQNlaisSrDvn7iqYm+uaGMM2Dvtex9Ekk-KbBET+1p0QL\",\n      \"identifier\": {\n        \"use\": \"official\",\n        \"type\": {\n          \"coding\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"text\": \"string\"\n        },\n        \"system\": \"https://IJjdQZxLHYMZXPZtRhqHZRii.iqyzUoO+q8nJID6GO3x9RwUXK7ci2vc\",\n        \"value\": \"string\"\n      },\n      \"display\": \"string\"\n    },\n    {\n      \"reference\": \"string\",\n      \"type\": \"https://yNEpkDwtNaQCrpVyDKrZhVxG.vdNJzhie8iTilwLLRMPLet7ET2lG,S,dKWQA7.XIuq\",\n      \"identifier\": {\n        \"use\": \"secondary\",\n        \"type\": {\n          \"coding\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"text\": \"string\"\n        },\n        \"system\": \"https://RFaoNRJgsScGKgcAqZZu.hmklH1bkW.E\",\n        \"value\": \"string\"\n      },\n      \"display\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"Patient\",\n  \"id\": \"string\",\n  \"meta\": {\n    \"versionId\": \"string\",\n    \"lastUpdated\": \"1974-12-05T18:33:12.317Z\",\n    \"profile\": [\n      \"http://KAWpMPTu.dviyb-AMG1wWbF-LYvqEdxo6Jf\",\n      \"http://U.lflFQJXUPC9iZh\"\n    ],\n    \"tag\": [\n      {\n        \"system\": \"https://LhVSzhrfkCYByFXrjJpiMwGnJuhi.syll6DGZnc.jnTyycQMflkH\",\n        \"version\": \"string\",\n        \"code\": \"string\",\n        \"display\": \"string\",\n        \"userSelected\": true\n      },\n      {\n        \"system\": \"https://JtxKBxi.hpgp--JKLO4,JLnR9sm48wXT,pIH0CexLZv76QjIdhYSgztBdj4bN,3tstFU27\",\n        \"version\": \"string\",\n        \"code\": \"string\",\n        \"display\": \"string\",\n        \"userSelected\": false\n      }\n    ]\n  },\n  \"identifier\": [\n    {\n      \"use\": \"old\",\n      \"type\": {\n        \"coding\": [\n          {\n            \"system\": \"https://ZZkLWlfxfsStDRWppUakombJENXKBARw.bweMXM,VCteZ,wBH.K5,VDNrWA8Z.,Cf82.UvB\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          },\n          {\n            \"system\": \"http://HEoKLPdXeERQHFHvWIuyJjqkEmJHQrpEW.xacqBAzXus3JZZfInAfcWBAtBXLBE-KFY\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"system\": \"http://XihLfzJytiCQYUJtGK.cyelFjiF2eaCEasmGoCYqVrqKQfpsOEUj4jbL.XOIPHoZPb\",\n      \"value\": \"string\"\n    },\n    {\n      \"use\": \"temp\",\n      \"type\": {\n        \"coding\": [\n          {\n            \"system\": \"https://gkzWCyIOrqYRtyprxdDuhpQgGDpubFE.vrJa3b.ti\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": false\n          },\n          {\n            \"system\": \"https://cugmAXIZux.cvcpcVcVKB0fp\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": false\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"system\": \"https://cllKXyHhXeQjgwncA.jknpQui--bYqke4hC,2YR-YHLSw7,JRSHvb\",\n      \"value\": \"string\"\n    }\n  ],\n  \"active\": true,\n  \"name\": [\n    {\n      \"use\": \"usual\",\n      \"text\": \"string\",\n      \"family\": \"string\",\n      \"given\": [\n        \"string\",\n        \"string\"\n      ],\n      \"prefix\": [\n        \"string\",\n        \"string\"\n      ],\n      \"suffix\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"use\": \"temp\",\n      \"text\": \"string\",\n      \"family\": \"string\",\n      \"given\": [\n        \"string\",\n        \"string\"\n      ],\n      \"prefix\": [\n        \"string\",\n        \"string\"\n      ],\n      \"suffix\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"telecom\": [\n    {\n      \"system\": \"email\",\n      \"value\": \"string\",\n      \"use\": \"mobile\"\n    },\n    {\n      \"system\": \"pager\",\n      \"value\": \"string\",\n      \"use\": \"mobile\"\n    }\n  ],\n  \"gender\": \"other\",\n  \"birthDate\": \"1963-04-02\",\n  \"deceased\": {\n    \"deceasedBoolean\": true,\n    \"deceasedDateTime\": \"1979-07-03T21:05:37.542Z\"\n  },\n  \"address\": [\n    {\n      \"use\": \"home\",\n      \"type\": \"postal\",\n      \"text\": \"string\",\n      \"line\": [\n        \"string\",\n        \"string\"\n      ],\n      \"city\": \"string\",\n      \"district\": \"string\",\n      \"state\": \"string\",\n      \"postalCode\": \"string\",\n      \"country\": \"string\"\n    },\n    {\n      \"use\": \"work\",\n      \"type\": \"physical\",\n      \"text\": \"string\",\n      \"line\": [\n        \"string\",\n        \"string\"\n      ],\n      \"city\": \"string\",\n      \"district\": \"string\",\n      \"state\": \"string\",\n      \"postalCode\": \"string\",\n      \"country\": \"string\"\n    }\n  ],\n  \"communication\": [\n    {\n      \"language\": {\n        \"coding\": [\n          {\n            \"system\": \"https://pUEZEJsBdNvLKWoDLcSHEXt.xkxpGYwnxA5Cp5c,LEujozp9z1y\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": false\n          },\n          {\n            \"system\": \"https://DKCQzNUmspAb.uoQZTdSfY+AHwJ15YpUBEDI,0T\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"preferred\": false\n    },\n    {\n      \"language\": {\n        \"coding\": [\n          {\n            \"system\": \"http://hArvuoGvBOnaoayHiwYJ.wpuICkLJu5bEVnQj7ajjRucFz+lrzhH0CKW.xSJHidQyKjI3L4REXpetSMGNmg3aghY\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": false\n          },\n          {\n            \"system\": \"https://dikRkPDaClaQdFCSiwn.qmopXilz0,ZIPTUhx+P8tK4uozhCPgVpoGI\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": false\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"preferred\": true\n    }\n  ],\n  \"generalPractitioner\": [\n    {\n      \"reference\": \"string\",\n      \"type\": \"http://lbNTlg.xlsoNTVjGXXKb0v\",\n      \"identifier\": {\n        \"use\": \"usual\",\n        \"type\": {\n          \"coding\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"text\": \"string\"\n        },\n        \"system\": \"https://bBZPZcaOPSaYRj.apKErIl0K3C,GTbxWKKGZBzd.M92SGc.cRcNyf2Ury71ORIKQtNC\",\n        \"value\": \"string\"\n      },\n      \"display\": \"string\"\n    },\n    {\n      \"reference\": \"string\",\n      \"type\": \"http://PzHlxAYBCmKvMJpZojeTHKosbVN.iukkoCRJvnO6j895OVfDxTDFkdqP\",\n      \"identifier\": {\n        \"use\": \"official\",\n        \"type\": {\n          \"coding\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"text\": \"string\"\n        },\n        \"system\": \"https://PpTabRWEPKsn.tnJgyCbv7TxlOEMvTb-Bo8BPYmCnp6OqftRhhGNuUhlMfo6I.WI1KMjsUt0v,Ud.d\",\n        \"value\": \"string\"\n      },\n      \"display\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4fa1af26-ecf2-4fc8-a011-f538c546864d",
+              "name": "Patient created (upsert)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Patient",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"meta\": {\n    \"versionId\": \"string\",\n    \"lastUpdated\": \"1992-12-28T19:55:58.425Z\",\n    \"profile\": [\n      \"https://scVKjeQoRyQPBaIqlPz.scpYt+LKyTvs8cb4BKjdEsHZg\",\n      \"http://wEcfzLD.gphsJVCI6Z+JGzoY5Sa9sirCEQoDuo8dhQ\"\n    ],\n    \"tag\": [\n      {\n        \"system\": \"https://VhqOUGrrTMwiynltORLKb.gwM9dZjkhQdY4jr+Rl.IpsYOXES5wWhlIX4\",\n        \"version\": \"string\",\n        \"code\": \"string\",\n        \"display\": \"string\",\n        \"userSelected\": true\n      },\n      {\n        \"system\": \"https://FoByyUEfljABANqCrMRkpWeqrsDm.pbeIz8SyBqIHvbs2Z2D0MGAQ.Whsd,mJfpv+Tbm6K+\",\n        \"version\": \"string\",\n        \"code\": \"string\",\n        \"display\": \"string\",\n        \"userSelected\": true\n      }\n    ]\n  },\n  \"identifier\": [\n    {\n      \"use\": \"usual\",\n      \"type\": {\n        \"coding\": [\n          {\n            \"system\": \"https://YNtKwmoCftUwGrrdbYF.lfuZwky3YYnMI1364P7j5lIqdnSVY0qMGvGujtIyPG-j41xCNSKOaF\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          },\n          {\n            \"system\": \"https://rPIxqYFmrWToLDnePedXjInLHuzSt.hsgbXqrCoFyJyUGMcPOatLgm+z8BquXJpR1w.O3fho9OS6\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": false\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"system\": \"http://HBJxWEh.dwvdwO+HFNNnhskATH65Ki5HFfwp3oCXDDXj8MjdOwzKes1X+nrC8zDWKUcAYiRZ3OdVmT5bFXY\",\n      \"value\": \"string\"\n    },\n    {\n      \"use\": \"old\",\n      \"type\": {\n        \"coding\": [\n          {\n            \"system\": \"https://YiMbhrCylEGMYIfZNmKlaPA.fyuaw5mKsFViABkoVfLi-jfZGTTNEsvdr8g1LJTl3uiH8ufmh0ix8vu2MvGpx1mST+IF\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          },\n          {\n            \"system\": \"https://ePXGlkJtKXnpVUgVJaNvecVZdH.lujXF9A99TC+DHzQ2rTopWbKaTJ2cERt9GRWHPWokN,el-FaAT+uf5-d1yX\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": false\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"system\": \"http://JZaaqcdiTgZIkREbEkGtBPvBGjbnWWhkw.xnYyd915yL,wXhoUYx3VCay\",\n      \"value\": \"string\"\n    }\n  ],\n  \"active\": \"<boolean>\",\n  \"name\": [\n    {\n      \"use\": \"nickname\",\n      \"text\": \"string\",\n      \"family\": \"string\",\n      \"given\": [\n        \"string\",\n        \"string\"\n      ],\n      \"prefix\": [\n        \"string\",\n        \"string\"\n      ],\n      \"suffix\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"use\": \"usual\",\n      \"text\": \"string\",\n      \"family\": \"string\",\n      \"given\": [\n        \"string\",\n        \"string\"\n      ],\n      \"prefix\": [\n        \"string\",\n        \"string\"\n      ],\n      \"suffix\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"telecom\": [\n    {\n      \"system\": \"pager\",\n      \"value\": \"string\",\n      \"use\": \"work\"\n    },\n    {\n      \"system\": \"other\",\n      \"value\": \"string\",\n      \"use\": \"old\"\n    }\n  ],\n  \"gender\": \"<string>\",\n  \"birthDate\": \"<date>\",\n  \"deceased\": {\n    \"deceasedBoolean\": \"<boolean>\",\n    \"deceasedDateTime\": \"<dateTime>\"\n  },\n  \"address\": [\n    {\n      \"use\": \"billing\",\n      \"type\": \"physical\",\n      \"text\": \"string\",\n      \"line\": [\n        \"string\",\n        \"string\"\n      ],\n      \"city\": \"string\",\n      \"district\": \"string\",\n      \"state\": \"string\",\n      \"postalCode\": \"string\",\n      \"country\": \"string\"\n    },\n    {\n      \"use\": \"billing\",\n      \"type\": \"physical\",\n      \"text\": \"string\",\n      \"line\": [\n        \"string\",\n        \"string\"\n      ],\n      \"city\": \"string\",\n      \"district\": \"string\",\n      \"state\": \"string\",\n      \"postalCode\": \"string\",\n      \"country\": \"string\"\n    }\n  ],\n  \"communication\": [\n    {\n      \"language\": {\n        \"coding\": [\n          {\n            \"system\": \"http://USWrLvFXwBeERfQTVLrtTlGDQPwdnfvpZ.xwr3cVd3yQ0hzUuwl8WFr0KAOeEH\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          },\n          {\n            \"system\": \"https://wWg.wguzwyJsqP8VjzvjyXE1DDM1SyXNHlOSCdltUjuWFy-DVkCxfjC4QVjOr7zB\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": false\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"preferred\": \"<boolean>\"\n    },\n    {\n      \"language\": {\n        \"coding\": [\n          {\n            \"system\": \"https://femz.wmlCdvB+EzAyNT4wHPfZ4a.LhsbXQ-.oMdk5YdBdYR5yjUKi3I-aj\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          },\n          {\n            \"system\": \"https://cvJDdtpSq.icleE1bqCuZbbOIIihFBr5uF\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"preferred\": \"<boolean>\"\n    }\n  ],\n  \"generalPractitioner\": [\n    {\n      \"reference\": \"string\",\n      \"type\": \"https://BkDtkAogkbDnxsIBMgrtqZqCgsyTP.qqmvP4GD4kuR1Rye1EOdqwwyJjQNlaisSrDvn7iqYm+uaGMM2Dvtex9Ekk-KbBET+1p0QL\",\n      \"identifier\": {\n        \"use\": \"official\",\n        \"type\": {\n          \"coding\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"text\": \"string\"\n        },\n        \"system\": \"https://IJjdQZxLHYMZXPZtRhqHZRii.iqyzUoO+q8nJID6GO3x9RwUXK7ci2vc\",\n        \"value\": \"string\"\n      },\n      \"display\": \"string\"\n    },\n    {\n      \"reference\": \"string\",\n      \"type\": \"https://yNEpkDwtNaQCrpVyDKrZhVxG.vdNJzhie8iTilwLLRMPLet7ET2lG,S,dKWQA7.XIuq\",\n      \"identifier\": {\n        \"use\": \"secondary\",\n        \"type\": {\n          \"coding\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"text\": \"string\"\n        },\n        \"system\": \"https://RFaoNRJgsScGKgcAqZZu.hmklH1bkW.E\",\n        \"value\": \"string\"\n      },\n      \"display\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ce697fcb-e40f-45f0-bead-5952a7730508",
+              "name": "Invalid resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Patient",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"meta\": {\n    \"versionId\": \"string\",\n    \"lastUpdated\": \"1992-12-28T19:55:58.425Z\",\n    \"profile\": [\n      \"https://scVKjeQoRyQPBaIqlPz.scpYt+LKyTvs8cb4BKjdEsHZg\",\n      \"http://wEcfzLD.gphsJVCI6Z+JGzoY5Sa9sirCEQoDuo8dhQ\"\n    ],\n    \"tag\": [\n      {\n        \"system\": \"https://VhqOUGrrTMwiynltORLKb.gwM9dZjkhQdY4jr+Rl.IpsYOXES5wWhlIX4\",\n        \"version\": \"string\",\n        \"code\": \"string\",\n        \"display\": \"string\",\n        \"userSelected\": true\n      },\n      {\n        \"system\": \"https://FoByyUEfljABANqCrMRkpWeqrsDm.pbeIz8SyBqIHvbs2Z2D0MGAQ.Whsd,mJfpv+Tbm6K+\",\n        \"version\": \"string\",\n        \"code\": \"string\",\n        \"display\": \"string\",\n        \"userSelected\": true\n      }\n    ]\n  },\n  \"identifier\": [\n    {\n      \"use\": \"usual\",\n      \"type\": {\n        \"coding\": [\n          {\n            \"system\": \"https://YNtKwmoCftUwGrrdbYF.lfuZwky3YYnMI1364P7j5lIqdnSVY0qMGvGujtIyPG-j41xCNSKOaF\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          },\n          {\n            \"system\": \"https://rPIxqYFmrWToLDnePedXjInLHuzSt.hsgbXqrCoFyJyUGMcPOatLgm+z8BquXJpR1w.O3fho9OS6\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": false\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"system\": \"http://HBJxWEh.dwvdwO+HFNNnhskATH65Ki5HFfwp3oCXDDXj8MjdOwzKes1X+nrC8zDWKUcAYiRZ3OdVmT5bFXY\",\n      \"value\": \"string\"\n    },\n    {\n      \"use\": \"old\",\n      \"type\": {\n        \"coding\": [\n          {\n            \"system\": \"https://YiMbhrCylEGMYIfZNmKlaPA.fyuaw5mKsFViABkoVfLi-jfZGTTNEsvdr8g1LJTl3uiH8ufmh0ix8vu2MvGpx1mST+IF\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          },\n          {\n            \"system\": \"https://ePXGlkJtKXnpVUgVJaNvecVZdH.lujXF9A99TC+DHzQ2rTopWbKaTJ2cERt9GRWHPWokN,el-FaAT+uf5-d1yX\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": false\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"system\": \"http://JZaaqcdiTgZIkREbEkGtBPvBGjbnWWhkw.xnYyd915yL,wXhoUYx3VCay\",\n      \"value\": \"string\"\n    }\n  ],\n  \"active\": \"<boolean>\",\n  \"name\": [\n    {\n      \"use\": \"nickname\",\n      \"text\": \"string\",\n      \"family\": \"string\",\n      \"given\": [\n        \"string\",\n        \"string\"\n      ],\n      \"prefix\": [\n        \"string\",\n        \"string\"\n      ],\n      \"suffix\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"use\": \"usual\",\n      \"text\": \"string\",\n      \"family\": \"string\",\n      \"given\": [\n        \"string\",\n        \"string\"\n      ],\n      \"prefix\": [\n        \"string\",\n        \"string\"\n      ],\n      \"suffix\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"telecom\": [\n    {\n      \"system\": \"pager\",\n      \"value\": \"string\",\n      \"use\": \"work\"\n    },\n    {\n      \"system\": \"other\",\n      \"value\": \"string\",\n      \"use\": \"old\"\n    }\n  ],\n  \"gender\": \"<string>\",\n  \"birthDate\": \"<date>\",\n  \"deceased\": {\n    \"deceasedBoolean\": \"<boolean>\",\n    \"deceasedDateTime\": \"<dateTime>\"\n  },\n  \"address\": [\n    {\n      \"use\": \"billing\",\n      \"type\": \"physical\",\n      \"text\": \"string\",\n      \"line\": [\n        \"string\",\n        \"string\"\n      ],\n      \"city\": \"string\",\n      \"district\": \"string\",\n      \"state\": \"string\",\n      \"postalCode\": \"string\",\n      \"country\": \"string\"\n    },\n    {\n      \"use\": \"billing\",\n      \"type\": \"physical\",\n      \"text\": \"string\",\n      \"line\": [\n        \"string\",\n        \"string\"\n      ],\n      \"city\": \"string\",\n      \"district\": \"string\",\n      \"state\": \"string\",\n      \"postalCode\": \"string\",\n      \"country\": \"string\"\n    }\n  ],\n  \"communication\": [\n    {\n      \"language\": {\n        \"coding\": [\n          {\n            \"system\": \"http://USWrLvFXwBeERfQTVLrtTlGDQPwdnfvpZ.xwr3cVd3yQ0hzUuwl8WFr0KAOeEH\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          },\n          {\n            \"system\": \"https://wWg.wguzwyJsqP8VjzvjyXE1DDM1SyXNHlOSCdltUjuWFy-DVkCxfjC4QVjOr7zB\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": false\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"preferred\": \"<boolean>\"\n    },\n    {\n      \"language\": {\n        \"coding\": [\n          {\n            \"system\": \"https://femz.wmlCdvB+EzAyNT4wHPfZ4a.LhsbXQ-.oMdk5YdBdYR5yjUKi3I-aj\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          },\n          {\n            \"system\": \"https://cvJDdtpSq.icleE1bqCuZbbOIIihFBr5uF\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"preferred\": \"<boolean>\"\n    }\n  ],\n  \"generalPractitioner\": [\n    {\n      \"reference\": \"string\",\n      \"type\": \"https://BkDtkAogkbDnxsIBMgrtqZqCgsyTP.qqmvP4GD4kuR1Rye1EOdqwwyJjQNlaisSrDvn7iqYm+uaGMM2Dvtex9Ekk-KbBET+1p0QL\",\n      \"identifier\": {\n        \"use\": \"official\",\n        \"type\": {\n          \"coding\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"text\": \"string\"\n        },\n        \"system\": \"https://IJjdQZxLHYMZXPZtRhqHZRii.iqyzUoO+q8nJID6GO3x9RwUXK7ci2vc\",\n        \"value\": \"string\"\n      },\n      \"display\": \"string\"\n    },\n    {\n      \"reference\": \"string\",\n      \"type\": \"https://yNEpkDwtNaQCrpVyDKrZhVxG.vdNJzhie8iTilwLLRMPLet7ET2lG,S,dKWQA7.XIuq\",\n      \"identifier\": {\n        \"use\": \"secondary\",\n        \"type\": {\n          \"coding\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"text\": \"string\"\n        },\n        \"system\": \"https://RFaoNRJgsScGKgcAqZZu.hmklH1bkW.E\",\n        \"value\": \"string\"\n      },\n      \"display\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://fhir-server.example.com/fhir/R4",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "patient/Patient.read patient/Observation.read patient/Condition.read patient/MedicationRequest.read patient/Encounter.read launch/patient openid"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.example.com/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://auth.example.com/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "51787437-4339-4b86-9736-424c7a2d015a",
+    "name": "HL7 FHIR R4 Healthcare API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "HL7 FHIR R4 (v4.0.1) RESTful API for healthcare data exchange. Provides access to patient demographics, clinical observations, conditions, medications, encounters, care plans, and diagnostic reports. Implements the FHIR REST specification including CRUD operations, search parameters, history, and batch/ transaction bundles. SMART on FHIR OAuth 2.0 authorization required.\n\nContact Support:\n Name: HL7 International",
+      "type": "text/plain"
+    }
+  }
+}
