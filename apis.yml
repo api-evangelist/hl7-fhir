@@ -90,6 +90,8 @@ apis:
       - type: Authentication
         url: http://hl7.org/fhir/smart-app-launch/ImplementationGuide/hl7.fhir.uv.smart-app-launch
 common:
+  - type: OAuthScopes
+    url: scopes/hl7-fhir-scopes.yml
   - type: Portal
     url: https://www.hl7.org/fhir/
   - type: Documentation
