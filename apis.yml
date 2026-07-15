@@ -90,6 +90,8 @@ apis:
       - type: Authentication
         url: http://hl7.org/fhir/smart-app-launch/ImplementationGuide/hl7.fhir.uv.smart-app-launch
 common:
+  - type: AgenticAccess
+    url: agentic-access/hl7-fhir-agentic-access.yml
   - type: DomainSecurity
     url: security/hl7-fhir-domain-security.yml
   - type: Authentication
