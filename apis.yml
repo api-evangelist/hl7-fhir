@@ -6,6 +6,19 @@ description: >-
   and administrative healthcare data in JSON, XML, and RDF formats with a CC0 open license.
 url: https://raw.githubusercontent.com/api-evangelist/hl7-fhir/refs/heads/main/apis.yml
 type: Index
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 image: https://raw.githubusercontent.com/api-evangelist/hl7-fhir/refs/heads/main/image.png
 tags:
   - Clinical
@@ -17,78 +30,148 @@ created: '2025'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: hl7-fhir:hl7-fhir-r5-api
-    name: HL7 FHIR R5 Healthcare API
-    description: >-
-      HL7 FHIR R5 (Release 5) is the current published FHIR standard for healthcare data exchange. FHIR R5 REST APIs
-      provide access to patient demographics, observations, conditions, medications, encounters, and care plans in both
-      JSON and XML formats across EHR systems, published March 2023.
-    humanURL: https://www.hl7.org/fhir/
-    baseURL: https://fhir-server.example.com/fhir/R5
-    image: https://raw.githubusercontent.com/api-evangelist/hl7-fhir/refs/heads/main/image.png
-    tags:
-      - Clinical
-      - FHIR
-      - Healthcare
-      - HL7
-      - Interoperability
-      - JSON
-      - XML
-    properties:
-      - type: Documentation
-        url: https://www.hl7.org/fhir/
-      - type: Reference
-        url: https://www.hl7.org/fhir/http.html
-      - type: Authentication
-        url: https://www.hl7.org/fhir/security.html
-      - type: ChangeLog
-        url: https://www.hl7.org/fhir/history.html
-  - aid: hl7-fhir:hl7-fhir-r4-api
-    name: HL7 FHIR R4 Healthcare API
-    description: >-
-      HL7 FHIR R4 (v4.0.1) is a widely adopted normative FHIR standard for healthcare data exchange. FHIR R4 REST APIs
-      are the most commonly implemented version across US healthcare systems, supporting patient data, clinical
-      resources, medications, diagnostics, and financial resources.
-    humanURL: https://www.hl7.org/fhir/R4/
-    baseURL: https://fhir-server.example.com/fhir/R4
-    image: https://raw.githubusercontent.com/api-evangelist/hl7-fhir/refs/heads/main/image.png
-    tags:
-      - Clinical
-      - FHIR
-      - Healthcare
-      - HL7
-      - Interoperability
-      - JSON
-      - XML
-    properties:
-      - type: Documentation
-        url: https://www.hl7.org/fhir/R4/
-      - type: Reference
-        url: https://www.hl7.org/fhir/R4/http.html
-      - type: ChangeLog
-        url: http://hl7.org/fhir/R4/history.html
-      - type: OpenAPI
-        url: openapi/hl7-fhir-r4-openapi.yml
-  - aid: hl7-fhir:hl7-smart-on-fhir-api
-    name: SMART on FHIR Authentication
-    description: >-
-      SMART on FHIR (v2.2.0) defines OAuth 2.0-based authorization patterns for client applications to authorize,
-      authenticate, and integrate with FHIR-based data systems. It enables EHR launch, standalone launch, and backend
-      service authorization workflows.
-    humanURL: http://hl7.org/fhir/smart-app-launch/ImplementationGuide/hl7.fhir.uv.smart-app-launch
-    baseURL: https://fhir-server.example.com/fhir
-    image: https://raw.githubusercontent.com/api-evangelist/hl7-fhir/refs/heads/main/image.png
-    tags:
-      - Authentication
-      - FHIR
-      - Healthcare
-      - OAuth2
-      - SMART
-    properties:
-      - type: Documentation
-        url: http://hl7.org/fhir/smart-app-launch/ImplementationGuide/hl7.fhir.uv.smart-app-launch
-      - type: Authentication
-        url: http://hl7.org/fhir/smart-app-launch/ImplementationGuide/hl7.fhir.uv.smart-app-launch
+- aid: hl7-fhir:hl7-fhir-r5-api
+  name: HL7 FHIR R5 Healthcare API
+  description: >-
+    HL7 FHIR R5 (Release 5) is the current published FHIR standard for healthcare data exchange. FHIR
+    R5 REST APIs provide access to patient demographics, observations, conditions, medications, encounters,
+    and care plans in both JSON and XML formats across EHR systems, published March 2023.
+  humanURL: https://www.hl7.org/fhir/
+  baseURL: https://fhir-server.example.com/fhir/R5
+  image: https://raw.githubusercontent.com/api-evangelist/hl7-fhir/refs/heads/main/image.png
+  tags:
+  - Clinical
+  - FHIR
+  - Healthcare
+  - HL7
+  - Interoperability
+  - JSON
+  - XML
+  properties:
+  - type: Documentation
+    url: https://www.hl7.org/fhir/
+  - type: Reference
+    url: https://www.hl7.org/fhir/http.html
+  - type: Authentication
+    url: https://www.hl7.org/fhir/security.html
+  - type: ChangeLog
+    url: https://www.hl7.org/fhir/history.html
+- aid: hl7-fhir:hl7-smart-on-fhir-api
+  name: SMART on FHIR Authentication
+  description: >-
+    SMART on FHIR (v2.2.0) defines OAuth 2.0-based authorization patterns for client applications to authorize,
+    authenticate, and integrate with FHIR-based data systems. It enables EHR launch, standalone launch,
+    and backend service authorization workflows.
+  humanURL: http://hl7.org/fhir/smart-app-launch/ImplementationGuide/hl7.fhir.uv.smart-app-launch
+  baseURL: https://fhir-server.example.com/fhir
+  image: https://raw.githubusercontent.com/api-evangelist/hl7-fhir/refs/heads/main/image.png
+  tags:
+  - Authentication
+  - FHIR
+  - Healthcare
+  - OAuth2
+  - SMART
+  properties:
+  - type: Documentation
+    url: http://hl7.org/fhir/smart-app-launch/ImplementationGuide/hl7.fhir.uv.smart-app-launch
+  - type: Authentication
+    url: http://hl7.org/fhir/smart-app-launch/ImplementationGuide/hl7.fhir.uv.smart-app-launch
+- aid: hl7-fhir:hl7-fhir-bundle-api
+  name: HL7 FHIR Bundle API
+  description: Batch and transaction operations
+  humanURL: https://www.hl7.org/fhir/
+  baseURL: https://fhir-server.example.com/fhir/R5
+  tags:
+  - Bundle
+  properties:
+  - type: OpenAPI
+    url: openapi/hl7-fhir-bundle-api-openapi.yml
+  - type: Documentation
+    url: https://www.hl7.org/fhir/R4/
+  - type: Reference
+    url: https://www.hl7.org/fhir/R4/http.html
+  - type: ChangeLog
+    url: http://hl7.org/fhir/R4/history.html
+- aid: hl7-fhir:hl7-fhir-condition-api
+  name: HL7 FHIR Condition API
+  description: Clinical conditions, diagnoses, and problems
+  humanURL: https://www.hl7.org/fhir/
+  baseURL: https://fhir-server.example.com/fhir/R5
+  tags:
+  - Condition
+  properties:
+  - type: OpenAPI
+    url: openapi/hl7-fhir-condition-api-openapi.yml
+  - type: Documentation
+    url: https://www.hl7.org/fhir/R4/
+  - type: Reference
+    url: https://www.hl7.org/fhir/R4/http.html
+  - type: ChangeLog
+    url: http://hl7.org/fhir/R4/history.html
+- aid: hl7-fhir:hl7-fhir-encounter-api
+  name: HL7 FHIR Encounter API
+  description: Patient visits and encounters
+  humanURL: https://www.hl7.org/fhir/
+  baseURL: https://fhir-server.example.com/fhir/R5
+  tags:
+  - Encounter
+  properties:
+  - type: OpenAPI
+    url: openapi/hl7-fhir-encounter-api-openapi.yml
+  - type: Documentation
+    url: https://www.hl7.org/fhir/R4/
+  - type: Reference
+    url: https://www.hl7.org/fhir/R4/http.html
+  - type: ChangeLog
+    url: http://hl7.org/fhir/R4/history.html
+- aid: hl7-fhir:hl7-fhir-medicationrequest-api
+  name: HL7 FHIR MedicationRequest API
+  description: Medication prescriptions and orders
+  humanURL: https://www.hl7.org/fhir/
+  baseURL: https://fhir-server.example.com/fhir/R5
+  tags:
+  - MedicationRequest
+  properties:
+  - type: OpenAPI
+    url: openapi/hl7-fhir-medicationrequest-api-openapi.yml
+  - type: Documentation
+    url: https://www.hl7.org/fhir/R4/
+  - type: Reference
+    url: https://www.hl7.org/fhir/R4/http.html
+  - type: ChangeLog
+    url: http://hl7.org/fhir/R4/history.html
+- aid: hl7-fhir:hl7-fhir-observation-api
+  name: HL7 FHIR Observation API
+  description: Clinical measurements, lab results, vital signs
+  humanURL: https://www.hl7.org/fhir/
+  baseURL: https://fhir-server.example.com/fhir/R5
+  tags:
+  - Observation
+  properties:
+  - type: OpenAPI
+    url: openapi/hl7-fhir-observation-api-openapi.yml
+  - type: Documentation
+    url: https://www.hl7.org/fhir/R4/
+  - type: Reference
+    url: https://www.hl7.org/fhir/R4/http.html
+  - type: ChangeLog
+    url: http://hl7.org/fhir/R4/history.html
+- aid: hl7-fhir:hl7-fhir-patient-api
+  name: HL7 FHIR Patient API
+  description: Patient demographic and identity resources
+  humanURL: https://www.hl7.org/fhir/
+  baseURL: https://fhir-server.example.com/fhir/R5
+  tags:
+  - Patient
+  properties:
+  - type: OpenAPI
+    url: openapi/hl7-fhir-patient-api-openapi.yml
+  - type: Documentation
+    url: https://www.hl7.org/fhir/R4/
+  - type: Reference
+    url: https://www.hl7.org/fhir/R4/http.html
+  - type: ChangeLog
+    url: http://hl7.org/fhir/R4/history.html
 common:
   - type: AgenticAccess
     url: agentic-access/hl7-fhir-agentic-access.yml
