@@ -1,0 +1,24 @@
+{
+  "provider": "hl7-fhir",
+  "sources": [
+    "hl7-fhir-bundle-api-openapi.yml",
+    "hl7-fhir-condition-api-openapi.yml",
+    "hl7-fhir-encounter-api-openapi.yml",
+    "hl7-fhir-medicationrequest-api-openapi.yml",
+    "hl7-fhir-observation-api-openapi.yml",
+    "hl7-fhir-patient-api-openapi.yml"
+  ],
+  "outputs": [
+    "hl7-fhir-bundle-api-openapi.yml",
+    "hl7-fhir-condition-api-openapi.yml",
+    "hl7-fhir-encounter-api-openapi.yml",
+    "hl7-fhir-medicationrequest-api-openapi.yml",
+    "hl7-fhir-observation-api-openapi.yml",
+    "hl7-fhir-patient-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
