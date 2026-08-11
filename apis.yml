@@ -198,7 +198,7 @@ common:
   - type: GitHubOrganization
     url: https://github.com/HL7
   - type: OpenAPI
-    url: openapi/hl7-fhir-r4-openapi.yml
+    url: openapi/_original/hl7-fhir-r4-openapi.yml
   - type: JSONSchema
     url: json-schema/hl7-fhir-patient-schema.json
   - type: JSONLDContext
