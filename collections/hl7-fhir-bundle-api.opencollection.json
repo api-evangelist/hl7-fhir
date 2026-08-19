@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "HL7 FHIR R4 Healthcare Bundle API",
+    "version": "4.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://auth.example.com/authorize",
+      "accessTokenUrl": "https://auth.example.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Bundle",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Process batch or transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://fhir-server.example.com/fhir/R4/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Processes a FHIR Bundle of type 'batch' or 'transaction'. Batch processes each entry independently; transaction processes all entries atomically."
+        },
+        {
+          "info": {
+            "name": "Get server capability statement",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://fhir-server.example.com/fhir/R4/metadata"
+          },
+          "docs": "Returns the FHIR CapabilityStatement describing supported resources, operations, and search parameters for this server."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

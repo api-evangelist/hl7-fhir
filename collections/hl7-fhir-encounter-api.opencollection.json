@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "HL7 FHIR R4 Healthcare Bundle Encounter API",
+    "version": "4.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://auth.example.com/authorize",
+      "accessTokenUrl": "https://auth.example.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Encounter",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search encounters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://fhir-server.example.com/fhir/R4/Encounter",
+            "params": [
+              {
+                "name": "patient",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "class",
+                "value": "",
+                "type": "query",
+                "description": "Encounter class code (AMB, IMP, EMER, etc.)"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "_count",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Searches for Encounter resources (visits, hospitalizations, telehealth) for a patient."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

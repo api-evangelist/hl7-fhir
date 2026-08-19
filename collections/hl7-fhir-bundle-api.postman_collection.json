@@ -1,0 +1,230 @@
+{
+  "item": [
+    {
+      "id": "1af444e9-45d8-48a6-b676-a9adea4e8c59",
+      "name": "Bundle",
+      "description": {
+        "content": "Batch and transaction operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8c275c84-25fe-4045-85af-7731dccd7317",
+          "name": "Process batch or transaction",
+          "request": {
+            "name": "Process batch or transaction",
+            "description": {
+              "content": "Processes a FHIR Bundle of type 'batch' or 'transaction'. Batch processes each entry independently; transaction processes all entries atomically.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/fhir+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"resourceType\": \"<string>\",\n  \"type\": \"<string>\",\n  \"id\": \"<string>\",\n  \"total\": \"<integer>\",\n  \"link\": [\n    {\n      \"relation\": \"<string>\",\n      \"url\": \"<uri>\"\n    },\n    {\n      \"relation\": \"<string>\",\n      \"url\": \"<uri>\"\n    }\n  ],\n  \"entry\": [\n    {\n      \"fullUrl\": \"<uri>\",\n      \"resource\": \"<object>\",\n      \"search\": {\n        \"mode\": \"<string>\",\n        \"score\": \"<number>\"\n      },\n      \"request\": {\n        \"method\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"response\": {\n        \"status\": \"<string>\",\n        \"location\": \"<string>\"\n      }\n    },\n    {\n      \"fullUrl\": \"<uri>\",\n      \"resource\": \"<object>\",\n      \"search\": {\n        \"mode\": \"<string>\",\n        \"score\": \"<number>\"\n      },\n      \"request\": {\n        \"method\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"response\": {\n        \"status\": \"<string>\",\n        \"location\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e131e1b8-3764-4cda-a6b0-56dcaa8be603",
+              "name": "Bundle response with results for each entry",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceType\": \"<string>\",\n  \"type\": \"<string>\",\n  \"id\": \"<string>\",\n  \"total\": \"<integer>\",\n  \"link\": [\n    {\n      \"relation\": \"<string>\",\n      \"url\": \"<uri>\"\n    },\n    {\n      \"relation\": \"<string>\",\n      \"url\": \"<uri>\"\n    }\n  ],\n  \"entry\": [\n    {\n      \"fullUrl\": \"<uri>\",\n      \"resource\": \"<object>\",\n      \"search\": {\n        \"mode\": \"<string>\",\n        \"score\": \"<number>\"\n      },\n      \"request\": {\n        \"method\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"response\": {\n        \"status\": \"<string>\",\n        \"location\": \"<string>\"\n      }\n    },\n    {\n      \"fullUrl\": \"<uri>\",\n      \"resource\": \"<object>\",\n      \"search\": {\n        \"mode\": \"<string>\",\n        \"score\": \"<number>\"\n      },\n      \"request\": {\n        \"method\": \"<string>\",\n        \"url\": \"<string>\"\n      },\n      \"response\": {\n        \"status\": \"<string>\",\n        \"location\": \"<string>\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"Bundle\",\n  \"type\": \"batch\",\n  \"id\": \"string\",\n  \"total\": 6245,\n  \"link\": [\n    {\n      \"relation\": \"self\",\n      \"url\": \"http://WRiqbfsYh.hltC-TRgFg9bHo\"\n    },\n    {\n      \"relation\": \"first\",\n      \"url\": \"http://MjpdCLdViwlTJz.njgJvXlRSyb8.s6i44SzcxADmyR.h-\"\n    }\n  ],\n  \"entry\": [\n    {\n      \"fullUrl\": \"http://P.wdmL-OpO7qH20el\",\n      \"resource\": {},\n      \"search\": {\n        \"mode\": \"include\",\n        \"score\": 4187.527480619897\n      },\n      \"request\": {\n        \"method\": \"PATCH\",\n        \"url\": \"string\"\n      },\n      \"response\": {\n        \"status\": \"string\",\n        \"location\": \"string\"\n      }\n    },\n    {\n      \"fullUrl\": \"https://LBnyuasQr.gcadZhDFF3dbsc4bqm9JLtBdnmd5Le6mAbsEDrfbb,dW\",\n      \"resource\": {},\n      \"search\": {\n        \"mode\": \"include\",\n        \"score\": 247.86633720982553\n      },\n      \"request\": {\n        \"method\": \"PATCH\",\n        \"url\": \"string\"\n      },\n      \"response\": {\n        \"status\": \"string\",\n        \"location\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a0067a13-1437-452b-8b2d-070fb49865aa",
+          "name": "Get server capability statement",
+          "request": {
+            "name": "Get server capability statement",
+            "description": {
+              "content": "Returns the FHIR CapabilityStatement describing supported resources, operations, and search parameters for this server.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "metadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d097105f-290a-4d47-aede-1718d4e7e8e8",
+              "name": "CapabilityStatement returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"CapabilityStatement\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://fhir-server.example.com/fhir/R4",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "patient/Patient.read patient/Observation.read patient/Condition.read patient/MedicationRequest.read patient/Encounter.read launch/patient openid"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.example.com/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://auth.example.com/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f5e52e0e-057f-49e8-a255-402ac9297d26",
+    "name": "HL7 FHIR R4 Healthcare Bundle API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "HL7 FHIR R4 (v4.0.1) RESTful API for healthcare data exchange. Provides access to patient demographics, clinical observations, conditions, medications, encounters, care plans, and diagnostic reports. Implements the FHIR REST specification including CRUD operations, search parameters, history, and batch/ transaction bundles. SMART on FHIR OAuth 2.0 authorization required.\n\nContact Support:\n Name: HL7 International",
+      "type": "text/plain"
+    }
+  }
+}

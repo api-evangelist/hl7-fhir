@@ -1,0 +1,179 @@
+{
+  "item": [
+    {
+      "id": "88258528-f233-4d23-afb5-af1cda53e383",
+      "name": "MedicationRequest",
+      "description": {
+        "content": "Medication prescriptions and orders",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0eafccf6-1dcb-40b2-af26-9f9801730ab9",
+          "name": "Search medication requests",
+          "request": {
+            "name": "Search medication requests",
+            "description": {
+              "content": "Searches for MedicationRequest resources (prescriptions and medication orders) for a patient.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "MedicationRequest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "patient",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "medication",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "authoredon",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "_count",
+                  "value": "20"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7562c6a7-7324-43f0-b076-b915f44f4ee8",
+              "name": "Bundle of MedicationRequest resources returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "MedicationRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patient",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "medication",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "authoredon",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_count",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"Bundle\",\n  \"type\": \"message\",\n  \"id\": \"string\",\n  \"total\": 7986,\n  \"link\": [\n    {\n      \"relation\": \"self\",\n      \"url\": \"http://cZchxWUlCoevat.akD.Cb5ypt\"\n    },\n    {\n      \"relation\": \"self\",\n      \"url\": \"http://KvcgphSRaEQZEaaEtIpnQtabynLXQ.yrwBPUQdb,lyUZcO5PrQJjWSjtQqRqkPnGqeS7k3auMFmS\"\n    }\n  ],\n  \"entry\": [\n    {\n      \"fullUrl\": \"https://QrGZbQ.ftsuJn\",\n      \"resource\": {},\n      \"search\": {\n        \"mode\": \"match\",\n        \"score\": 4626.925796032439\n      },\n      \"request\": {\n        \"method\": \"POST\",\n        \"url\": \"string\"\n      },\n      \"response\": {\n        \"status\": \"string\",\n        \"location\": \"string\"\n      }\n    },\n    {\n      \"fullUrl\": \"http://VTVzZkmFeBoJMAxEJFmhXilAPbbWJTmnI.ketDgHLIuFyXpvATULUDb-+lZGb-qHF9GVCiLPVboWF61FCXv5uXZ2VPI0Or-vYi\",\n      \"resource\": {},\n      \"search\": {\n        \"mode\": \"outcome\",\n        \"score\": 7584.919572641109\n      },\n      \"request\": {\n        \"method\": \"PATCH\",\n        \"url\": \"string\"\n      },\n      \"response\": {\n        \"status\": \"string\",\n        \"location\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://fhir-server.example.com/fhir/R4",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "patient/Patient.read patient/Observation.read patient/Condition.read patient/MedicationRequest.read patient/Encounter.read launch/patient openid"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.example.com/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://auth.example.com/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9c58bfa1-87a4-492a-a6e0-06836c1a6fa9",
+    "name": "HL7 FHIR R4 Healthcare Bundle MedicationRequest API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "HL7 FHIR R4 (v4.0.1) RESTful API for healthcare data exchange. Provides access to patient demographics, clinical observations, conditions, medications, encounters, care plans, and diagnostic reports. Implements the FHIR REST specification including CRUD operations, search parameters, history, and batch/ transaction bundles. SMART on FHIR OAuth 2.0 authorization required.\n\nContact Support:\n Name: HL7 International",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,344 @@
+{
+  "item": [
+    {
+      "id": "414efc95-81d5-47bc-a378-70b2a8b22859",
+      "name": "Observation",
+      "description": {
+        "content": "Clinical measurements, lab results, vital signs",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d93e6be9-72b1-47a4-a424-de7103ac85ea",
+          "name": "Search observations",
+          "request": {
+            "name": "Search observations",
+            "description": {
+              "content": "Searches for Observation resources (lab results, vital signs, surveys). Common use cases include retrieving recent vital signs or lab values for a patient.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Observation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "patient",
+                  "value": "<string>",
+                  "description": "Patient reference (e.g., \"Patient/123\")"
+                },
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>",
+                  "description": "Observation category (vital-signs, laboratory, social-history, etc.)"
+                },
+                {
+                  "disabled": false,
+                  "key": "code",
+                  "value": "<string>",
+                  "description": "LOINC code or system|code (e.g., \"8302-2\" for body height)"
+                },
+                {
+                  "disabled": false,
+                  "key": "date",
+                  "value": "<string>",
+                  "description": "Observation date filter (e.g., \"ge2024-01-01\")"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "_count",
+                  "value": "20"
+                },
+                {
+                  "disabled": false,
+                  "key": "_sort",
+                  "value": "-date"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4ed1aecd-045c-4038-8e79-cf9cb9c5758e",
+              "name": "Bundle of matching Observation resources",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Observation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patient",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_count",
+                      "value": "20"
+                    },
+                    {
+                      "key": "_sort",
+                      "value": "-date"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"Bundle\",\n  \"type\": \"history\",\n  \"id\": \"string\",\n  \"total\": 3069,\n  \"link\": [\n    {\n      \"relation\": \"next\",\n      \"url\": \"https://JzezARQHfENbstNNzluXSRvKESJ.xnsPUxkt7zvxo0Ff3YDKc9yk1NrQ\"\n    },\n    {\n      \"relation\": \"last\",\n      \"url\": \"http://MSupvUOPVpCGwUeyRBCvETGgAGbkUtHG.suc\"\n    }\n  ],\n  \"entry\": [\n    {\n      \"fullUrl\": \"http://ioZ.scS5KsoyLM51aXJ7Bfvv-Jf0JpG5tGpoUPLGRWE,.XJOepOpo.RwIbvrY0gD8e\",\n      \"resource\": {},\n      \"search\": {\n        \"mode\": \"outcome\",\n        \"score\": 8865.770293811012\n      },\n      \"request\": {\n        \"method\": \"HEAD\",\n        \"url\": \"string\"\n      },\n      \"response\": {\n        \"status\": \"string\",\n        \"location\": \"string\"\n      }\n    },\n    {\n      \"fullUrl\": \"http://f.ihbRayR4dbsRZvf3.u0XaElyFp\",\n      \"resource\": {},\n      \"search\": {\n        \"mode\": \"match\",\n        \"score\": 8399.339447250431\n      },\n      \"request\": {\n        \"method\": \"PUT\",\n        \"url\": \"string\"\n      },\n      \"response\": {\n        \"status\": \"string\",\n        \"location\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7356491d-0683-40db-8fa3-bc51bb8c535c",
+          "name": "Read an observation",
+          "request": {
+            "name": "Read an observation",
+            "description": {
+              "content": "Returns a specific Observation resource by its logical ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Observation",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fa8c8536-3780-4951-981c-b3ee2d300694",
+              "name": "Observation resource returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Observation",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"Observation\",\n  \"status\": \"entered-in-error\",\n  \"code\": {\n    \"coding\": [\n      {\n        \"system\": \"http://wLvioxwBbXiexZaIiznUFBKrtcH.bupgQbUlcPobyF5yEJsIUHwMCDvkRJJlb.3s\",\n        \"version\": \"string\",\n        \"code\": \"string\",\n        \"display\": \"string\",\n        \"userSelected\": true\n      },\n      {\n        \"system\": \"https://NZMNtlQEJWzhqeFKAtVmjPdcIgBE.wmigQBJxAH,D-8a8e7s\",\n        \"version\": \"string\",\n        \"code\": \"string\",\n        \"display\": \"string\",\n        \"userSelected\": true\n      }\n    ],\n    \"text\": \"string\"\n  },\n  \"id\": \"string\",\n  \"meta\": {\n    \"versionId\": \"string\",\n    \"lastUpdated\": \"1980-08-02T21:03:14.533Z\",\n    \"profile\": [\n      \"http://CHuVPywlAENZaLepWRBHueB.hvkbWovuKpDZXELkHyyopHzmV,3bz5jTcmTk-DYwqEDmwuf9e0zvv8r-jPrB2KG\",\n      \"https://UgmJSLpjs.tfXnOBEj79xg4aK7\"\n    ],\n    \"tag\": [\n      {\n        \"system\": \"https://DOHoDocyUxvYEL.mwroEaflUDJz1YAFlMKpaxVSRa47uxCNgEE22RyAdJak-llJOQ6TyPx\",\n        \"version\": \"string\",\n        \"code\": \"string\",\n        \"display\": \"string\",\n        \"userSelected\": true\n      },\n      {\n        \"system\": \"http://lCPWtliPzsNksLacK.xuhzf-3jdMABxUtdAq0Wqh+mkd\",\n        \"version\": \"string\",\n        \"code\": \"string\",\n        \"display\": \"string\",\n        \"userSelected\": false\n      }\n    ]\n  },\n  \"category\": [\n    {\n      \"coding\": [\n        {\n          \"system\": \"http://gHugAzW.bkmfhLH37qdBSsWAFHJb4DXBzM8J5E\",\n          \"version\": \"string\",\n          \"code\": \"string\",\n          \"display\": \"string\",\n          \"userSelected\": true\n        },\n        {\n          \"system\": \"https://rmBytBsE.sicKWS0Vvh9TlpVywb-ZVujiuNBxlmjLV6u3Ew3Z55L\",\n          \"version\": \"string\",\n          \"code\": \"string\",\n          \"display\": \"string\",\n          \"userSelected\": false\n        }\n      ],\n      \"text\": \"string\"\n    },\n    {\n      \"coding\": [\n        {\n          \"system\": \"https://kV.seg-X5\",\n          \"version\": \"string\",\n          \"code\": \"string\",\n          \"display\": \"string\",\n          \"userSelected\": false\n        },\n        {\n          \"system\": \"https://MtATBTXUCrnAzXXgFjjpvVQdxvXmlh.tdLKirKLnCPKjVuD.0i0GrN1BTk99y\",\n          \"version\": \"string\",\n          \"code\": \"string\",\n          \"display\": \"string\",\n          \"userSelected\": false\n        }\n      ],\n      \"text\": \"string\"\n    }\n  ],\n  \"subject\": {\n    \"reference\": \"string\",\n    \"type\": \"https://PCAwaDqmUGAipKk.emyygso+4ZlY-F7C\",\n    \"identifier\": {\n      \"use\": \"temp\",\n      \"type\": {\n        \"coding\": [\n          {\n            \"system\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"code\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"display\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"userSelected\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"system\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"code\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"display\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"userSelected\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"system\": \"https://UycKMxBEwgZXOiroClLgGSzmEmMfbbD.qaZ+BOpqHib86OlZ3\",\n      \"value\": \"string\"\n    },\n    \"display\": \"string\"\n  },\n  \"encounter\": {\n    \"reference\": \"string\",\n    \"type\": \"https://wuH.sjtfeq7LJvYzKw+hPWF\",\n    \"identifier\": {\n      \"use\": \"temp\",\n      \"type\": {\n        \"coding\": [\n          {\n            \"system\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"code\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"display\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"userSelected\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"system\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"version\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"code\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"display\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"userSelected\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"system\": \"http://jBfJYVJviAbuBCen.jypuUZeSNgRyXfCEjznsDMGbKXdQ,uPdofF8VzeqB.KP,ZFgDN0GX2vqhI1TZeh-QvS0JLv\",\n      \"value\": \"string\"\n    },\n    \"display\": \"string\"\n  },\n  \"effectiveDateTime\": \"1998-09-02T12:14:07.051Z\",\n  \"issued\": \"1971-07-20T14:08:33.405Z\",\n  \"valueQuantity\": {\n    \"value\": 3914.6710758880554,\n    \"comparator\": \"<=\",\n    \"unit\": \"string\",\n    \"system\": \"http://VkFQhwbi.hpdc-+8x+0ISZOMKbYw36creOc-BaKDfaU.QGKh5k11rVgYavzwcwEc.SRMiNv6NrE.SpG2\",\n    \"code\": \"string\"\n  },\n  \"valueCodeableConcept\": {\n    \"coding\": [\n      {\n        \"system\": \"http://lDdqbnRjUxFPrnWHcxLFMhrBKnNHu.tcmeq5-8SI4bbRtXdg0Tui0Syv6s.wzX8XnI\",\n        \"version\": \"string\",\n        \"code\": \"string\",\n        \"display\": \"string\",\n        \"userSelected\": false\n      },\n      {\n        \"system\": \"http://IKaVnlTjQIvEP.wnpJNdsc1pQtVuA+IUDEJbsws8X5mXwciGpgeWgGs-PGB0eIF,yAB1AbxGjec5Dr\",\n        \"version\": \"string\",\n        \"code\": \"string\",\n        \"display\": \"string\",\n        \"userSelected\": false\n      }\n    ],\n    \"text\": \"string\"\n  },\n  \"valueString\": \"string\",\n  \"interpretation\": [\n    {\n      \"coding\": [\n        {\n          \"system\": \"https://fEwaXhMAXUKQx.hrdpNmID+yUpjdc\",\n          \"version\": \"string\",\n          \"code\": \"string\",\n          \"display\": \"string\",\n          \"userSelected\": false\n        },\n        {\n          \"system\": \"http://iyDKNnaQffklbVrRWSfQRMMamfKsLyXuG.tlVT6O5BjJl4ksSaI7gVXcz7IDIbMSXUvne79VNNxT8FtSu6PD\",\n          \"version\": \"string\",\n          \"code\": \"string\",\n          \"display\": \"string\",\n          \"userSelected\": true\n        }\n      ],\n      \"text\": \"string\"\n    },\n    {\n      \"coding\": [\n        {\n          \"system\": \"https://yTYQwbBoHZDwISjXhQTPFPfaxPxhEKkiH.erxcRJ1\",\n          \"version\": \"string\",\n          \"code\": \"string\",\n          \"display\": \"string\",\n          \"userSelected\": true\n        },\n        {\n          \"system\": \"http://rsmXyTVXKBAFgAx.yzrhzoRjz8s37BLmT5DG2WLw-zMr\",\n          \"version\": \"string\",\n          \"code\": \"string\",\n          \"display\": \"string\",\n          \"userSelected\": true\n        }\n      ],\n      \"text\": \"string\"\n    }\n  ],\n  \"note\": [\n    {\n      \"text\": \"string\"\n    },\n    {\n      \"text\": \"string\"\n    }\n  ],\n  \"component\": [\n    {\n      \"code\": {\n        \"coding\": [\n          {\n            \"system\": \"http://IKlPhL.yyMvwULQ\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": false\n          },\n          {\n            \"system\": \"http://TRRcJaXUbdr.gwaUbxhHtZ74dZPBNkHlIwMu,LyQY3cUA\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": false\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"valueQuantity\": {\n        \"value\": 8989.460430012054,\n        \"comparator\": \">\",\n        \"unit\": \"string\",\n        \"system\": \"https://F.yjOiOGqkoP\",\n        \"code\": \"string\"\n      }\n    },\n    {\n      \"code\": {\n        \"coding\": [\n          {\n            \"system\": \"http://YAeSNOpqwJtV.uqcLuqV7q2XVrVHLFYl2Jv1RNrAuGnNVOAWPhX8+5KQDyDskSV0rSa\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": true\n          },\n          {\n            \"system\": \"https://QDhTYwLRfCTAXVVtLAErXtSrpYNTLe.glriaK9rgzlkkgdoMJ,6DBJbxTQP-+uYZvUhLfFGWFXu4yLk79\",\n            \"version\": \"string\",\n            \"code\": \"string\",\n            \"display\": \"string\",\n            \"userSelected\": false\n          }\n        ],\n        \"text\": \"string\"\n      },\n      \"valueQuantity\": {\n        \"value\": 8968.691109616753,\n        \"comparator\": \"<=\",\n        \"unit\": \"string\",\n        \"system\": \"https://FknBry.xsTaHjuAqodp18o3YF4lnOJ6Bd5wy5y8upo1P9voUt+OZSmr9LWyZJuRRyjPet02w9iRYM-z,G,tt\",\n        \"code\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "81ba3256-9c9c-4e82-9a37-051036bcbf36",
+              "name": "Observation not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Observation",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://fhir-server.example.com/fhir/R4",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "patient/Patient.read patient/Observation.read patient/Condition.read patient/MedicationRequest.read patient/Encounter.read launch/patient openid"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.example.com/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://auth.example.com/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "876365da-61b6-44e6-8323-fa81cba777ab",
+    "name": "HL7 FHIR R4 Healthcare Bundle Observation API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "HL7 FHIR R4 (v4.0.1) RESTful API for healthcare data exchange. Provides access to patient demographics, clinical observations, conditions, medications, encounters, care plans, and diagnostic reports. Implements the FHIR REST specification including CRUD operations, search parameters, history, and batch/ transaction bundles. SMART on FHIR OAuth 2.0 authorization required.\n\nContact Support:\n Name: HL7 International",
+      "type": "text/plain"
+    }
+  }
+}

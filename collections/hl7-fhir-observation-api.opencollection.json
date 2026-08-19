@@ -1,0 +1,100 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "HL7 FHIR R4 Healthcare Bundle Observation API",
+    "version": "4.0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://auth.example.com/authorize",
+      "accessTokenUrl": "https://auth.example.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Observation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search observations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://fhir-server.example.com/fhir/R4/Observation",
+            "params": [
+              {
+                "name": "patient",
+                "value": "",
+                "type": "query",
+                "description": "Patient reference (e.g., \"Patient/123\")"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "Observation category (vital-signs, laboratory, social-history, etc.)"
+              },
+              {
+                "name": "code",
+                "value": "",
+                "type": "query",
+                "description": "LOINC code or system|code (e.g., \"8302-2\" for body height)"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "Observation date filter (e.g., \"ge2024-01-01\")"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "_count",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "_sort",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Searches for Observation resources (lab results, vital signs, surveys). Common use cases include retrieving recent vital signs or lab values for a patient."
+        },
+        {
+          "info": {
+            "name": "Read an observation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://fhir-server.example.com/fhir/R4/Observation/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns a specific Observation resource by its logical ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
