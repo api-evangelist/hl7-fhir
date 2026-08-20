@@ -69,6 +69,11 @@ apis:
   - Authentication
   - FHIR
   - Healthcare
+  - SMART
+  tags_raw:
+  - Authentication
+  - FHIR
+  - Healthcare
   - OAuth2
   - SMART
   properties:
