@@ -191,6 +191,9 @@ apis:
   - type: ChangeLog
     url: http://hl7.org/fhir/R4/history.html
 common:
+  - type: CapabilityMap
+    url: capabilities/hl7-fhir-capability-edges.yml
+    name: HL7 FHIR Business Capability Map
   - type: AgenticAccess
     url: agentic-access/hl7-fhir-agentic-access.yml
   - type: DomainSecurity
