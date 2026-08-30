@@ -32,7 +32,6 @@ accessModel:
   - security
   generated: '2026-08-26'
   method: derived
-image: https://raw.githubusercontent.com/api-evangelist/hl7-fhir/refs/heads/main/image.png
 tags:
   - Clinical
   - FHIR
@@ -51,7 +50,6 @@ apis:
     and care plans in both JSON and XML formats across EHR systems, published March 2023.
   humanURL: https://www.hl7.org/fhir/
   baseURL: https://fhir-server.example.com/fhir/R5
-  image: https://raw.githubusercontent.com/api-evangelist/hl7-fhir/refs/heads/main/image.png
   tags:
   - Clinical
   - FHIR
@@ -77,7 +75,6 @@ apis:
     and backend service authorization workflows.
   humanURL: http://hl7.org/fhir/smart-app-launch/ImplementationGuide/hl7.fhir.uv.smart-app-launch
   baseURL: https://fhir-server.example.com/fhir
-  image: https://raw.githubusercontent.com/api-evangelist/hl7-fhir/refs/heads/main/image.png
   tags:
   - Authentication
   - FHIR
