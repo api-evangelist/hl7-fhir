@@ -139,22 +139,6 @@ apis:
     url: https://www.hl7.org/fhir/R4/http.html
   - type: ChangeLog
     url: http://hl7.org/fhir/R4/history.html
-- aid: hl7-fhir:hl7-fhir-medicationrequest-api
-  name: HL7 FHIR MedicationRequest API
-  description: Medication prescriptions and orders
-  humanURL: https://www.hl7.org/fhir/
-  baseURL: https://fhir-server.example.com/fhir/R5
-  tags:
-  - MedicationRequest
-  properties:
-  - type: OpenAPI
-    url: openapi/hl7-fhir-medicationrequest-api-openapi.yml
-  - type: Documentation
-    url: https://www.hl7.org/fhir/R4/
-  - type: Reference
-    url: https://www.hl7.org/fhir/R4/http.html
-  - type: ChangeLog
-    url: http://hl7.org/fhir/R4/history.html
 - aid: hl7-fhir:hl7-fhir-observation-api
   name: HL7 FHIR Observation API
   description: Clinical measurements, lab results, vital signs
@@ -181,6 +165,22 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/hl7-fhir-patient-api-openapi.yml
+  - type: Documentation
+    url: https://www.hl7.org/fhir/R4/
+  - type: Reference
+    url: https://www.hl7.org/fhir/R4/http.html
+  - type: ChangeLog
+    url: http://hl7.org/fhir/R4/history.html
+- aid: hl7-fhir:hl7-fhir-medication-request-api
+  name: HL7 FHIR Medication Request API
+  description: Medication prescriptions and orders
+  humanURL: https://www.hl7.org/fhir/
+  baseURL: https://fhir-server.example.com/fhir/R5
+  tags:
+  - Medication Request
+  properties:
+  - type: OpenAPI
+    url: openapi/hl7-fhir-medication-request-api-openapi.yml
   - type: Documentation
     url: https://www.hl7.org/fhir/R4/
   - type: Reference
