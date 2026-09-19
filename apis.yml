@@ -161,6 +161,8 @@ apis:
   humanURL: https://www.hl7.org/fhir/
   baseURL: https://fhir-server.example.com/fhir/R5
   tags:
+  - Patients
+  tags_raw:
   - Patient
   properties:
   - type: OpenAPI
@@ -177,6 +179,8 @@ apis:
   humanURL: https://www.hl7.org/fhir/
   baseURL: https://fhir-server.example.com/fhir/R5
   tags:
+  - MedicationRequest
+  tags_raw:
   - Medication Request
   properties:
   - type: OpenAPI
