@@ -169,9 +169,21 @@ paths:
           description: Invalid resource
 components:
   schemas:
-    Address:
+    ContactPoint:
       type: object
       properties:
+        system:
+          type: string
+          enum:
+          - phone
+          - fax
+          - email
+          - pager
+          - url
+          - sms
+          - other
+        value:
+          type: string
         use:
           type: string
           enum:
@@ -179,29 +191,36 @@ components:
           - work
           - temp
           - old
-          - billing
-        type:
+          - mobile
+    HumanName:
+      type: object
+      properties:
+        use:
           type: string
           enum:
-          - postal
-          - physical
-          - both
+          - usual
+          - official
+          - temp
+          - nickname
+          - anonymous
+          - old
+          - maiden
         text:
           type: string
-        line:
+        family:
+          type: string
+        given:
           type: array
           items:
             type: string
-        city:
-          type: string
-        district:
-          type: string
-        state:
-          type: string
-        postalCode:
-          type: string
-        country:
-          type: string
+        prefix:
+          type: array
+          items:
+            type: string
+        suffix:
+          type: array
+          items:
+            type: string
     CodeableConcept:
       type: object
       properties:
@@ -210,6 +229,24 @@ components:
           items:
             $ref: '#/components/schemas/Coding'
         text:
+          type: string
+    Identifier:
+      type: object
+      properties:
+        use:
+          type: string
+          enum:
+          - usual
+          - official
+          - temp
+          - secondary
+          - old
+        type:
+          $ref: '#/components/schemas/CodeableConcept'
+        system:
+          type: string
+          format: uri
+        value:
           type: string
     Meta:
       type: object
@@ -228,102 +265,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Coding'
-    Patient:
-      type: object
-      description: Demographics and administrative information about a patient
-      properties:
-        resourceType:
-          type: string
-          enum:
-          - Patient
-        id:
-          type: string
-        meta:
-          $ref: '#/components/schemas/Meta'
-        identifier:
-          type: array
-          items:
-            $ref: '#/components/schemas/Identifier'
-          description: Patient identifiers (MRN, SSN, etc.)
-        active:
-          type: boolean
-        name:
-          type: array
-          items:
-            $ref: '#/components/schemas/HumanName'
-        telecom:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContactPoint'
-        gender:
-          type: string
-          enum:
-          - male
-          - female
-          - other
-          - unknown
-        birthDate:
-          type: string
-          format: date
-        deceased:
-          type: object
-          properties:
-            deceasedBoolean:
-              type: boolean
-            deceasedDateTime:
-              type: string
-              format: date-time
-        address:
-          type: array
-          items:
-            $ref: '#/components/schemas/Address'
-        communication:
-          type: array
-          items:
-            type: object
-            properties:
-              language:
-                $ref: '#/components/schemas/CodeableConcept'
-              preferred:
-                type: boolean
-        generalPractitioner:
-          type: array
-          items:
-            $ref: '#/components/schemas/Reference'
-      required:
-      - resourceType
-    OperationOutcome:
-      type: object
-      properties:
-        resourceType:
-          type: string
-          enum:
-          - OperationOutcome
-        issue:
-          type: array
-          items:
-            type: object
-            properties:
-              severity:
-                type: string
-                enum:
-                - fatal
-                - error
-                - warning
-                - information
-              code:
-                type: string
-              details:
-                $ref: '#/components/schemas/CodeableConcept'
-              diagnostics:
-                type: string
-              expression:
-                type: array
-                items:
-                  type: string
-      required:
-      - resourceType
-      - issue
     Bundle:
       type: object
       description: A container for a collection of FHIR resources
@@ -411,60 +352,6 @@ components:
       required:
       - resourceType
       - type
-    Identifier:
-      type: object
-      properties:
-        use:
-          type: string
-          enum:
-          - usual
-          - official
-          - temp
-          - secondary
-          - old
-        type:
-          $ref: '#/components/schemas/CodeableConcept'
-        system:
-          type: string
-          format: uri
-        value:
-          type: string
-    Reference:
-      type: object
-      properties:
-        reference:
-          type: string
-          description: Relative or absolute URL (e.g., "Patient/123")
-        type:
-          type: string
-          format: uri
-        identifier:
-          $ref: '#/components/schemas/Identifier'
-        display:
-          type: string
-    ContactPoint:
-      type: object
-      properties:
-        system:
-          type: string
-          enum:
-          - phone
-          - fax
-          - email
-          - pager
-          - url
-          - sms
-          - other
-        value:
-          type: string
-        use:
-          type: string
-          enum:
-          - home
-          - work
-          - temp
-          - old
-          - mobile
     Coding:
       type: object
       properties:
@@ -480,35 +367,148 @@ components:
           type: string
         userSelected:
           type: boolean
-    HumanName:
+    Patient:
+      type: object
+      description: Demographics and administrative information about a patient
+      properties:
+        resourceType:
+          type: string
+          enum:
+          - Patient
+        id:
+          type: string
+        meta:
+          $ref: '#/components/schemas/Meta'
+        identifier:
+          type: array
+          items:
+            $ref: '#/components/schemas/Identifier'
+          description: Patient identifiers (MRN, SSN, etc.)
+        active:
+          type: boolean
+        name:
+          type: array
+          items:
+            $ref: '#/components/schemas/HumanName'
+        telecom:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactPoint'
+        gender:
+          type: string
+          enum:
+          - male
+          - female
+          - other
+          - unknown
+        birthDate:
+          type: string
+          format: date
+        deceased:
+          type: object
+          properties:
+            deceasedBoolean:
+              type: boolean
+            deceasedDateTime:
+              type: string
+              format: date-time
+        address:
+          type: array
+          items:
+            $ref: '#/components/schemas/Address'
+        communication:
+          type: array
+          items:
+            type: object
+            properties:
+              language:
+                $ref: '#/components/schemas/CodeableConcept'
+              preferred:
+                type: boolean
+        generalPractitioner:
+          type: array
+          items:
+            $ref: '#/components/schemas/Reference'
+      required:
+      - resourceType
+    Address:
       type: object
       properties:
         use:
           type: string
           enum:
-          - usual
-          - official
+          - home
+          - work
           - temp
-          - nickname
-          - anonymous
           - old
-          - maiden
+          - billing
+        type:
+          type: string
+          enum:
+          - postal
+          - physical
+          - both
         text:
           type: string
-        family:
+        line:
+          type: array
+          items:
+            type: string
+        city:
           type: string
-        given:
+        district:
+          type: string
+        state:
+          type: string
+        postalCode:
+          type: string
+        country:
+          type: string
+    Reference:
+      type: object
+      properties:
+        reference:
+          type: string
+          description: Relative or absolute URL (e.g., "Patient/123")
+        type:
+          type: string
+          format: uri
+        identifier:
+          $ref: '#/components/schemas/Identifier'
+        display:
+          type: string
+    OperationOutcome:
+      type: object
+      properties:
+        resourceType:
+          type: string
+          enum:
+          - OperationOutcome
+        issue:
           type: array
           items:
-            type: string
-        prefix:
-          type: array
-          items:
-            type: string
-        suffix:
-          type: array
-          items:
-            type: string
+            type: object
+            properties:
+              severity:
+                type: string
+                enum:
+                - fatal
+                - error
+                - warning
+                - information
+              code:
+                type: string
+              details:
+                $ref: '#/components/schemas/CodeableConcept'
+              diagnostics:
+                type: string
+              expression:
+                type: array
+                items:
+                  type: string
+      required:
+      - resourceType
+      - issue
   securitySchemes:
     SMARTonFHIR:
       type: oauth2

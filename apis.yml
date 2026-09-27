@@ -38,6 +38,12 @@ tags:
   - Healthcare
   - HL7
   - Interoperability
+  - CDA
+  - DICOM
+  - ICD
+  - LOINC
+  - SNOMED CT
+  - US Core
 created: '2025'
 modified: '2026-05-19'
 specificationVersion: '0.23'
@@ -179,8 +185,6 @@ apis:
   humanURL: https://www.hl7.org/fhir/
   baseURL: https://fhir-server.example.com/fhir/R5
   tags:
-  - MedicationRequest
-  tags_raw:
   - Medication Request
   properties:
   - type: OpenAPI
