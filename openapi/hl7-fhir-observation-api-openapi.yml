@@ -98,33 +98,42 @@ paths:
           description: Observation not found
 components:
   schemas:
-    CodeableConcept:
+    Quantity:
       type: object
       properties:
-        coding:
-          type: array
-          items:
-            $ref: '#/components/schemas/Coding'
-        text:
-          type: string
-    Identifier:
-      type: object
-      properties:
-        use:
+        value:
+          type: number
+        comparator:
           type: string
           enum:
-          - usual
-          - official
-          - temp
-          - secondary
-          - old
-        type:
-          $ref: '#/components/schemas/CodeableConcept'
+          - <
+          - <=
+          - '>='
+          - '>'
+        unit:
+          type: string
         system:
           type: string
           format: uri
-        value:
+        code:
           type: string
+    Meta:
+      type: object
+      properties:
+        versionId:
+          type: string
+        lastUpdated:
+          type: string
+          format: date-time
+        profile:
+          type: array
+          items:
+            type: string
+            format: uri
+        tag:
+          type: array
+          items:
+            $ref: '#/components/schemas/Coding'
     Observation:
       type: object
       description: Measurements and simple assertions about a patient or other subject
@@ -194,23 +203,30 @@ components:
       - resourceType
       - status
       - code
-    Meta:
+    Coding:
       type: object
       properties:
-        versionId:
+        system:
           type: string
-        lastUpdated:
+          format: uri
+          description: Identity of the terminology system (e.g., "http://loinc.org", "http://snomed.info/sct")
+        version:
           type: string
-          format: date-time
-        profile:
-          type: array
-          items:
-            type: string
-            format: uri
-        tag:
+        code:
+          type: string
+        display:
+          type: string
+        userSelected:
+          type: boolean
+    CodeableConcept:
+      type: object
+      properties:
+        coding:
           type: array
           items:
             $ref: '#/components/schemas/Coding'
+        text:
+          type: string
     Bundle:
       type: object
       description: A container for a collection of FHIR resources
@@ -298,21 +314,6 @@ components:
       required:
       - resourceType
       - type
-    Coding:
-      type: object
-      properties:
-        system:
-          type: string
-          format: uri
-          description: Identity of the terminology system (e.g., "http://loinc.org", "http://snomed.info/sct")
-        version:
-          type: string
-        code:
-          type: string
-        display:
-          type: string
-        userSelected:
-          type: boolean
     Reference:
       type: object
       properties:
@@ -326,24 +327,23 @@ components:
           $ref: '#/components/schemas/Identifier'
         display:
           type: string
-    Quantity:
+    Identifier:
       type: object
       properties:
-        value:
-          type: number
-        comparator:
+        use:
           type: string
           enum:
-          - <
-          - <=
-          - '>='
-          - '>'
-        unit:
-          type: string
+          - usual
+          - official
+          - temp
+          - secondary
+          - old
+        type:
+          $ref: '#/components/schemas/CodeableConcept'
         system:
           type: string
           format: uri
-        code:
+        value:
           type: string
   securitySchemes:
     SMARTonFHIR:

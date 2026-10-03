@@ -192,62 +192,6 @@ components:
           - temp
           - old
           - mobile
-    HumanName:
-      type: object
-      properties:
-        use:
-          type: string
-          enum:
-          - usual
-          - official
-          - temp
-          - nickname
-          - anonymous
-          - old
-          - maiden
-        text:
-          type: string
-        family:
-          type: string
-        given:
-          type: array
-          items:
-            type: string
-        prefix:
-          type: array
-          items:
-            type: string
-        suffix:
-          type: array
-          items:
-            type: string
-    CodeableConcept:
-      type: object
-      properties:
-        coding:
-          type: array
-          items:
-            $ref: '#/components/schemas/Coding'
-        text:
-          type: string
-    Identifier:
-      type: object
-      properties:
-        use:
-          type: string
-          enum:
-          - usual
-          - official
-          - temp
-          - secondary
-          - old
-        type:
-          $ref: '#/components/schemas/CodeableConcept'
-        system:
-          type: string
-          format: uri
-        value:
-          type: string
     Meta:
       type: object
       properties:
@@ -265,6 +209,63 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Coding'
+    Address:
+      type: object
+      properties:
+        use:
+          type: string
+          enum:
+          - home
+          - work
+          - temp
+          - old
+          - billing
+        type:
+          type: string
+          enum:
+          - postal
+          - physical
+          - both
+        text:
+          type: string
+        line:
+          type: array
+          items:
+            type: string
+        city:
+          type: string
+        district:
+          type: string
+        state:
+          type: string
+        postalCode:
+          type: string
+        country:
+          type: string
+    Coding:
+      type: object
+      properties:
+        system:
+          type: string
+          format: uri
+          description: Identity of the terminology system (e.g., "http://loinc.org", "http://snomed.info/sct")
+        version:
+          type: string
+        code:
+          type: string
+        display:
+          type: string
+        userSelected:
+          type: boolean
+    CodeableConcept:
+      type: object
+      properties:
+        coding:
+          type: array
+          items:
+            $ref: '#/components/schemas/Coding'
+        text:
+          type: string
     Bundle:
       type: object
       description: A container for a collection of FHIR resources
@@ -352,21 +353,67 @@ components:
       required:
       - resourceType
       - type
-    Coding:
+    OperationOutcome:
       type: object
       properties:
-        system:
+        resourceType:
           type: string
-          format: uri
-          description: Identity of the terminology system (e.g., "http://loinc.org", "http://snomed.info/sct")
-        version:
+          enum:
+          - OperationOutcome
+        issue:
+          type: array
+          items:
+            type: object
+            properties:
+              severity:
+                type: string
+                enum:
+                - fatal
+                - error
+                - warning
+                - information
+              code:
+                type: string
+              details:
+                $ref: '#/components/schemas/CodeableConcept'
+              diagnostics:
+                type: string
+              expression:
+                type: array
+                items:
+                  type: string
+      required:
+      - resourceType
+      - issue
+    HumanName:
+      type: object
+      properties:
+        use:
           type: string
-        code:
+          enum:
+          - usual
+          - official
+          - temp
+          - nickname
+          - anonymous
+          - old
+          - maiden
+        text:
           type: string
-        display:
+        family:
           type: string
-        userSelected:
-          type: boolean
+        given:
+          type: array
+          items:
+            type: string
+        prefix:
+          type: array
+          items:
+            type: string
+        suffix:
+          type: array
+          items:
+            type: string
     Patient:
       type: object
       description: Demographics and administrative information about a patient
@@ -431,39 +478,6 @@ components:
             $ref: '#/components/schemas/Reference'
       required:
       - resourceType
-    Address:
-      type: object
-      properties:
-        use:
-          type: string
-          enum:
-          - home
-          - work
-          - temp
-          - old
-          - billing
-        type:
-          type: string
-          enum:
-          - postal
-          - physical
-          - both
-        text:
-          type: string
-        line:
-          type: array
-          items:
-            type: string
-        city:
-          type: string
-        district:
-          type: string
-        state:
-          type: string
-        postalCode:
-          type: string
-        country:
-          type: string
     Reference:
       type: object
       properties:
@@ -477,38 +491,24 @@ components:
           $ref: '#/components/schemas/Identifier'
         display:
           type: string
-    OperationOutcome:
+    Identifier:
       type: object
       properties:
-        resourceType:
+        use:
           type: string
           enum:
-          - OperationOutcome
-        issue:
-          type: array
-          items:
-            type: object
-            properties:
-              severity:
-                type: string
-                enum:
-                - fatal
-                - error
-                - warning
-                - information
-              code:
-                type: string
-              details:
-                $ref: '#/components/schemas/CodeableConcept'
-              diagnostics:
-                type: string
-              expression:
-                type: array
-                items:
-                  type: string
-      required:
-      - resourceType
-      - issue
+          - usual
+          - official
+          - temp
+          - secondary
+          - old
+        type:
+          $ref: '#/components/schemas/CodeableConcept'
+        system:
+          type: string
+          format: uri
+        value:
+          type: string
   securitySchemes:
     SMARTonFHIR:
       type: oauth2
