@@ -169,6 +169,67 @@ paths:
           description: Invalid resource
 components:
   schemas:
+    OperationOutcome:
+      type: object
+      properties:
+        resourceType:
+          type: string
+          enum:
+          - OperationOutcome
+        issue:
+          type: array
+          items:
+            type: object
+            properties:
+              severity:
+                type: string
+                enum:
+                - fatal
+                - error
+                - warning
+                - information
+              code:
+                type: string
+              details:
+                $ref: '#/components/schemas/CodeableConcept'
+              diagnostics:
+                type: string
+              expression:
+                type: array
+                items:
+                  type: string
+      required:
+      - resourceType
+      - issue
+    HumanName:
+      type: object
+      properties:
+        use:
+          type: string
+          enum:
+          - usual
+          - official
+          - temp
+          - nickname
+          - anonymous
+          - old
+          - maiden
+        text:
+          type: string
+        family:
+          type: string
+        given:
+          type: array
+          items:
+            type: string
+        prefix:
+          type: array
+          items:
+            type: string
+        suffix:
+          type: array
+          items:
+            type: string
     ContactPoint:
       type: object
       properties:
@@ -192,6 +253,85 @@ components:
           - temp
           - old
           - mobile
+    Coding:
+      type: object
+      properties:
+        system:
+          type: string
+          format: uri
+          description: Identity of the terminology system (e.g., "http://loinc.org", "http://snomed.info/sct")
+        version:
+          type: string
+        code:
+          type: string
+        display:
+          type: string
+        userSelected:
+          type: boolean
+    Patient:
+      type: object
+      description: Demographics and administrative information about a patient
+      properties:
+        resourceType:
+          type: string
+          enum:
+          - Patient
+        id:
+          type: string
+        meta:
+          $ref: '#/components/schemas/Meta'
+        identifier:
+          type: array
+          items:
+            $ref: '#/components/schemas/Identifier'
+          description: Patient identifiers (MRN, SSN, etc.)
+        active:
+          type: boolean
+        name:
+          type: array
+          items:
+            $ref: '#/components/schemas/HumanName'
+        telecom:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactPoint'
+        gender:
+          type: string
+          enum:
+          - male
+          - female
+          - other
+          - unknown
+        birthDate:
+          type: string
+          format: date
+        deceased:
+          type: object
+          properties:
+            deceasedBoolean:
+              type: boolean
+            deceasedDateTime:
+              type: string
+              format: date-time
+        address:
+          type: array
+          items:
+            $ref: '#/components/schemas/Address'
+        communication:
+          type: array
+          items:
+            type: object
+            properties:
+              language:
+                $ref: '#/components/schemas/CodeableConcept'
+              preferred:
+                type: boolean
+        generalPractitioner:
+          type: array
+          items:
+            $ref: '#/components/schemas/Reference'
+      required:
+      - resourceType
     Meta:
       type: object
       properties:
@@ -209,54 +349,19 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Coding'
-    Address:
+    Reference:
       type: object
       properties:
-        use:
+        reference:
           type: string
-          enum:
-          - home
-          - work
-          - temp
-          - old
-          - billing
+          description: Relative or absolute URL (e.g., "Patient/123")
         type:
           type: string
-          enum:
-          - postal
-          - physical
-          - both
-        text:
-          type: string
-        line:
-          type: array
-          items:
-            type: string
-        city:
-          type: string
-        district:
-          type: string
-        state:
-          type: string
-        postalCode:
-          type: string
-        country:
-          type: string
-    Coding:
-      type: object
-      properties:
-        system:
-          type: string
           format: uri
-          description: Identity of the terminology system (e.g., "http://loinc.org", "http://snomed.info/sct")
-        version:
-          type: string
-        code:
-          type: string
+        identifier:
+          $ref: '#/components/schemas/Identifier'
         display:
           type: string
-        userSelected:
-          type: boolean
     CodeableConcept:
       type: object
       properties:
@@ -353,144 +458,6 @@ components:
       required:
       - resourceType
       - type
-    OperationOutcome:
-      type: object
-      properties:
-        resourceType:
-          type: string
-          enum:
-          - OperationOutcome
-        issue:
-          type: array
-          items:
-            type: object
-            properties:
-              severity:
-                type: string
-                enum:
-                - fatal
-                - error
-                - warning
-                - information
-              code:
-                type: string
-              details:
-                $ref: '#/components/schemas/CodeableConcept'
-              diagnostics:
-                type: string
-              expression:
-                type: array
-                items:
-                  type: string
-      required:
-      - resourceType
-      - issue
-    HumanName:
-      type: object
-      properties:
-        use:
-          type: string
-          enum:
-          - usual
-          - official
-          - temp
-          - nickname
-          - anonymous
-          - old
-          - maiden
-        text:
-          type: string
-        family:
-          type: string
-        given:
-          type: array
-          items:
-            type: string
-        prefix:
-          type: array
-          items:
-            type: string
-        suffix:
-          type: array
-          items:
-            type: string
-    Patient:
-      type: object
-      description: Demographics and administrative information about a patient
-      properties:
-        resourceType:
-          type: string
-          enum:
-          - Patient
-        id:
-          type: string
-        meta:
-          $ref: '#/components/schemas/Meta'
-        identifier:
-          type: array
-          items:
-            $ref: '#/components/schemas/Identifier'
-          description: Patient identifiers (MRN, SSN, etc.)
-        active:
-          type: boolean
-        name:
-          type: array
-          items:
-            $ref: '#/components/schemas/HumanName'
-        telecom:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContactPoint'
-        gender:
-          type: string
-          enum:
-          - male
-          - female
-          - other
-          - unknown
-        birthDate:
-          type: string
-          format: date
-        deceased:
-          type: object
-          properties:
-            deceasedBoolean:
-              type: boolean
-            deceasedDateTime:
-              type: string
-              format: date-time
-        address:
-          type: array
-          items:
-            $ref: '#/components/schemas/Address'
-        communication:
-          type: array
-          items:
-            type: object
-            properties:
-              language:
-                $ref: '#/components/schemas/CodeableConcept'
-              preferred:
-                type: boolean
-        generalPractitioner:
-          type: array
-          items:
-            $ref: '#/components/schemas/Reference'
-      required:
-      - resourceType
-    Reference:
-      type: object
-      properties:
-        reference:
-          type: string
-          description: Relative or absolute URL (e.g., "Patient/123")
-        type:
-          type: string
-          format: uri
-        identifier:
-          $ref: '#/components/schemas/Identifier'
-        display:
-          type: string
     Identifier:
       type: object
       properties:
@@ -508,6 +475,39 @@ components:
           type: string
           format: uri
         value:
+          type: string
+    Address:
+      type: object
+      properties:
+        use:
+          type: string
+          enum:
+          - home
+          - work
+          - temp
+          - old
+          - billing
+        type:
+          type: string
+          enum:
+          - postal
+          - physical
+          - both
+        text:
+          type: string
+        line:
+          type: array
+          items:
+            type: string
+        city:
+          type: string
+        district:
+          type: string
+        state:
+          type: string
+        postalCode:
+          type: string
+        country:
           type: string
   securitySchemes:
     SMARTonFHIR:

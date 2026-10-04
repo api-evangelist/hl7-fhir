@@ -98,42 +98,6 @@ paths:
           description: Observation not found
 components:
   schemas:
-    Quantity:
-      type: object
-      properties:
-        value:
-          type: number
-        comparator:
-          type: string
-          enum:
-          - <
-          - <=
-          - '>='
-          - '>'
-        unit:
-          type: string
-        system:
-          type: string
-          format: uri
-        code:
-          type: string
-    Meta:
-      type: object
-      properties:
-        versionId:
-          type: string
-        lastUpdated:
-          type: string
-          format: date-time
-        profile:
-          type: array
-          items:
-            type: string
-            format: uri
-        tag:
-          type: array
-          items:
-            $ref: '#/components/schemas/Coding'
     Observation:
       type: object
       description: Measurements and simple assertions about a patient or other subject
@@ -203,6 +167,25 @@ components:
       - resourceType
       - status
       - code
+    Quantity:
+      type: object
+      properties:
+        value:
+          type: number
+        comparator:
+          type: string
+          enum:
+          - <
+          - <=
+          - '>='
+          - '>'
+        unit:
+          type: string
+        system:
+          type: string
+          format: uri
+        code:
+          type: string
     Coding:
       type: object
       properties:
@@ -218,6 +201,36 @@ components:
           type: string
         userSelected:
           type: boolean
+    Meta:
+      type: object
+      properties:
+        versionId:
+          type: string
+        lastUpdated:
+          type: string
+          format: date-time
+        profile:
+          type: array
+          items:
+            type: string
+            format: uri
+        tag:
+          type: array
+          items:
+            $ref: '#/components/schemas/Coding'
+    Reference:
+      type: object
+      properties:
+        reference:
+          type: string
+          description: Relative or absolute URL (e.g., "Patient/123")
+        type:
+          type: string
+          format: uri
+        identifier:
+          $ref: '#/components/schemas/Identifier'
+        display:
+          type: string
     CodeableConcept:
       type: object
       properties:
@@ -314,19 +327,6 @@ components:
       required:
       - resourceType
       - type
-    Reference:
-      type: object
-      properties:
-        reference:
-          type: string
-          description: Relative or absolute URL (e.g., "Patient/123")
-        type:
-          type: string
-          format: uri
-        identifier:
-          $ref: '#/components/schemas/Identifier'
-        display:
-          type: string
     Identifier:
       type: object
       properties:
