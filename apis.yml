@@ -196,6 +196,12 @@ apis:
   - type: ChangeLog
     url: http://hl7.org/fhir/R4/history.html
 common:
+  - type: Plans
+    url: plans/hl7-fhir-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/hl7-fhir-rate-limits.yml
+  - type: FinOps
+    url: finops/hl7-fhir-finops.yml
   - type: CapabilityMap
     url: capabilities/hl7-fhir-capability-edges.yml
     name: HL7 FHIR Business Capability Map
