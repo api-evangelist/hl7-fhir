@@ -198,6 +198,8 @@ apis:
   - type: ChangeLog
     url: http://hl7.org/fhir/R4/history.html
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/hl7-fhir/overview
   - type: Plans
     url: plans/hl7-fhir-plans-pricing.yml
   - type: RateLimits
