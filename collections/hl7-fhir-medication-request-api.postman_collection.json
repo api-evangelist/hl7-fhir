@@ -1,0 +1,173 @@
+{
+  "info": {
+    "_postman_id": "b7cea415-9dd7-4c02-8865-89c6395174ae",
+    "name": "HL7 FHIR R4 Healthcare Medication Request API",
+    "description": "HL7 FHIR R4 (v4.0.1) RESTful API for healthcare data exchange. Provides access to patient demographics, clinical observations, conditions, medications, encounters, care plans, and diagnostic reports. Implements the FHIR REST specification including CRUD operations, search parameters, history, and batch/ transaction bundles. SMART on FHIR OAuth 2.0 authorization required.\n\nContact Support:\n Name: HL7 International",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:16:50.000Z",
+    "updatedAt": "2026-10-21T20:16:50.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b7cea415-9dd7-4c02-8865-89c6395174ae"
+  },
+  "item": [
+    {
+      "name": "MedicationRequest",
+      "item": [
+        {
+          "name": "Search medication requests",
+          "id": "0569bf89-a356-4fd4-8744-fafb50a9b77e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/MedicationRequest?patient=<string>&status=entered-in-error&medication=<string>&authoredon=<string>&_count=20",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "MedicationRequest"
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "patient",
+                  "value": "<string>"
+                },
+                {
+                  "key": "status",
+                  "value": "entered-in-error"
+                },
+                {
+                  "key": "medication",
+                  "value": "<string>"
+                },
+                {
+                  "key": "authoredon",
+                  "value": "<string>"
+                },
+                {
+                  "key": "_count",
+                  "value": "20"
+                }
+              ]
+            },
+            "description": "Searches for MedicationRequest resources (prescriptions and medication orders) for a patient."
+          },
+          "response": [
+            {
+              "id": "ce0f465e-40eb-4ffe-89cf-5790f264ccc1",
+              "name": "Bundle of MedicationRequest resources returned",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/MedicationRequest?patient=<string>&status=entered-in-error&medication=<string>&authoredon=<string>&_count=20",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "MedicationRequest"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "patient",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "entered-in-error"
+                    },
+                    {
+                      "key": "medication",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "authoredon",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_count",
+                      "value": "20"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"resourceType\": \"Bundle\",\n  \"type\": \"history\",\n  \"id\": \"<string>\",\n  \"total\": \"<integer>\",\n  \"link\": [\n    {\n      \"relation\": \"last\",\n      \"url\": \"<uri>\"\n    },\n    {\n      \"relation\": \"self\",\n      \"url\": \"<uri>\"\n    }\n  ],\n  \"entry\": [\n    {\n      \"fullUrl\": \"<uri>\",\n      \"resource\": {},\n      \"search\": {\n        \"mode\": \"outcome\",\n        \"score\": \"<number>\"\n      },\n      \"request\": {\n        \"method\": \"POST\",\n        \"url\": \"<string>\"\n      },\n      \"response\": {\n        \"status\": \"<string>\",\n        \"location\": \"<string>\"\n      }\n    },\n    {\n      \"fullUrl\": \"<uri>\",\n      \"resource\": {},\n      \"search\": {\n        \"mode\": \"match\",\n        \"score\": \"<number>\"\n      },\n      \"request\": {\n        \"method\": \"GET\",\n        \"url\": \"<string>\"\n      },\n      \"response\": {\n        \"status\": \"<string>\",\n        \"location\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:16:51.000Z",
+              "updatedAt": "2026-10-21T20:16:51.000Z",
+              "uid": "35240-ce0f465e-40eb-4ffe-89cf-5790f264ccc1"
+            }
+          ],
+          "createdAt": "2026-10-21T20:16:51.000Z",
+          "updatedAt": "2026-10-21T20:16:51.000Z",
+          "uid": "35240-0569bf89-a356-4fd4-8744-fafb50a9b77e"
+        }
+      ],
+      "id": "293dc8a9-5de5-4737-b419-af934812a81c",
+      "createdAt": "2026-10-21T20:16:51.000Z",
+      "updatedAt": "2026-10-21T20:16:51.000Z",
+      "uid": "35240-293dc8a9-5de5-4737-b419-af934812a81c"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "patient/Patient.read patient/Observation.read patient/Condition.read patient/MedicationRequest.read patient/Encounter.read launch/patient openid",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://auth.example.com/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://auth.example.com/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://fhir-server.example.com/fhir/R4"
+    }
+  ]
+}

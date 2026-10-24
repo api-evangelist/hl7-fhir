@@ -1,79 +1,90 @@
 {
+  "info": {
+    "_postman_id": "3fd7638e-1e92-45dc-a34f-5679ca58adc1",
+    "name": "HL7 FHIR R4 Healthcare Encounter API",
+    "description": "HL7 FHIR R4 (v4.0.1) RESTful API for healthcare data exchange. Provides access to patient demographics, clinical observations, conditions, medications, encounters, care plans, and diagnostic reports. Implements the FHIR REST specification including CRUD operations, search parameters, history, and batch/ transaction bundles. SMART on FHIR OAuth 2.0 authorization required.\n\nContact Support:\n Name: HL7 International",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:15:03.000Z",
+    "updatedAt": "2026-10-21T20:15:04.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3fd7638e-1e92-45dc-a34f-5679ca58adc1"
+  },
   "item": [
     {
-      "id": "95301dca-8016-4ab2-9987-694f7e315b04",
       "name": "Encounter",
-      "description": {
-        "content": "Patient visits and encounters",
-        "type": "text/plain"
-      },
       "item": [
         {
-          "id": "d1643d37-bd0d-4171-a9d7-87c7149eb0de",
           "name": "Search encounters",
+          "id": "275762a9-7637-40d3-bc5d-7af0e015da8a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Search encounters",
-            "description": {
-              "content": "Searches for Encounter resources (visits, hospitalizations, telehealth) for a patient.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "Encounter"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "patient",
-                  "value": "<string>"
-                },
-                {
-                  "disabled": false,
-                  "key": "status",
-                  "value": "<string>"
-                },
-                {
-                  "disabled": false,
-                  "key": "class",
-                  "value": "<string>",
-                  "description": "Encounter class code (AMB, IMP, EMER, etc.)"
-                },
-                {
-                  "disabled": false,
-                  "key": "date",
-                  "value": "<string>"
-                },
-                {
-                  "disabled": false,
-                  "key": "_count",
-                  "value": "20"
-                }
-              ],
-              "variable": []
-            },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/fhir+json"
               }
             ],
-            "method": "GET",
-            "auth": null
+            "url": {
+              "raw": "{{baseUrl}}/Encounter?patient=<string>&status=triaged&class=<string>&date=<string>&_count=20",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Encounter"
+              ],
+              "query": [
+                {
+                  "key": "patient",
+                  "value": "<string>"
+                },
+                {
+                  "key": "status",
+                  "value": "triaged"
+                },
+                {
+                  "description": "Encounter class code (AMB, IMP, EMER, etc.)",
+                  "key": "class",
+                  "value": "<string>"
+                },
+                {
+                  "key": "date",
+                  "value": "<string>"
+                },
+                {
+                  "key": "_count",
+                  "value": "20"
+                }
+              ]
+            },
+            "description": "Searches for Encounter resources (visits, hospitalizations, telehealth) for a patient."
           },
           "response": [
             {
-              "id": "d055984e-1896-428c-8d37-ae723dc9c6fb",
+              "id": "e6ff2016-4e55-4c28-a039-565111eadddb",
               "name": "Bundle of Encounter resources returned",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "Encounter"
-                  ],
+                  "raw": "{{baseUrl}}/Encounter?patient=<string>&status=triaged&class=<string>&date=<string>&_count=20",
                   "host": [
                     "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Encounter"
                   ],
                   "query": [
                     {
@@ -82,9 +93,10 @@
                     },
                     {
                       "key": "status",
-                      "value": "<string>"
+                      "value": "triaged"
                     },
                     {
+                      "description": "Encounter class code (AMB, IMP, EMER, etc.)",
                       "key": "class",
                       "value": "<string>"
                     },
@@ -96,54 +108,35 @@
                       "key": "_count",
                       "value": "20"
                     }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/fhir+json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/fhir+json"
                 }
               ],
-              "body": "{\n  \"resourceType\": \"Bundle\",\n  \"type\": \"transaction-response\",\n  \"id\": \"string\",\n  \"total\": 8507,\n  \"link\": [\n    {\n      \"relation\": \"next\",\n      \"url\": \"http://oYHtKRRYUqGIOIQ.tfxBy\"\n    },\n    {\n      \"relation\": \"previous\",\n      \"url\": \"http://FqpNDAOlp.equR1wCRE.atDxlTrNzjMI+P+kkD2XG9Ey9LP8K1sZ1+jt\"\n    }\n  ],\n  \"entry\": [\n    {\n      \"fullUrl\": \"http://qcrAOmftQljTuNUPnqMFGrAOOiOosTuNd.oenBbRsx0460doP9Kp,iltEBdRPMgfDNLYr\",\n      \"resource\": {},\n      \"search\": {\n        \"mode\": \"include\",\n        \"score\": 6954.043379143223\n      },\n      \"request\": {\n        \"method\": \"PUT\",\n        \"url\": \"string\"\n      },\n      \"response\": {\n        \"status\": \"string\",\n        \"location\": \"string\"\n      }\n    },\n    {\n      \"fullUrl\": \"http://IkwwkiuhwoZuuGMoZmNLl.hahkpPSer9pqXuAxmCzVyMSSSH9Jx.qOMmfgdrRDSh6tDJ2ZpYkmDM4Zn.xXrY4\",\n      \"resource\": {},\n      \"search\": {\n        \"mode\": \"match\",\n        \"score\": 275.62524438752956\n      },\n      \"request\": {\n        \"method\": \"HEAD\",\n        \"url\": \"string\"\n      },\n      \"response\": {\n        \"status\": \"string\",\n        \"location\": \"string\"\n      }\n    }\n  ]\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"resourceType\": \"Bundle\",\n  \"type\": \"history\",\n  \"id\": \"<string>\",\n  \"total\": \"<integer>\",\n  \"link\": [\n    {\n      \"relation\": \"last\",\n      \"url\": \"<uri>\"\n    },\n    {\n      \"relation\": \"last\",\n      \"url\": \"<uri>\"\n    }\n  ],\n  \"entry\": [\n    {\n      \"fullUrl\": \"<uri>\",\n      \"resource\": {},\n      \"search\": {\n        \"mode\": \"match\",\n        \"score\": \"<number>\"\n      },\n      \"request\": {\n        \"method\": \"POST\",\n        \"url\": \"<string>\"\n      },\n      \"response\": {\n        \"status\": \"<string>\",\n        \"location\": \"<string>\"\n      }\n    },\n    {\n      \"fullUrl\": \"<uri>\",\n      \"resource\": {},\n      \"search\": {\n        \"mode\": \"include\",\n        \"score\": \"<number>\"\n      },\n      \"request\": {\n        \"method\": \"PUT\",\n        \"url\": \"<string>\"\n      },\n      \"response\": {\n        \"status\": \"<string>\",\n        \"location\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:15:04.000Z",
+              "updatedAt": "2026-10-21T20:15:04.000Z",
+              "uid": "35240-e6ff2016-4e55-4c28-a039-565111eadddb"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:15:04.000Z",
+          "updatedAt": "2026-10-21T20:15:04.000Z",
+          "uid": "35240-275762a9-7637-40d3-bc5d-7af0e015da8a"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://fhir-server.example.com/fhir/R4",
-      "key": "baseUrl"
+      "id": "2c110d89-640d-45ea-9897-28c71bc4d29e",
+      "createdAt": "2026-10-21T20:15:04.000Z",
+      "updatedAt": "2026-10-21T20:15:04.000Z",
+      "uid": "35240-2c110d89-640d-45ea-9897-28c71bc4d29e"
     }
   ],
   "auth": {
@@ -151,29 +144,30 @@
     "oauth2": [
       {
         "key": "scope",
-        "value": "patient/Patient.read patient/Observation.read patient/Condition.read patient/MedicationRequest.read patient/Encounter.read launch/patient openid"
+        "value": "patient/Patient.read patient/Observation.read patient/Condition.read patient/MedicationRequest.read patient/Encounter.read launch/patient openid",
+        "type": "string"
       },
       {
         "key": "accessTokenUrl",
-        "value": "https://auth.example.com/token"
+        "value": "https://auth.example.com/token",
+        "type": "string"
       },
       {
         "key": "authUrl",
-        "value": "https://auth.example.com/authorize"
+        "value": "https://auth.example.com/authorize",
+        "type": "string"
       },
       {
         "key": "grant_type",
-        "value": "authorization_code"
+        "value": "authorization_code",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "5044a642-1a67-4a67-b565-694bc315b45e",
-    "name": "HL7 FHIR R4 Healthcare Bundle Encounter API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "HL7 FHIR R4 (v4.0.1) RESTful API for healthcare data exchange. Provides access to patient demographics, clinical observations, conditions, medications, encounters, care plans, and diagnostic reports. Implements the FHIR REST specification including CRUD operations, search parameters, history, and batch/ transaction bundles. SMART on FHIR OAuth 2.0 authorization required.\n\nContact Support:\n Name: HL7 International",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://fhir-server.example.com/fhir/R4"
     }
-  }
+  ]
 }

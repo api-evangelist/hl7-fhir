@@ -1,96 +1,108 @@
 {
+  "info": {
+    "_postman_id": "378a56a1-d614-4b60-912e-83a5f87593c8",
+    "name": "HL7 FHIR R4 Healthcare Condition API",
+    "description": "HL7 FHIR R4 (v4.0.1) RESTful API for healthcare data exchange. Provides access to patient demographics, clinical observations, conditions, medications, encounters, care plans, and diagnostic reports. Implements the FHIR REST specification including CRUD operations, search parameters, history, and batch/ transaction bundles. SMART on FHIR OAuth 2.0 authorization required.\n\nContact Support:\n Name: HL7 International",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:14:55.000Z",
+    "updatedAt": "2026-10-21T20:14:55.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-378a56a1-d614-4b60-912e-83a5f87593c8"
+  },
   "item": [
     {
-      "id": "9d534290-c10c-4384-9f73-e95210fb4cd6",
       "name": "Condition",
-      "description": {
-        "content": "Clinical conditions, diagnoses, and problems",
-        "type": "text/plain"
-      },
       "item": [
         {
-          "id": "3442a9fb-d6f1-4ebe-8186-176014c78c08",
           "name": "Search conditions",
+          "id": "b4bcd045-9b89-4bda-8761-06fb7edfd408",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Search conditions",
-            "description": {
-              "content": "Searches for Condition resources (diagnoses, problems, health concerns) for a patient.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "Condition"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "patient",
-                  "value": "<string>",
-                  "description": "Patient reference"
-                },
-                {
-                  "disabled": false,
-                  "key": "clinical-status",
-                  "value": "<string>"
-                },
-                {
-                  "disabled": false,
-                  "key": "code",
-                  "value": "<string>",
-                  "description": "ICD-10 or SNOMED CT code"
-                },
-                {
-                  "disabled": false,
-                  "key": "category",
-                  "value": "<string>"
-                },
-                {
-                  "disabled": false,
-                  "key": "onset-date",
-                  "value": "<string>"
-                },
-                {
-                  "disabled": false,
-                  "key": "_count",
-                  "value": "20"
-                }
-              ],
-              "variable": []
-            },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/fhir+json"
               }
             ],
-            "method": "GET",
-            "auth": null
+            "url": {
+              "raw": "{{baseUrl}}/Condition?patient=<string>&clinical-status=inactive&code=<string>&category=<string>&onset-date=<string>&_count=20",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Condition"
+              ],
+              "query": [
+                {
+                  "description": "Patient reference",
+                  "key": "patient",
+                  "value": "<string>"
+                },
+                {
+                  "key": "clinical-status",
+                  "value": "inactive"
+                },
+                {
+                  "description": "ICD-10 or SNOMED CT code",
+                  "key": "code",
+                  "value": "<string>"
+                },
+                {
+                  "key": "category",
+                  "value": "<string>"
+                },
+                {
+                  "key": "onset-date",
+                  "value": "<string>"
+                },
+                {
+                  "key": "_count",
+                  "value": "20"
+                }
+              ]
+            },
+            "description": "Searches for Condition resources (diagnoses, problems, health concerns) for a patient."
           },
           "response": [
             {
-              "id": "36c93ceb-55d9-400f-9835-3a83f5208438",
+              "id": "7817f8d1-a839-46bb-97c1-ed42fd3378bc",
               "name": "Bundle of Condition resources returned",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "Condition"
-                  ],
+                  "raw": "{{baseUrl}}/Condition?patient=<string>&clinical-status=inactive&code=<string>&category=<string>&onset-date=<string>&_count=20",
                   "host": [
                     "{{baseUrl}}"
                   ],
+                  "path": [
+                    "Condition"
+                  ],
                   "query": [
                     {
+                      "description": "Patient reference",
                       "key": "patient",
                       "value": "<string>"
                     },
                     {
                       "key": "clinical-status",
-                      "value": "<string>"
+                      "value": "inactive"
                     },
                     {
+                      "description": "ICD-10 or SNOMED CT code",
                       "key": "code",
                       "value": "<string>"
                     },
@@ -106,54 +118,35 @@
                       "key": "_count",
                       "value": "20"
                     }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: oauth2",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/fhir+json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/fhir+json"
                 }
               ],
-              "body": "{\n  \"resourceType\": \"Bundle\",\n  \"type\": \"batch\",\n  \"id\": \"string\",\n  \"total\": 2872,\n  \"link\": [\n    {\n      \"relation\": \"last\",\n      \"url\": \"http://QZqaRomUszhcRTIhzHqXEwNjwcycvha.biJQd2h0D7WO0W1buEGiMx4BlmBA9B9mQ5FQ0OlLPcL+Omr-RdJQq,5XsYz-\"\n    },\n    {\n      \"relation\": \"first\",\n      \"url\": \"https://lAgLEEmvTvwrTxityDPL.zztawHy,bAsDc4zZT6R0tS.cAf-O8SVGKMzkq\"\n    }\n  ],\n  \"entry\": [\n    {\n      \"fullUrl\": \"http://yWsSoJckTEaXZycIHsZxGVWlNJU.rbni.G17TjRH.eiIL9JRUJN.mGqfY4TQmJhuivesHw0mWNEE\",\n      \"resource\": {},\n      \"search\": {\n        \"mode\": \"include\",\n        \"score\": 1088.0062372839027\n      },\n      \"request\": {\n        \"method\": \"HEAD\",\n        \"url\": \"string\"\n      },\n      \"response\": {\n        \"status\": \"string\",\n        \"location\": \"string\"\n      }\n    },\n    {\n      \"fullUrl\": \"https://iDYjydnshtYBUIXkwnNZGYuLObAJXcgz.kzrZEnjCBTN5ob3y,tPP3IJkUUmtvKplYhm929hCju1g8\",\n      \"resource\": {},\n      \"search\": {\n        \"mode\": \"outcome\",\n        \"score\": 690.4326929881588\n      },\n      \"request\": {\n        \"method\": \"PUT\",\n        \"url\": \"string\"\n      },\n      \"response\": {\n        \"status\": \"string\",\n        \"location\": \"string\"\n      }\n    }\n  ]\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"resourceType\": \"Bundle\",\n  \"type\": \"batch\",\n  \"id\": \"<string>\",\n  \"total\": \"<integer>\",\n  \"link\": [\n    {\n      \"relation\": \"first\",\n      \"url\": \"<uri>\"\n    },\n    {\n      \"relation\": \"self\",\n      \"url\": \"<uri>\"\n    }\n  ],\n  \"entry\": [\n    {\n      \"fullUrl\": \"<uri>\",\n      \"resource\": {},\n      \"search\": {\n        \"mode\": \"match\",\n        \"score\": \"<number>\"\n      },\n      \"request\": {\n        \"method\": \"PUT\",\n        \"url\": \"<string>\"\n      },\n      \"response\": {\n        \"status\": \"<string>\",\n        \"location\": \"<string>\"\n      }\n    },\n    {\n      \"fullUrl\": \"<uri>\",\n      \"resource\": {},\n      \"search\": {\n        \"mode\": \"outcome\",\n        \"score\": \"<number>\"\n      },\n      \"request\": {\n        \"method\": \"DELETE\",\n        \"url\": \"<string>\"\n      },\n      \"response\": {\n        \"status\": \"<string>\",\n        \"location\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:14:55.000Z",
+              "updatedAt": "2026-10-21T20:14:55.000Z",
+              "uid": "35240-7817f8d1-a839-46bb-97c1-ed42fd3378bc"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:14:55.000Z",
+          "updatedAt": "2026-10-21T20:14:55.000Z",
+          "uid": "35240-b4bcd045-9b89-4bda-8761-06fb7edfd408"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://fhir-server.example.com/fhir/R4",
-      "key": "baseUrl"
+      "id": "9e3917bc-fff0-42da-b596-a761b53cc4ee",
+      "createdAt": "2026-10-21T20:14:55.000Z",
+      "updatedAt": "2026-10-21T20:14:55.000Z",
+      "uid": "35240-9e3917bc-fff0-42da-b596-a761b53cc4ee"
     }
   ],
   "auth": {
@@ -161,29 +154,30 @@
     "oauth2": [
       {
         "key": "scope",
-        "value": "patient/Patient.read patient/Observation.read patient/Condition.read patient/MedicationRequest.read patient/Encounter.read launch/patient openid"
+        "value": "patient/Patient.read patient/Observation.read patient/Condition.read patient/MedicationRequest.read patient/Encounter.read launch/patient openid",
+        "type": "string"
       },
       {
         "key": "accessTokenUrl",
-        "value": "https://auth.example.com/token"
+        "value": "https://auth.example.com/token",
+        "type": "string"
       },
       {
         "key": "authUrl",
-        "value": "https://auth.example.com/authorize"
+        "value": "https://auth.example.com/authorize",
+        "type": "string"
       },
       {
         "key": "grant_type",
-        "value": "authorization_code"
+        "value": "authorization_code",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "7660433b-cc52-4640-95d7-01ce12c510c3",
-    "name": "HL7 FHIR R4 Healthcare Bundle Condition API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "HL7 FHIR R4 (v4.0.1) RESTful API for healthcare data exchange. Provides access to patient demographics, clinical observations, conditions, medications, encounters, care plans, and diagnostic reports. Implements the FHIR REST specification including CRUD operations, search parameters, history, and batch/ transaction bundles. SMART on FHIR OAuth 2.0 authorization required.\n\nContact Support:\n Name: HL7 International",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://fhir-server.example.com/fhir/R4"
     }
-  }
+  ]
 }
